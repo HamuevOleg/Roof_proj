@@ -1,0 +1,491 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {
+    ui, languages,
+    getServicesData, getFeaturesData, getPortfolioData,
+    getStatsData, getGalleryData, getVideosData
+} from '../../data/i18n.js';
+
+export function getStaticPaths() {
+    return languages.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const text      = ui[lang];
+const services  = getServicesData(lang);
+const features  = getFeaturesData(lang);
+const portfolio = getPortfolioData(lang);
+const stats     = getStatsData(lang);
+const gallery   = getGalleryData();
+const videos    = getVideosData(lang);
+
+const phone     = '+373 60 000 000';
+const phoneHref = 'tel:+37360000000';
+
+const pricing = lang === 'ru' ? [
+    { icon: 'ph ph-waves',     title: 'Полимерная мембрана',   price: 'от 180',  unit: 'лей/м²', badge: 'ТПО / ПВХ',     color: 'blue',    perks: ['Гарантия 15 лет', 'Срок службы 30–50 лет', 'Без швов'] },
+    { icon: 'ph ph-fire',      title: 'Еврорубероид',          price: 'от 120',  unit: 'лей/м²', badge: 'Битумная',       color: 'orange',  perks: ['Проверено годами', 'Быстрый монтаж', 'Доступная цена'] },
+    { icon: 'ph ph-wrench',    title: 'Ремонт кровли',         price: 'от 80',   unit: 'лей/м²', badge: 'Любой тип',      color: 'cyan',    perks: ['Диагностика бесплатно', 'Без демонтажа', 'Гарантия на ремонт'] },
+    { icon: 'ph ph-house-line',title: 'Скатная кровля',        price: 'от 220',  unit: 'лей/м²', badge: 'Под ключ',       color: 'emerald', perks: ['Шинглас / Металл', '3D проект', 'Гарантия 15 лет'] },
+] : [
+    { icon: 'ph ph-waves',     title: 'Membrană polimerică',   price: 'de la 180', unit: 'lei/m²', badge: 'TPO / PVC',     color: 'blue',    perks: ['Garanție 15 ani', 'Durată 30–50 ani', 'Fără rosturi'] },
+    { icon: 'ph ph-fire',      title: 'Euroruberoid',          price: 'de la 120', unit: 'lei/m²', badge: 'Bituminos',     color: 'orange',  perks: ['Dovedit în timp', 'Montaj rapid', 'Preț accesibil'] },
+    { icon: 'ph ph-wrench',    title: 'Reparație acoperiș',    price: 'de la 80',  unit: 'lei/m²', badge: 'Orice tip',     color: 'cyan',    perks: ['Diagnostic gratuit', 'Fără demontare', 'Garanție'] },
+    { icon: 'ph ph-house-line',title: 'Acoperiș în pantă',     price: 'de la 220', unit: 'lei/m²', badge: 'La cheie',      color: 'emerald', perks: ['Shinglas / Metal', 'Proiect 3D', 'Garanție 15 ani'] },
+];
+
+const colorMap: Record<string, string> = {
+    blue:    'bg-blue-600',
+    orange:  'bg-orange-500',
+    cyan:    'bg-cyan-600',
+    emerald: 'bg-emerald-600',
+};
+---
+
+<Layout lang={lang} title={text.nav.home}>
+<div class="fade-in">
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<section class="relative bg-gray-900 min-h-[720px] flex items-center overflow-hidden pb-28">
+    <img
+        src="https://images.unsplash.com/photo-1541888086225-ee80c2f829ec?auto=format&fit=crop&q=80&w=1920"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105 animate-pulse-slow"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-900/80 to-gray-900/20"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 py-20">
+        <div class="max-w-2xl">
+            <!-- Eyebrow -->
+            <p class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-5 flex items-center gap-3">
+                <span class="w-8 h-0.5 bg-blue-400"></span>
+                {lang === 'ru' ? 'Кровельные работы в Молдове' : 'Lucrări acoperișuri în Moldova'}
+            </p>
+
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.06] tracking-tight mb-6">
+                <span class="block">{text.heroTitle1}</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">{text.heroTitle2}</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-xl">
+                {text.heroDesc}
+            </p>
+
+            <!-- CTA buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a href={phoneHref}
+                   class="sm:w-64 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-7 py-4 rounded-2xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-xl shadow-blue-600/40 flex items-center justify-center gap-2">
+                    <i class="ph-fill ph-phone text-lg"></i>
+                    {lang === 'ru' ? 'Позвонить сейчас' : 'Sună acum'}
+                </a>
+                <a href={`/${lang}/contacts`}
+                   class="sm:w-64 bg-white/10 hover:bg-white/20 text-white border border-white/25 px-7 py-4 rounded-2xl font-bold text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
+                    {lang === 'ru' ? 'Бесплатная смета' : 'Deviz gratuit'}
+                    <i class="ph ph-arrow-right text-lg"></i>
+                </a>
+            </div>
+
+            <!-- Phone number prominent -->
+            <a href={phoneHref} class="group inline-flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
+                    <i class="ph-fill ph-phone text-blue-400 group-hover:text-white text-lg transition-colors"></i>
+                </div>
+                <span class="text-3xl font-extrabold text-white tracking-tight group-hover:text-blue-300 transition-colors">{phone}</span>
+                <span class="text-gray-400 text-sm hidden sm:block">
+                    — {lang === 'ru' ? 'выезд бесплатно' : 'deplasare gratuită'}
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Decorative glow -->
+    <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-blue-600 rounded-full blur-[120px] opacity-40 pointer-events-none"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ STATS — floating -->
+<div class="relative z-20 -mt-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-3xl shadow-2xl shadow-gray-900/15 border border-gray-100">
+        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100">
+            {stats.map((stat) => (
+                <div class="flex flex-col items-center justify-center text-center px-6 py-8">
+                    <div class="bg-blue-50 text-blue-600 w-12 h-12 rounded-2xl flex items-center justify-center mb-3">
+                        <i class={`${stat.icon} text-2xl`}></i>
+                    </div>
+                    <div class="text-3xl font-extrabold text-gray-900 mb-1">{stat.number}</div>
+                    <div class="text-xs text-gray-500 font-semibold uppercase tracking-widest">{stat.label}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PRICING -->
+<section class="py-28 bg-gray-950 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-14 gap-6">
+            <div>
+                <p class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-3 flex items-center gap-3">
+                    <span class="w-8 h-0.5 bg-blue-400"></span>
+                    {lang === 'ru' ? 'Примерные цены' : 'Prețuri orientative'}
+                </p>
+                <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
+                    {lang === 'ru' ? 'Сколько стоит' : 'Cât costă'}
+                    <span class="text-blue-400"> {lang === 'ru' ? 'ваша крыша?' : 'acoperișul tău?'}</span>
+                </h2>
+            </div>
+            <p class="text-gray-400 text-sm max-w-xs leading-relaxed">
+                {lang === 'ru'
+                    ? '* Точная стоимость определяется после бесплатного выезда инженера'
+                    : '* Costul exact se determină după deplasarea gratuită a inginerului'}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {pricing.map((p) => (
+                <div class="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1 flex flex-col">
+                    <!-- Icon + badge -->
+                    <div class="flex items-start justify-between mb-6">
+                        <div class={`w-13 h-13 ${colorMap[p.color]} rounded-2xl flex items-center justify-center shadow-lg w-12 h-12`}>
+                            <i class={`${p.icon} text-white text-2xl`}></i>
+                        </div>
+                        <span class="text-xs font-bold text-gray-400 bg-white/10 px-2.5 py-1 rounded-full">{p.badge}</span>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-4 leading-snug">{p.title}</h3>
+
+                    <!-- Price -->
+                    <div class="mb-6">
+                        <span class="text-4xl font-extrabold text-white">{p.price}</span>
+                        <span class="text-gray-400 text-sm ml-1">{p.unit}</span>
+                    </div>
+
+                    <!-- Perks -->
+                    <ul class="space-y-2.5 mb-7 flex-grow">
+                        {p.perks.map((perk) => (
+                            <li class="flex items-center gap-2.5 text-sm text-gray-300">
+                                <i class={`ph-fill ph-check-circle ${colorMap[p.color].replace('bg-', 'text-')} text-lg flex-shrink-0`}></i>
+                                {perk}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <a href={phoneHref}
+                       class={`mt-auto w-full text-center py-3 rounded-xl font-bold text-sm transition-all duration-300 ${colorMap[p.color]} text-white hover:opacity-90 hover:-translate-y-0.5 shadow-md`}>
+                        {lang === 'ru' ? 'Узнать точную цену' : 'Aflați prețul exact'}
+                    </a>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FEATURES -->
+<section class="py-28 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
+                    <span class="w-8 h-0.5 bg-blue-600"></span>{text.featSub}
+                </p>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                    {text.featTitle1} <span class="text-blue-600">{text.featTitle2}</span>
+                </h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-10">{text.featDesc}</p>
+
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
+                    <img
+                        src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800"
+                        alt="Кровельные работы" loading="lazy" decoding="async"
+                        class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-7">
+                        <div class="inline-flex items-center gap-2 bg-blue-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-xl font-bold mb-2 text-sm">
+                            <i class="ph-fill ph-check-circle text-lg"></i>{text.featControl}
+                        </div>
+                        <p class="text-xl font-bold text-white">{text.featControlDesc}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 space-y-5">
+                {features.map((feature, idx) => (
+                    <div class="group relative bg-gray-50 hover:bg-white p-7 rounded-3xl border border-gray-100 hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        <div class="absolute -right-3 -top-4 text-[110px] font-black text-gray-200/60 group-hover:text-blue-50 transition-colors duration-500 pointer-events-none select-none leading-none">
+                            0{idx + 1}
+                        </div>
+                        <div class="relative z-10 flex gap-5 items-start">
+                            <div class="bg-white w-14 h-14 rounded-2xl shadow flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform border border-gray-100 text-orange-500">
+                                <i class={`${feature.icon} text-3xl`}></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{feature.title}</h3>
+                                <p class="text-gray-500 leading-relaxed">{feature.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                <a href={`/${lang}/about`} class="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors pt-2">
+                    <i class="ph ph-buildings text-lg"></i>
+                    {lang === 'ru' ? 'Подробнее о компании' : 'Mai multe despre companie'}
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ PORTFOLIO PREVIEW -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+                <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3">{text.portSub}</p>
+                <h2 class="text-4xl font-extrabold text-gray-900">{text.portTitle}</h2>
+            </div>
+            <a href={`/${lang}/portfolio`} class="group flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors text-base whitespace-nowrap">
+                {text.portAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {portfolio.slice(0, 3).map((item) => (
+                <a href={`/${lang}/portfolio`} class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 h-[360px] block">
+                    <img src={item.image} alt={item.title} loading="lazy" decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-7 w-full translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full mb-2">{item.category}</span>
+                        <h3 class="text-xl font-bold text-white mb-1">{item.title}</h3>
+                        <p class="text-gray-400 flex items-center gap-1 text-sm">
+                            <i class="ph-fill ph-map-pin opacity-70"></i>{item.area}
+                        </p>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ GALLERY — bento designer grid -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+                <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3">{text.gallerySub}</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+                    {text.galleryTitle1}
+                    <span class="relative inline-block">
+                        <span class="text-blue-600"> {text.galleryTitle2}</span>
+                        <span class="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600/20 rounded-full"></span>
+                    </span>
+                </h2>
+            </div>
+            <a href={`/${lang}/portfolio`} class="group flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors text-base whitespace-nowrap">
+                {text.galleryAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+
+        <!-- Bento grid -->
+        <div class="grid grid-cols-4 grid-rows-3 gap-3 h-[560px] md:h-[640px]">
+            <!-- Big left (2×2) -->
+            <a href={`/${lang}/portfolio`} class="col-span-2 row-span-2 group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <img src={gallery[0].image} alt={gallery[0].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <span class="text-white font-bold text-sm">{gallery[0].label}</span>
+                </div>
+            </a>
+            <!-- Top right 2 (1×1 each) -->
+            <a href={`/${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[1].image} alt={gallery[1].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
+                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[1].label}</span>
+                </div>
+            </a>
+            <a href={`/${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[2].image} alt={gallery[2].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
+                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[2].label}</span>
+                </div>
+            </a>
+            <!-- Middle right 2 -->
+            <a href={`/${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[3].image} alt={gallery[3].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
+                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[3].label}</span>
+                </div>
+            </a>
+            <a href={`/${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[4].image} alt={gallery[4].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
+                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[4].label}</span>
+                </div>
+            </a>
+            <!-- Bottom row (4 wide, split 3+1) -->
+            <a href={`/${lang}/portfolio`} class="col-span-3 group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[5].image} alt={gallery[5].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-4">
+                    <span class="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">{gallery[5].label}</span>
+                </div>
+            </a>
+            <a href={`/${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[6].image} alt={gallery[6].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
+                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[6].label}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ MID-PAGE PHONE CTA -->
+<section class="bg-blue-600 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <p class="text-blue-100 text-sm font-semibold uppercase tracking-wider mb-1">
+                    {lang === 'ru' ? 'Не ждите — каждый день без крыши это риск' : 'Nu așteptați — fiecare zi fără acoperiș este un risc'}
+                </p>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-white">
+                    {lang === 'ru' ? 'Звоните сейчас — выезд инженера бесплатно' : 'Sunați acum — deplasare inginer gratuit'}
+                </h2>
+            </div>
+            <a href={phoneHref}
+               class="flex-shrink-0 flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-2xl font-extrabold text-xl hover:bg-blue-50 transition-all hover:scale-105 shadow-xl whitespace-nowrap">
+                <i class="ph-fill ph-phone text-2xl"></i>
+                {phone}
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ VIDEOS (2 only) -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-blue-600"></span>
+            {lang === 'ru' ? 'Видео о процессе' : 'Video despre proces'}
+        </p>
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-10">
+            {lang === 'ru' ? 'Смотрите как мы работаем' : 'Vedeți cum lucrăm'}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {videos.map((video) => (
+                <div class="rounded-3xl overflow-hidden shadow-lg bg-gray-900">
+                    <video
+                        src={video.src}
+                        poster={video.poster}
+                        controls
+                        preload="none"
+                        class="w-full h-72 object-cover"
+                    ></video>
+                    <div class="p-5">
+                        <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">{video.type}</span>
+                        <h3 class="text-white font-bold text-lg leading-snug">{video.title}</h3>
+                        <p class="text-gray-400 text-sm mt-1">{video.desc}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ SERVICES PREVIEW -->
+<section class="py-24 bg-gray-900 text-white rounded-t-[3rem]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div>
+                <p class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-3">{text.servSub}</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white">{text.servTitle}</h2>
+            </div>
+            <a href={`/${lang}/services`} class="group flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors text-base whitespace-nowrap">
+                {text.servAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {services.slice(0, 4).map((service) => (
+                <a href={`/${lang}/services`} class="group relative h-[400px] rounded-3xl overflow-hidden shadow-2xl block">
+                    <img src={service.image} alt={service.title} loading="lazy" decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/60 to-gray-900/10 group-hover:via-gray-900/80 transition-all duration-500"></div>
+                    <div class="absolute inset-0 p-7 flex flex-col justify-end">
+                        <div class="bg-white/10 backdrop-blur-md w-12 h-12 rounded-2xl flex items-center justify-center mb-5 border border-white/20 group-hover:-translate-y-3 transition-transform duration-500 text-white">
+                            <i class={`${service.icon} text-2xl`}></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:-translate-y-3 transition-transform duration-500 leading-snug">{service.title}</h3>
+                        <div class="overflow-hidden max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-hover:-translate-y-3 -translate-y-2 transition-all duration-500">
+                            <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">{service.price}</span>
+                            <p class="text-gray-300 text-sm line-clamp-2 mb-3">{service.shortDesc}</p>
+                            <span class="text-blue-400 font-bold text-xs inline-flex items-center gap-1 uppercase tracking-wider">
+                                {text.servMore} <i class="ph ph-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FINAL CTA -->
+<section class="relative bg-gray-900 py-24 overflow-hidden">
+    <!-- Background image -->
+    <img
+        src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=1920"
+        alt="" loading="lazy" decoding="async"
+        class="absolute inset-0 w-full h-full object-cover opacity-20"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/90"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-blue-400 text-sm font-bold uppercase tracking-widest mb-4">
+            {lang === 'ru' ? 'Бесплатно и без обязательств' : 'Gratuit și fără obligații'}
+        </p>
+        <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+            {lang === 'ru'
+                ? <>Получите точную смету<br/><span class="text-blue-400">за 24 часа</span></>
+                : <>Obțineți devizul exact<br/><span class="text-blue-400">în 24 de ore</span></>
+            }
+        </h2>
+        <p class="text-gray-300 text-xl mb-10 max-w-xl mx-auto leading-relaxed">
+            {lang === 'ru'
+                ? 'Инженер приедет, замерит крышу, сделает 3D эскиз и отдаст смету. Всё бесплатно. Без давления.'
+                : 'Inginerul vine, măsoară acoperișul, face schița 3D și prezintă devizul. Totul gratuit. Fără presiune.'
+            }
+        </p>
+
+        <!-- Two big CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href={phoneHref}
+               class="w-full sm:w-auto flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-extrabold text-xl transition-all hover:-translate-y-1 shadow-2xl shadow-blue-600/40">
+                <i class="ph-fill ph-phone text-2xl"></i>
+                {phone}
+            </a>
+            <a href={`/${lang}/contacts`}
+               class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-10 py-5 rounded-2xl font-bold text-xl transition-all backdrop-blur-md">
+                {lang === 'ru' ? 'Оставить заявку' : 'Lasă o cerere'}
+                <i class="ph ph-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
+            <span class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-blue-400 text-lg"></i>{lang === 'ru' ? 'Гарантия 15 лет' : 'Garanție 15 ani'}</span>
+            <span class="text-gray-700">•</span>
+            <span class="flex items-center gap-2"><i class="ph-fill ph-star text-yellow-400 text-lg"></i>{lang === 'ru' ? '500+ объектов' : '500+ obiecte'}</span>
+            <span class="text-gray-700">•</span>
+            <span class="flex items-center gap-2"><i class="ph-fill ph-certificate text-blue-400 text-lg"></i>{lang === 'ru' ? 'Партнёр Технониколь' : 'Partener Technonicol'}</span>
+        </div>
+    </div>
+</section>
+
+</div>
+</Layout>

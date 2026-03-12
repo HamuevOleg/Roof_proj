@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\Users\\\\user\\\\Desktop\\\\ProRoofMD\\\\proroof-astro\" && npm run build 2>&1)"
+    ]
+  }
+}

@@ -1,0 +1,184 @@
+---
+import '../styles/global.css';
+import { ui, getServicesData } from '../data/i18n.js';
+
+const { lang, title } = Astro.props;
+const text = ui[lang];
+const services = getServicesData(lang);
+const currentYear = new Date().getFullYear();
+
+const currentPath = Astro.url.pathname.replace(`/${lang}`, '');
+const getLangLink = (targetLang) => `/${targetLang}${currentPath || '/'}`;
+
+const navItems = [
+    { id: 'home',      label: text.nav.home,      href: `/${lang}/` },
+    { id: 'services',  label: text.nav.services,  href: `/${lang}/services` },
+    { id: 'portfolio', label: text.nav.portfolio,  href: `/${lang}/portfolio` },
+    { id: 'about',     label: text.nav.about,      href: `/${lang}/about` },
+    { id: 'contacts',  label: text.nav.contacts,   href: `/${lang}/contacts` }
+];
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} - ProRoof</title>
+
+    <!-- Performance: preconnect to external origins -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://img.youtube.com">
+
+    <!-- Phosphor icons: defer so it doesn't block render -->
+    <link rel="preload" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.css"></noscript>
+</head>
+<body class="font-sans bg-white text-gray-900 flex flex-col min-h-screen">
+
+<!-- ═══════════════════════════════════════════════════════ HEADER -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+
+            <!-- Logo -->
+            <a href={`/${lang}/`} class="flex items-center gap-3 flex-shrink-0">
+                <div class="bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center">
+                    <i class="ph ph-buildings text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-gray-900 leading-tight">ProRoof</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">{text.brandExpert}</p>
+                </div>
+            </a>
+
+            <!-- Desktop nav -->
+            <nav class="hidden lg:flex items-center gap-1">
+                {navItems.map(item => (
+                    <a href={item.href} class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors rounded-lg hover:bg-gray-50">
+                        {item.label}
+                    </a>
+                ))}
+            </nav>
+
+            <!-- Desktop actions -->
+            <div class="hidden lg:flex items-center gap-3">
+                <div class="flex items-center bg-gray-100 rounded-full p-1">
+                    <a href={getLangLink('ru')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ru' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}>RU</a>
+                    <a href={getLangLink('ro')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}>RO</a>
+                </div>
+                <a href="tel:+37360000000" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-full font-medium transition-colors">
+                    <i class="ph ph-phone text-blue-600 text-lg"></i>
+                    +373 60 000 000
+                </a>
+                <a href={`/${lang}/contacts`} class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-medium transition-colors whitespace-nowrap">
+                    {text.freeEst}
+                </a>
+            </div>
+
+            <!-- Mobile actions -->
+            <div class="lg:hidden flex items-center gap-3">
+                <div class="flex items-center bg-gray-100 rounded-full p-1">
+                    <a href={getLangLink('ru')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ru' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500'}`}>RU</a>
+                    <a href={getLangLink('ro')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500'}`}>RO</a>
+                </div>
+                <button id="mobile-menu-toggle" class="text-gray-600 hover:text-gray-900 focus:outline-none flex items-center justify-center w-10 h-10">
+                    <i class="ph ph-list text-3xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg">
+        <div class="px-4 pt-2 pb-6 space-y-1">
+            {navItems.map(item => (
+                <a href={item.href} class="block px-3 py-3 rounded-lg text-base font-medium text-gray-900 hover:bg-gray-50 transition-colors">
+                    {item.label}
+                </a>
+            ))}
+            <a href="tel:+37360000000" class="flex items-center justify-center gap-2 w-full mt-4 bg-gray-100 text-gray-900 px-4 py-3 rounded-xl font-medium">
+                <i class="ph ph-phone text-blue-600 text-xl"></i>
+                +373 60 000 000
+            </a>
+            <a href={`/${lang}/contacts`} class="block text-center w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl font-medium transition-colors">
+                {text.freeEst}
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow">
+    <slot />
+</main>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="bg-white text-blue-600 p-1.5 rounded-lg flex items-center justify-center">
+                        <i class="ph ph-buildings text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold">ProRoof</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">{text.footDesc}</p>
+            </div>
+
+            <!-- Nav -->
+            <div>
+                <h3 class="text-base font-semibold mb-4 pb-2 border-b border-gray-700">{text.footNav}</h3>
+                <ul class="space-y-2.5">
+                    {navItems.map(item => (
+                        <li><a href={item.href} class="text-gray-400 hover:text-white transition-colors text-sm">{item.label}</a></li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h3 class="text-base font-semibold mb-4 pb-2 border-b border-gray-700">{text.footServ}</h3>
+                <ul class="space-y-2.5">
+                    {services.slice(0, 4).map(service => (
+                        <li class="text-gray-400 text-sm">{service.title}</li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- Contacts -->
+            <div>
+                <h3 class="text-base font-semibold mb-4 pb-2 border-b border-gray-700">{text.footCont}</h3>
+                <a href="tel:+37360000000" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                    <i class="ph-fill ph-phone text-blue-400 text-xl flex-shrink-0"></i>
+                    <span class="text-lg font-bold">+373 60 000 000</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-500 text-sm">
+            <p>&copy; {currentYear} ProRoof. {text.footRights}</p>
+            <p>{text.footMade}</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Phosphor icons: loaded after page renders, non-blocking -->
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+
+<script is:inline>
+    const btn  = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+
+    btn.addEventListener('click', () => {
+        const isHidden = menu.classList.toggle('hidden');
+        icon.className = isHidden ? 'ph ph-list text-3xl' : 'ph ph-x text-3xl';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  proroof-web:
+    build: .
+    ports:
+      - "80:80" # Сайт будет доступен на порту 80
+    restart: always
