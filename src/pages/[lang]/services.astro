@@ -10,7 +10,8 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 const text     = ui[lang];
 const services = getServicesData(lang);
 const process  = getProcessData(lang);
