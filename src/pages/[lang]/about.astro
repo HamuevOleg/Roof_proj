@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import { ui, languages, getStatsData, getFeaturesData, getAboutValuesData } from '../../data/i18n.js';
 
@@ -7,6 +7,7 @@ export function getStaticPaths() {
 }
 
 const { lang }  = Astro.params;
+const base = import.meta.env.BASE_URL;
 const text      = ui[lang];
 const stats     = getStatsData(lang);
 const features  = getFeaturesData(lang);
@@ -192,7 +193,7 @@ const values    = getAboutValuesData(lang);
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-5">{text.ctaTitle}</h2>
         <p class="text-blue-100 text-xl mb-10 leading-relaxed">{text.ctaDesc}</p>
-        <a href={`/${lang}/contacts`} class="inline-block bg-white text-blue-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-all hover:scale-105 shadow-2xl">
+        <a href={`${base}${lang}/contacts`} class="inline-block bg-white text-blue-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-all hover:scale-105 shadow-2xl">
             {text.ctaBtn}
         </a>
     </div>
