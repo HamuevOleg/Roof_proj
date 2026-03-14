@@ -236,6 +236,8 @@ export const ui = {
 export const languages = ['ru', 'ro'];
 export const defaultLang = 'ru';
 
+const base = import.meta.env.BASE_URL; // '/' locally, '/Roof_proj/' on GitHub Pages
+
 export const getServicesData = (lang) => [
     {
         id: 1,
@@ -248,7 +250,7 @@ export const getServicesData = (lang) => [
             : "Membranele polimerice sunt standardul de aur al hidroizolării acoperișurilor plate. Materialul se sudează cu aer cald, formând un înveliș monolitic fără îmbinări. Durată de viață 30–50 ani. Ideal pentru clădiri comerciale și industriale.",
         price: lang === 'ru' ? "от 180 лей/м²" : "de la 180 lei/m²",
         icon: "ph ph-buildings",
-        image: "/images/portfolio/p01.jpg",
+        image: `${base}images/portfolio/p01.jpg`,
         benefits: lang === 'ru'
             ? ["Гарантия до 15 лет", "Срок службы 30–50 лет", "Монолитное покрытие без швов", "Устойчива к УФ и перепадам температур"]
             : ["Garanție până la 15 ani", "Durată de viață 30–50 ani", "Înveliș monolitic fără rosturi", "Rezistentă la UV și variații de temperatură"]
@@ -264,7 +266,7 @@ export const getServicesData = (lang) => [
             : "Materialele bitum-polimerice se aplică cu arzătorul strat cu strat, creând o protecție multistrat. Opțiune excelentă la buget limitat. Se aplică pe clădiri rezidențiale, industriale și administrative.",
         price: lang === 'ru' ? "от 120 лей/м²" : "de la 120 lei/m²",
         icon: "ph ph-drop",
-        image: "/images/portfolio/p02.jpg",
+        image: `${base}images/portfolio/p02.jpg`,
         benefits: lang === 'ru'
             ? ["Проверено десятилетиями", "Доступная стоимость", "Быстрый монтаж", "Хорошая гибкость при низких температурах"]
             : ["Verificat de zeci de ani", "Cost accesibil", "Montaj rapid", "Flexibilitate bună la temperaturi scăzute"]
@@ -280,7 +282,7 @@ export const getServicesData = (lang) => [
             : "Diagnosticarea scurgerilor cu termovizor și inspecție vizuală, reparație locală sau capitală. Lucrăm cu orice tip de acoperire existentă: ruberoid, membrană, mastic. Rezultat — acoperiș complet etanș.",
         price: lang === 'ru' ? "от 80 лей/м²" : "de la 80 lei/m²",
         icon: "ph ph-wrench",
-        image: "/images/portfolio/p03.jpg",
+        image: `${base}images/portfolio/p03.jpg`,
         benefits: lang === 'ru'
             ? ["Диагностика тепловизором", "Работа без демонтажа", "Гарантия на ремонт", "Выезд в день обращения"]
             : ["Diagnosticare cu termovizor", "Lucru fără demontare", "Garanție la reparație", "Deplasare în ziua solicitării"]
@@ -296,7 +298,7 @@ export const getServicesData = (lang) => [
             : "Aplicăm trei tipuri de izolație: XPS (polistiren extrudat), vată minerală și plăci PIR. Selectăm materialul în funcție de construcția acoperișului, cerințele proiectului și buget. Reduce pierderile de căldură cu 20–30%.",
         price: lang === 'ru' ? "от 150 лей/м²" : "de la 150 lei/m²",
         icon: "ph ph-sun",
-        image: "/images/portfolio/p04.jpg",
+        image: `${base}images/portfolio/p04.jpg`,
         benefits: lang === 'ru'
             ? ["XPS / минвата / PIR-плиты", "Снижение теплопотерь 20–30%", "Соответствие СНиП", "Подбор под любой бюджет"]
             : ["XPS / vată minerală / plăci PIR", "Reducerea pierderilor 20–30%", "Conformitate cu normele", "Selecție pentru orice buget"]
@@ -312,7 +314,7 @@ export const getServicesData = (lang) => [
             : "Complex complet de lucrări conform sistemului Technonicol Shinglas: construcția sistemului de căpriori, montaj izolație, protecție vânt, OSB și șindrilă flexibilă. Instalăm sisteme de scurgere, aeratoare și, dacă este necesar, panouri solare.",
         price: lang === 'ru' ? "от 220 лей/м²" : "de la 220 lei/m²",
         icon: "ph ph-house-line",
-        image: "/images/portfolio/p05.jpg",
+        image: `${base}images/portfolio/p05.jpg`,
         benefits: lang === 'ru'
             ? ["Система Технониколь Шинглас", "Гарантия 15 лет", "Полный цикл под ключ", "3D проект до начала работ"]
             : ["Sistem Technonicol Shinglas", "Garanție 15 ani", "Ciclu complet la cheie", "Proiect 3D înainte de lucrări"]
@@ -328,7 +330,7 @@ export const getServicesData = (lang) => [
             : "Înainte de orice lucrare facem deplasarea la obiect, măsurători, elaborăm o schiță 3D a sistemului de acoperiș cu vizualizarea tuturor nodurilor și întocmim un deviz local detaliat. Clientul vede costul final înainte de semnarea contractului.",
         price: lang === 'ru' ? "Бесплатно" : "Gratuit",
         icon: "ph ph-cube",
-        image: "/images/portfolio/p06.jpg",
+        image: `${base}images/portfolio/p06.jpg`,
         benefits: lang === 'ru'
             ? ["Бесплатный выезд инженера", "Детальный 3D эскиз", "Прозрачная смета", "Без скрытых платежей"]
             : ["Deplasare gratuită a inginerului", "Schiță 3D detaliată", "Deviz transparent", "Fără plăți ascunse"]
@@ -354,14 +356,14 @@ export const getFeaturesData = (lang) => [
 ];
 
 export const getPortfolioData = (lang) => [
-    { id: 1, title: lang === 'ru' ? "Объект 1" : "Obiect 1", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: "/images/portfolio/p01.jpg" },
-    { id: 2, title: lang === 'ru' ? "Объект 2" : "Obiect 2", category: lang === 'ru' ? "Мембрана ТПО" : "Membrană TPO",              area: "—", year: "2024", image: "/images/portfolio/p02.jpg" },
-    { id: 3, title: lang === 'ru' ? "Объект 3" : "Obiect 3", category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",              area: "—", year: "2024", image: "/images/portfolio/p03.jpg" },
-    { id: 4, title: lang === 'ru' ? "Объект 4" : "Obiect 4", category: lang === 'ru' ? "Теплоизоляция" : "Termoizolație",            area: "—", year: "2024", image: "/images/portfolio/p04.jpg" },
-    { id: 5, title: lang === 'ru' ? "Объект 5" : "Obiect 5", category: lang === 'ru' ? "Скатная кровля" : "Acoperiș în pantă",       area: "—", year: "2024", image: "/images/portfolio/p05.jpg" },
-    { id: 6, title: lang === 'ru' ? "Объект 6" : "Obiect 6", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: "/images/portfolio/p06.jpg" },
-    { id: 7, title: lang === 'ru' ? "Объект 7" : "Obiect 7", category: lang === 'ru' ? "Ремонт кровли" : "Reparație acoperiș",       area: "—", year: "2024", image: "/images/portfolio/p07.jpg" },
-    { id: 8, title: lang === 'ru' ? "Объект 8" : "Obiect 8", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: "/images/portfolio/p08.jpg" },
+    { id: 1, title: lang === 'ru' ? "Объект 1" : "Obiect 1", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p01.jpg` },
+    { id: 2, title: lang === 'ru' ? "Объект 2" : "Obiect 2", category: lang === 'ru' ? "Мембрана ТПО" : "Membrană TPO",              area: "—", year: "2024", image: `${base}images/portfolio/p02.jpg` },
+    { id: 3, title: lang === 'ru' ? "Объект 3" : "Obiect 3", category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",              area: "—", year: "2024", image: `${base}images/portfolio/p03.jpg` },
+    { id: 4, title: lang === 'ru' ? "Объект 4" : "Obiect 4", category: lang === 'ru' ? "Теплоизоляция" : "Termoizolație",            area: "—", year: "2024", image: `${base}images/portfolio/p04.jpg` },
+    { id: 5, title: lang === 'ru' ? "Объект 5" : "Obiect 5", category: lang === 'ru' ? "Скатная кровля" : "Acoperiș în pantă",       area: "—", year: "2024", image: `${base}images/portfolio/p05.jpg` },
+    { id: 6, title: lang === 'ru' ? "Объект 6" : "Obiect 6", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p06.jpg` },
+    { id: 7, title: lang === 'ru' ? "Объект 7" : "Obiect 7", category: lang === 'ru' ? "Ремонт кровли" : "Reparație acoperiș",       area: "—", year: "2024", image: `${base}images/portfolio/p07.jpg` },
+    { id: 8, title: lang === 'ru' ? "Объект 8" : "Obiect 8", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p08.jpg` },
 ];
 
 export const getStatsData = (lang) => [
@@ -474,14 +476,14 @@ export const getRoofSystemsData = (lang) => [
 ];
 
 export const getGalleryData = () => [
-    { image: "/images/portfolio/p01.jpg", label: "Монтаж мембраны" },
-    { image: "/images/portfolio/p02.jpg", label: "Кровельные работы" },
-    { image: "/images/portfolio/p03.jpg", label: "Промышленный объект" },
-    { image: "/images/portfolio/p04.jpg", label: "Готовый объект" },
-    { image: "/images/portfolio/p05.jpg", label: "Детали кровли" },
-    { image: "/images/portfolio/p06.jpg", label: "Частный дом" },
-    { image: "/images/portfolio/p07.jpg", label: "Коммерческий объект" },
-    { image: "/images/portfolio/p08.jpg", label: "Кровельные работы" },
+    { image: `${base}images/portfolio/p01.jpg`, label: "Монтаж мембраны" },
+    { image: `${base}images/portfolio/p02.jpg`, label: "Кровельные работы" },
+    { image: `${base}images/portfolio/p03.jpg`, label: "Промышленный объект" },
+    { image: `${base}images/portfolio/p04.jpg`, label: "Готовый объект" },
+    { image: `${base}images/portfolio/p05.jpg`, label: "Детали кровли" },
+    { image: `${base}images/portfolio/p06.jpg`, label: "Частный дом" },
+    { image: `${base}images/portfolio/p07.jpg`, label: "Коммерческий объект" },
+    { image: `${base}images/portfolio/p08.jpg`, label: "Кровельные работы" },
 ];
 
 export const getFAQData = (lang) => [
@@ -535,6 +537,6 @@ export const getAboutValuesData = (lang) => [
 ];
 
 export const getVideosData = (lang) => [
-    { src: "/images/videos/work1.mp4", poster: "/images/portfolio/p01.jpg", title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
-    { src: "/images/videos/work2.mp4", poster: "/images/portfolio/p03.jpg", title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
+    { src: `${base}images/videos/work1.mp4`, poster: `${base}images/portfolio/p01.jpg`, title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
+    { src: `${base}images/videos/work2.mp4`, poster: `${base}images/portfolio/p03.jpg`, title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
 ];
