@@ -4,10 +4,9 @@ import { ui, getServicesData } from '../data/i18n.js';
 
 const { lang, title } = Astro.props;
 const text = ui[lang];
-const services = getServicesData(lang);
-const currentYear = new Date().getFullYear();
-
-const base = import.meta.env.BASE_URL; // always trailing slash from astro.config base: '/Roof_proj/'
+const base = import.meta.env.BASE_URL;
+const services = getServicesData(lang, base);
+const currentYear = new Date().getFullYear(); // always trailing slash from astro.config base: '/Roof_proj/'
 const rawPath = Astro.url.pathname.startsWith(base.slice(0, -1)) ? Astro.url.pathname.slice(base.length - 1) : Astro.url.pathname;
 const currentPath = rawPath.replace(`/${lang}`, '') || '/';
 const getLangLink = (targetLang) => `${base}${targetLang}${currentPath}`;

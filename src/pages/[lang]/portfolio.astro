@@ -9,9 +9,9 @@ export function getStaticPaths() {
 const { lang }  = Astro.params;
 const base = import.meta.env.BASE_URL;
 const text      = ui[lang];
-const portfolio = getPortfolioData(lang);
-const gallery   = getGalleryData();
-const videos    = getVideosData(lang);
+const portfolio = getPortfolioData(lang, base);
+const gallery   = getGalleryData(base);
+const videos    = getVideosData(lang, base);
 
 const categories = lang === 'ru'
     ? ['Все', 'Мембрана ПВХ', 'Мембрана ТПО', 'Скатная кровля', 'Теплоизоляция', 'Еврорубероид']

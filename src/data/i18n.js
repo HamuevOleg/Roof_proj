@@ -236,9 +236,7 @@ export const ui = {
 export const languages = ['ru', 'ro'];
 export const defaultLang = 'ru';
 
-const base = import.meta.env.BASE_URL; // '/' locally, '/Roof_proj/' on GitHub Pages
-
-export const getServicesData = (lang) => [
+export const getServicesData = (lang, base = '/') => [
     {
         id: 1,
         title: lang === 'ru' ? "Монтаж ПВХ и ТПО мембран" : "Montaj membrane PVC și TPO",
@@ -355,7 +353,7 @@ export const getFeaturesData = (lang) => [
     }
 ];
 
-export const getPortfolioData = (lang) => [
+export const getPortfolioData = (lang, base = '/') => [
     { id: 1, title: lang === 'ru' ? "Объект 1" : "Obiect 1", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p01.jpg` },
     { id: 2, title: lang === 'ru' ? "Объект 2" : "Obiect 2", category: lang === 'ru' ? "Мембрана ТПО" : "Membrană TPO",              area: "—", year: "2024", image: `${base}images/portfolio/p02.jpg` },
     { id: 3, title: lang === 'ru' ? "Объект 3" : "Obiect 3", category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",              area: "—", year: "2024", image: `${base}images/portfolio/p03.jpg` },
@@ -475,7 +473,7 @@ export const getRoofSystemsData = (lang) => [
     }
 ];
 
-export const getGalleryData = () => [
+export const getGalleryData = (base = '/') => [
     { image: `${base}images/portfolio/p01.jpg`, label: "Монтаж мембраны" },
     { image: `${base}images/portfolio/p02.jpg`, label: "Кровельные работы" },
     { image: `${base}images/portfolio/p03.jpg`, label: "Промышленный объект" },
@@ -536,7 +534,7 @@ export const getAboutValuesData = (lang) => [
     },
 ];
 
-export const getVideosData = (lang) => [
+export const getVideosData = (lang, base = '/') => [
     { src: `${base}images/videos/work1.mp4`, poster: `${base}images/portfolio/p01.jpg`, title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
     { src: `${base}images/videos/work2.mp4`, poster: `${base}images/portfolio/p03.jpg`, title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
 ];
