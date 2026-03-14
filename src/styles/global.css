@@ -18,3 +18,9 @@
         to { opacity: 1; transform: translateY(0); }
     }
 }
+
+/* Hero video: hide video and show static image for users who prefer no motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+    .hero-img-fallback { display: block !important; }
+}

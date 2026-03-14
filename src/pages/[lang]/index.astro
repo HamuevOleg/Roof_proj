@@ -48,12 +48,21 @@ const colorMap: Record<string, string> = {
 
 <!-- ═══════════════════════════════════════════════ HERO -->
 <section class="relative bg-gray-900 min-h-[720px] flex items-center overflow-hidden pb-28">
+    <video
+        autoplay muted loop playsinline
+        preload="metadata"
+        poster={`${base}images/portfolio/p01.jpg`}
+        class="hero-video absolute inset-0 w-full h-full object-cover object-center opacity-40"
+    >
+        <source src={`${base}images/videos/hero.mp4`} type="video/mp4">
+    </video>
+    <!-- Fallback image for prefers-reduced-motion -->
     <img
         src={`${base}images/portfolio/p01.jpg`}
         alt=""
         fetchpriority="high"
         decoding="async"
-        class="absolute inset-0 w-full h-full object-cover object-center opacity-40 scale-105 animate-pulse-slow"
+        class="hero-img-fallback hidden absolute inset-0 w-full h-full object-cover object-center opacity-40"
     />
     <div class="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-900/80 to-gray-900/20"></div>
 

@@ -248,7 +248,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Membranele polimerice sunt standardul de aur al hidroizolării acoperișurilor plate. Materialul se sudează cu aer cald, formând un înveliș monolitic fără îmbinări. Durată de viață 30–50 ani. Ideal pentru clădiri comerciale și industriale.",
         price: lang === 'ru' ? "от 180 лей/м²" : "de la 180 lei/m²",
         icon: "ph ph-buildings",
-        image: `${base}images/portfolio/p01.jpg`,
+        image: `${base}images/portfolio/Services01.jpg`,
         benefits: lang === 'ru'
             ? ["Гарантия до 15 лет", "Срок службы 30–50 лет", "Монолитное покрытие без швов", "Устойчива к УФ и перепадам температур"]
             : ["Garanție până la 15 ani", "Durată de viață 30–50 ani", "Înveliș monolitic fără rosturi", "Rezistentă la UV și variații de temperatură"]
@@ -264,7 +264,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Materialele bitum-polimerice se aplică cu arzătorul strat cu strat, creând o protecție multistrat. Opțiune excelentă la buget limitat. Se aplică pe clădiri rezidențiale, industriale și administrative.",
         price: lang === 'ru' ? "от 120 лей/м²" : "de la 120 lei/m²",
         icon: "ph ph-drop",
-        image: `${base}images/portfolio/p02.jpg`,
+        image: `${base}images/portfolio/Services02.jpg`,
         benefits: lang === 'ru'
             ? ["Проверено десятилетиями", "Доступная стоимость", "Быстрый монтаж", "Хорошая гибкость при низких температурах"]
             : ["Verificat de zeci de ani", "Cost accesibil", "Montaj rapid", "Flexibilitate bună la temperaturi scăzute"]
@@ -280,7 +280,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Diagnosticarea scurgerilor cu termovizor și inspecție vizuală, reparație locală sau capitală. Lucrăm cu orice tip de acoperire existentă: ruberoid, membrană, mastic. Rezultat — acoperiș complet etanș.",
         price: lang === 'ru' ? "от 80 лей/м²" : "de la 80 lei/m²",
         icon: "ph ph-wrench",
-        image: `${base}images/portfolio/p03.jpg`,
+        image: `${base}images/portfolio/Services03.jpg`,
         benefits: lang === 'ru'
             ? ["Диагностика тепловизором", "Работа без демонтажа", "Гарантия на ремонт", "Выезд в день обращения"]
             : ["Diagnosticare cu termovizor", "Lucru fără demontare", "Garanție la reparație", "Deplasare în ziua solicitării"]
@@ -296,7 +296,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Aplicăm trei tipuri de izolație: XPS (polistiren extrudat), vată minerală și plăci PIR. Selectăm materialul în funcție de construcția acoperișului, cerințele proiectului și buget. Reduce pierderile de căldură cu 20–30%.",
         price: lang === 'ru' ? "от 150 лей/м²" : "de la 150 lei/m²",
         icon: "ph ph-sun",
-        image: `${base}images/portfolio/p04.jpg`,
+        image: `${base}images/portfolio/Services04.jpg`,
         benefits: lang === 'ru'
             ? ["XPS / минвата / PIR-плиты", "Снижение теплопотерь 20–30%", "Соответствие СНиП", "Подбор под любой бюджет"]
             : ["XPS / vată minerală / plăci PIR", "Reducerea pierderilor 20–30%", "Conformitate cu normele", "Selecție pentru orice buget"]
