@@ -54,7 +54,7 @@ const colorMap: Record<string, string> = {
         poster={`${base}images/portfolio/p01.jpg`}
         class="hero-video absolute inset-0 w-full h-full object-cover object-center opacity-40"
     >
-        <source src={`${base}images/videos/hero.mp4`} type="video/mp4">
+        <source src={`${base}images/hero/hero.mp4`} type="video/mp4">
     </video>
     <!-- Fallback image for prefers-reduced-motion -->
     <img
@@ -131,66 +131,6 @@ const colorMap: Record<string, string> = {
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════ PRICING -->
-<section class="py-28 bg-gray-950 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-14 gap-6">
-            <div>
-                <p class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-3 flex items-center gap-3">
-                    <span class="w-8 h-0.5 bg-blue-400"></span>
-                    {lang === 'ru' ? 'Примерные цены' : 'Prețuri orientative'}
-                </p>
-                <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
-                    {lang === 'ru' ? 'Сколько стоит' : 'Cât costă'}
-                    <span class="text-blue-400"> {lang === 'ru' ? 'ваша крыша?' : 'acoperișul tău?'}</span>
-                </h2>
-            </div>
-            <p class="text-gray-400 text-sm max-w-xs leading-relaxed">
-                {lang === 'ru'
-                    ? '* Точная стоимость определяется после бесплатного выезда инженера'
-                    : '* Costul exact se determină după deplasarea gratuită a inginerului'}
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {pricing.map((p) => (
-                <div class="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1 flex flex-col">
-                    <!-- Icon + badge -->
-                    <div class="flex items-start justify-between mb-6">
-                        <div class={`w-13 h-13 ${colorMap[p.color]} rounded-2xl flex items-center justify-center shadow-lg w-12 h-12`}>
-                            <i class={`${p.icon} text-white text-2xl`}></i>
-                        </div>
-                        <span class="text-xs font-bold text-gray-400 bg-white/10 px-2.5 py-1 rounded-full">{p.badge}</span>
-                    </div>
-
-                    <h3 class="text-lg font-bold text-white mb-4 leading-snug">{p.title}</h3>
-
-                    <!-- Price -->
-                    <div class="mb-6">
-                        <span class="text-4xl font-extrabold text-white">{p.price}</span>
-                        <span class="text-gray-400 text-sm ml-1">{p.unit}</span>
-                    </div>
-
-                    <!-- Perks -->
-                    <ul class="space-y-2.5 mb-7 flex-grow">
-                        {p.perks.map((perk) => (
-                            <li class="flex items-center gap-2.5 text-sm text-gray-300">
-                                <i class={`ph-fill ph-check-circle ${colorMap[p.color].replace('bg-', 'text-')} text-lg flex-shrink-0`}></i>
-                                {perk}
-                            </li>
-                        ))}
-                    </ul>
-
-                    <a href={phoneHref}
-                       class={`mt-auto w-full text-center py-3 rounded-xl font-bold text-sm transition-all duration-300 ${colorMap[p.color]} text-white hover:opacity-90 hover:-translate-y-0.5 shadow-md`}>
-                        {lang === 'ru' ? 'Узнать точную цену' : 'Aflați prețul exact'}
-                    </a>
-                </div>
-            ))}
-        </div>
-    </div>
-</section>
-
 <!-- ═══════════════════════════════════════════════ FEATURES -->
 <section class="py-28 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -206,8 +146,8 @@ const colorMap: Record<string, string> = {
 
                 <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
                     <img
-                        src={`${base}images/portfolio/p07.jpg`}
-                        alt="Кровельные работы" loading="lazy" decoding="async"
+                        src={`${base}images/portfolio/Reliability.jpg`}
+                        alt="Надёжность" loading="lazy" decoding="async"
                         class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent"></div>
@@ -259,19 +199,12 @@ const colorMap: Record<string, string> = {
                 {text.portAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             {portfolio.slice(0, 3).map((item) => (
                 <a href={`${base}${lang}/portfolio`} class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 h-[360px] block">
-                    <img src={item.image} alt={item.title} loading="lazy" decoding="async"
+                    <img src={item.image} alt="" loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 p-7 w-full translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full mb-2">{item.category}</span>
-                        <h3 class="text-xl font-bold text-white mb-1">{item.title}</h3>
-                        <p class="text-gray-400 flex items-center gap-1 text-sm">
-                            <i class="ph-fill ph-map-pin opacity-70"></i>{item.area}
-                        </p>
-                    </div>
+                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/30 transition-colors duration-500"></div>
                 </a>
             ))}
         </div>
@@ -298,7 +231,7 @@ const colorMap: Record<string, string> = {
         </div>
 
         <!-- Bento grid -->
-        <div class="grid grid-cols-4 grid-rows-3 gap-3 h-[560px] md:h-[640px]">
+        <div class="grid grid-cols-4 grid-rows-3 gap-3 h-[660px] md:h-[780px]">
             <!-- Big left (2×2) -->
             <a href={`${base}${lang}/portfolio`} class="col-span-2 row-span-2 group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
                 <img src={gallery[0].image} alt={gallery[0].label} loading="lazy" decoding="async"
@@ -337,8 +270,8 @@ const colorMap: Record<string, string> = {
                     <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[4].label}</span>
                 </div>
             </a>
-            <!-- Bottom row (4 wide, split 3+1) -->
-            <a href={`${base}${lang}/portfolio`} class="col-span-3 group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+            <!-- Bottom row (2+1+1) -->
+            <a href={`${base}${lang}/portfolio`} class="col-span-2 group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
                 <img src={gallery[5].image} alt={gallery[5].label} loading="lazy" decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
                 <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-4">
@@ -350,6 +283,13 @@ const colorMap: Record<string, string> = {
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
                 <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
                     <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[6].label}</span>
+                </div>
+            </a>
+            <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+                <img src={gallery[7].image} alt={gallery[7].label} loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
+                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[7].label}</span>
                 </div>
             </a>
         </div>

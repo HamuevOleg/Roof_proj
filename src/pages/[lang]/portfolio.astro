@@ -13,9 +13,6 @@ const portfolio = getPortfolioData(lang, base);
 const gallery   = getGalleryData(base);
 const videos    = getVideosData(lang, base);
 
-const categories = lang === 'ru'
-    ? ['Все', 'Мембрана ПВХ', 'Мембрана ТПО', 'Скатная кровля', 'Теплоизоляция', 'Еврорубероид']
-    : ['Toate', 'Membrană PVC', 'Membrană TPO', 'Acoperiș în pantă', 'Termoizolație', 'Euroruberoid'];
 ---
 
 <Layout lang={lang} title={text.nav.portfolio}>
@@ -51,41 +48,42 @@ const categories = lang === 'ru'
         </p>
         <h2 class="text-4xl font-extrabold text-gray-900 mb-10">{text.portPageAllTitle}</h2>
 
-        <!-- Filter tabs -->
-        <div class="flex flex-wrap gap-2 mb-10" id="filter-tabs">
-            {categories.map((cat, idx) => (
-                <button
-                    class={`filter-btn px-5 py-2 rounded-full text-sm font-bold transition-all ${idx === 0 ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-                    data-filter={cat}
-                    onclick="filterPortfolio(this)"
-                >
-                    {cat}
-                </button>
-            ))}
-        </div>
-
-        <!-- Portfolio items -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
-            {portfolio.map((item) => (
-                <div class="portfolio-item group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 h-[340px]"
-                     data-category={item.category}>
-                    <img src={item.image} alt={item.title} loading="lazy" decoding="async"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
-
-                    <div class="absolute top-5 right-5">
-                        <span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/30">{item.year}</span>
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 p-7 w-full translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        <span class="inline-block px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full mb-3">{item.category}</span>
-                        <h3 class="text-xl font-bold text-white mb-1">{item.title}</h3>
-                        <p class="text-gray-400 flex items-center gap-1 text-sm">
-                            <i class="ph-fill ph-map-pin opacity-70"></i>{item.area}
-                        </p>
+        <!-- Photo grid — first 6 visible, rest hidden until "show all" -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="portfolio-grid">
+            {portfolio.slice(0, 6).map((item) => (
+                <div class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
+                     onclick="openLightbox(this.querySelector('img').src)">
+                    <img src={item.image} alt="" loading="lazy" decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/25 transition-colors duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="ph ph-magnifying-glass-plus text-gray-900 text-lg"></i>
+                        </div>
                     </div>
                 </div>
             ))}
+            {portfolio.slice(6).map((item) => (
+                <div class="portfolio-extra hidden group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
+                     onclick="openLightbox(this.querySelector('img').src)">
+                    <img data-src={item.image} src="" alt="" loading="lazy" decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/25 transition-colors duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="ph ph-magnifying-glass-plus text-gray-900 text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <!-- Show all button -->
+        <div class="text-center mt-10" id="show-more-wrap">
+            <button
+                onclick="showAllPortfolio()"
+                class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:-translate-y-0.5 shadow-lg">
+                {lang === 'ru' ? 'Все фотографии' : 'Toate fotografiile'}
+                <i class="ph ph-images text-lg"></i>
+            </button>
         </div>
     </div>
 </section>
@@ -101,7 +99,7 @@ const categories = lang === 'ru'
         <div class="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
             {gallery.map((item) => (
                 <div class="break-inside-avoid group relative overflow-hidden rounded-2xl shadow hover:shadow-xl transition-shadow cursor-zoom-in"
-                     onclick="openLightbox(this.querySelector('img').src, this.querySelector('img').alt)">
+                     onclick="openLightbox(this.querySelector('img').src)">
                     <img src={item.image} alt={item.label} loading="lazy" decoding="async"
                         class="w-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                     <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-all duration-300">
@@ -175,39 +173,20 @@ const categories = lang === 'ru'
 </Layout>
 
 <script is:inline>
-function filterPortfolio(btn) {
-    const filter = btn.dataset.filter;
-    const allLabel = document.querySelector('[data-filter]').dataset.filter === filter
-        ? null
-        : {ru: 'Все', ro: 'Toate'}[document.documentElement.lang];
-
-    document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
-        b.classList.add('bg-gray-100', 'text-gray-600');
+function showAllPortfolio() {
+    document.querySelectorAll('.portfolio-extra').forEach(el => {
+        el.classList.remove('hidden');
+        const img = el.querySelector('img');
+        if (img.dataset.src) img.src = img.dataset.src;
     });
-    btn.classList.remove('bg-gray-100', 'text-gray-600');
-    btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
-
-    const isAll = (filter === 'Все' || filter === 'Toate');
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-        if (isAll || item.dataset.category.includes(filter.replace('Membrană ', '').replace('Мембрана ', ''))) {
-            item.style.display = '';
-            item.style.opacity = '0';
-            requestAnimationFrame(() => {
-                item.style.transition = 'opacity 0.3s';
-                item.style.opacity = '1';
-            });
-        } else {
-            item.style.display = 'none';
-        }
-    });
+    document.getElementById('show-more-wrap').remove();
 }
 
-function openLightbox(src, alt) {
+function openLightbox(src) {
     const lb = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
     img.src = src;
-    img.alt = alt;
+    img.alt = '';
     lb.classList.remove('hidden');
     lb.classList.add('flex');
     document.body.style.overflow = 'hidden';

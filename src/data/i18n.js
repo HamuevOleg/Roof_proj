@@ -248,7 +248,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Membranele polimerice sunt standardul de aur al hidroizolării acoperișurilor plate. Materialul se sudează cu aer cald, formând un înveliș monolitic fără îmbinări. Durată de viață 30–50 ani. Ideal pentru clădiri comerciale și industriale.",
         price: lang === 'ru' ? "от 180 лей/м²" : "de la 180 lei/m²",
         icon: "ph ph-buildings",
-        image: `${base}images/portfolio/Services01.jpg`,
+        image: `${base}images/services/Services01.jpg`,
         benefits: lang === 'ru'
             ? ["Гарантия до 15 лет", "Срок службы 30–50 лет", "Монолитное покрытие без швов", "Устойчива к УФ и перепадам температур"]
             : ["Garanție până la 15 ani", "Durată de viață 30–50 ani", "Înveliș monolitic fără rosturi", "Rezistentă la UV și variații de temperatură"]
@@ -264,7 +264,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Materialele bitum-polimerice se aplică cu arzătorul strat cu strat, creând o protecție multistrat. Opțiune excelentă la buget limitat. Se aplică pe clădiri rezidențiale, industriale și administrative.",
         price: lang === 'ru' ? "от 120 лей/м²" : "de la 120 lei/m²",
         icon: "ph ph-drop",
-        image: `${base}images/portfolio/Services02.jpg`,
+        image: `${base}images/services/Services02.jpg`,
         benefits: lang === 'ru'
             ? ["Проверено десятилетиями", "Доступная стоимость", "Быстрый монтаж", "Хорошая гибкость при низких температурах"]
             : ["Verificat de zeci de ani", "Cost accesibil", "Montaj rapid", "Flexibilitate bună la temperaturi scăzute"]
@@ -280,7 +280,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Diagnosticarea scurgerilor cu termovizor și inspecție vizuală, reparație locală sau capitală. Lucrăm cu orice tip de acoperire existentă: ruberoid, membrană, mastic. Rezultat — acoperiș complet etanș.",
         price: lang === 'ru' ? "от 80 лей/м²" : "de la 80 lei/m²",
         icon: "ph ph-wrench",
-        image: `${base}images/portfolio/Services03.jpg`,
+        image: `${base}images/services/Services03.jpg`,
         benefits: lang === 'ru'
             ? ["Диагностика тепловизором", "Работа без демонтажа", "Гарантия на ремонт", "Выезд в день обращения"]
             : ["Diagnosticare cu termovizor", "Lucru fără demontare", "Garanție la reparație", "Deplasare în ziua solicitării"]
@@ -296,7 +296,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Aplicăm trei tipuri de izolație: XPS (polistiren extrudat), vată minerală și plăci PIR. Selectăm materialul în funcție de construcția acoperișului, cerințele proiectului și buget. Reduce pierderile de căldură cu 20–30%.",
         price: lang === 'ru' ? "от 150 лей/м²" : "de la 150 lei/m²",
         icon: "ph ph-sun",
-        image: `${base}images/portfolio/Services04.jpg`,
+        image: `${base}images/services/Services04.jpg`,
         benefits: lang === 'ru'
             ? ["XPS / минвата / PIR-плиты", "Снижение теплопотерь 20–30%", "Соответствие СНиП", "Подбор под любой бюджет"]
             : ["XPS / vată minerală / plăci PIR", "Reducerea pierderilor 20–30%", "Conformitate cu normele", "Selecție pentru orice buget"]
@@ -312,7 +312,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Complex complet de lucrări conform sistemului Technonicol Shinglas: construcția sistemului de căpriori, montaj izolație, protecție vânt, OSB și șindrilă flexibilă. Instalăm sisteme de scurgere, aeratoare și, dacă este necesar, panouri solare.",
         price: lang === 'ru' ? "от 220 лей/м²" : "de la 220 lei/m²",
         icon: "ph ph-house-line",
-        image: `${base}images/portfolio/p05.jpg`,
+        image: `${base}images/services/Services05.jpg`,
         benefits: lang === 'ru'
             ? ["Система Технониколь Шинглас", "Гарантия 15 лет", "Полный цикл под ключ", "3D проект до начала работ"]
             : ["Sistem Technonicol Shinglas", "Garanție 15 ani", "Ciclu complet la cheie", "Proiect 3D înainte de lucrări"]
@@ -328,7 +328,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Înainte de orice lucrare facem deplasarea la obiect, măsurători, elaborăm o schiță 3D a sistemului de acoperiș cu vizualizarea tuturor nodurilor și întocmim un deviz local detaliat. Clientul vede costul final înainte de semnarea contractului.",
         price: lang === 'ru' ? "Бесплатно" : "Gratuit",
         icon: "ph ph-cube",
-        image: `${base}images/portfolio/p06.jpg`,
+        image: `${base}images/services/Service06.jpg`,
         benefits: lang === 'ru'
             ? ["Бесплатный выезд инженера", "Детальный 3D эскиз", "Прозрачная смета", "Без скрытых платежей"]
             : ["Deplasare gratuită a inginerului", "Schiță 3D detaliată", "Deviz transparent", "Fără plăți ascunse"]
@@ -474,14 +474,14 @@ export const getRoofSystemsData = (lang) => [
 ];
 
 export const getGalleryData = (base = '/') => [
-    { image: `${base}images/portfolio/p01.jpg`, label: "Монтаж мембраны" },
-    { image: `${base}images/portfolio/p02.jpg`, label: "Кровельные работы" },
-    { image: `${base}images/portfolio/p03.jpg`, label: "Промышленный объект" },
-    { image: `${base}images/portfolio/p04.jpg`, label: "Готовый объект" },
-    { image: `${base}images/portfolio/p05.jpg`, label: "Детали кровли" },
-    { image: `${base}images/portfolio/p06.jpg`, label: "Частный дом" },
-    { image: `${base}images/portfolio/p07.jpg`, label: "Коммерческий объект" },
-    { image: `${base}images/portfolio/p08.jpg`, label: "Кровельные работы" },
+    { image: `${base}images/gallery/PVC.jpg`,         label: "Монтаж мембраны" },
+    { image: `${base}images/gallery/Roofing.jpg`,     label: "Кровельные работы" },
+    { image: `${base}images/gallery/Industrial.jpg`,  label: "Промышленный объект" },
+    { image: `${base}images/gallery/Finished.jpg`,    label: "Готовый объект" },
+    { image: `${base}images/gallery/RoofDetails.jpg`, label: "Детали и Узлы" },
+    { image: `${base}images/gallery/Private.jpg`,     label: "Частный дом" },
+    { image: `${base}images/gallery/Commercial.jpg`,  label: "Коммерческий объект" },
+    { image: `${base}images/gallery/Junctions.jpg`,   label: "Примыкания к стенам" },
 ];
 
 export const getFAQData = (lang) => [
