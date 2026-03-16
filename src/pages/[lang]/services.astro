@@ -13,6 +13,18 @@ const { lang } = Astro.params;
 const base = import.meta.env.BASE_URL;
 const text     = ui[lang];
 const services = getServicesData(lang, base);
+
+// ── Work-in-progress masonry images (public/images/works/)
+const works = [
+    { src: `${base}images/works/photo_2026-03-07_18-15-19.jpg`,        label: lang === 'ru' ? 'МЖД / Новострой · Праймирование плоской кровли · Телецентр, Кишинёв · ~400 м² · 2025'          : 'Bloc locativ / Construcție nouă · Amorsare acoperiș plat · Telecentru, Chișinău · ~400 m² · 2025',         live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-01-44%20(2).jpg`,  label: lang === 'ru' ? 'Частный дом / Коттедж · Утепление плоской кровли XPS · г. Кодру · ~120 м² · 2026'               : 'Casă privată / Casă de vacanță · Termoizolație acoperiș plat XPS · or. Codru · ~120 m² · 2026',           live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-01-48%20(3).jpg`,  label: lang === 'ru' ? 'Частный дом с мансардой · Стропила и гидробарьер изнутри · ком. Гратиешты · ~150 м² · 2025'     : 'Casă cu mansardă · Căpriori și hidrobarieră interior · com. Grătiești · ~150 m² · 2025',                  live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-01-48.jpg`,         label: lang === 'ru' ? 'Частный дом с мансардой · Подкровельное пространство и мансардные окна · ком. Гратиешты · ~150 м² · 2025' : 'Casă cu mansardă · Spațiu subteran și ferestre mansardă · com. Grătiești · ~150 m² · 2025', live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-08-04.jpg`,         label: lang === 'ru' ? 'Жилой комплекс · Гибкая черепица на купол · Чеканы, Кишинёв · ~80 м² · 2024'                    : 'Complex locativ · Șindrilă flexibilă pe cupolă · Ciocana, Chișinău · ~80 m² · 2024',                    live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-08-05%20(2).jpg`,  label: lang === 'ru' ? 'Частный дом · Праймирование под наплавляемые материалы ТехноНИКОЛЬ · с. Колоница · ~90 м² · 2025' : 'Casă privată · Amorsare înainte de membrane bituminoase TechnoNICOL · s. Colonița · ~90 m² · 2025',     live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-15-18%20(3).jpg`,  label: lang === 'ru' ? 'Частный дом / Пристройка · Монтаж XPS поверх гидроизоляции · г. Сынжера · ~60 м² · 2026'         : 'Casă privată / Extensie · Montaj XPS peste hidroizolație · or. Sângera · ~60 m² · 2026',                  live: true },
+    { src: `${base}images/works/photo_2026-03-07_18-15-18.jpg`,         label: lang === 'ru' ? 'Частный дом / Пристройка · Утепление примыканий и парапетов XPS · г. Сынжера · ~60 м² · 2026'    : 'Casă privată / Extensie · Termoizolație racorduri și parapete XPS · or. Sângera · ~60 m² · 2026',        live: true },
+];
 const process  = getProcessData(lang);
 const systems  = getRoofSystemsData(lang);
 const faq      = getFAQData(lang);
@@ -205,6 +217,86 @@ const faq      = getFAQData(lang);
     </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════ WORKS MASONRY -->
+<section class="py-24 bg-[#121212]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+            <div>
+                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-3">
+                    <span class="w-8 h-0.5 bg-orange-500"></span>
+                    {lang === 'ru' ? 'Примеры работ' : 'Exemple de lucrări'}
+                </p>
+                <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-white leading-tight">
+                    {lang === 'ru' ? 'В работе прямо сейчас' : 'Lucrări în desfășurare'}
+                </h2>
+                <p class="text-gray-500 text-sm mt-3 max-w-md leading-relaxed">
+                    {lang === 'ru'
+                        ? 'Реальные объекты нашей бригады — замените фото на свои когда будут готовы.'
+                        : 'Obiecte reale ale echipei noastre — înlocuiți fotografiile cu ale dvs. când sunt gata.'}
+                </p>
+            </div>
+            <a href={`${base}${lang}/portfolio`}
+               class="group inline-flex items-center gap-2 text-gray-400 hover:text-white border border-[#33373E] hover:border-white/30 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0">
+                {lang === 'ru' ? 'Все работы' : 'Toate lucrările'}
+                <i class="ph ph-arrow-right group-hover:translate-x-0.5 transition-transform"></i>
+            </a>
+        </div>
+
+        <!-- Masonry grid — CSS columns -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-3">
+            {works.map((item) => (
+                <div class="break-inside-avoid mb-3 group relative overflow-hidden rounded-xl cursor-zoom-in"
+                     onclick={`openWorksLightbox('${item.src}', '${item.label}')`}>
+
+                    <!-- Image — natural height = masonry effect -->
+                    <img
+                        src={item.src} alt={item.label}
+                        loading="lazy" decoding="async"
+                        class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    />
+
+                    <!-- Dark overlay — slides up on hover -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out flex flex-col justify-end p-4">
+                        <p class="text-white font-bold text-sm leading-snug">{item.label}</p>
+                    </div>
+
+                    <!-- Zoom icon — appears on hover -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center">
+                            <i class="ph ph-magnifying-glass-plus text-white text-lg"></i>
+                        </div>
+                    </div>
+
+                    <!-- "В работе" badge -->
+                    {item.live && (
+                        <div class="absolute top-3 left-3">
+                            <span class="inline-flex items-center gap-1.5 bg-[#121212]/80 backdrop-blur-sm border border-orange-500/40 text-orange-400 text-[10px] font-bold px-2.5 py-1 rounded-full">
+                                <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+                                {lang === 'ru' ? 'В работе' : 'În lucru'}
+                            </span>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox for works -->
+<div id="works-lightbox" class="fixed inset-0 bg-black/92 z-[200] hidden items-center justify-center p-4 flex-col gap-4"
+     onclick="closeWorksLightbox()">
+    <button class="absolute top-5 right-5 text-white/60 hover:text-white w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 transition-colors">
+        <i class="ph ph-x text-2xl"></i>
+    </button>
+    <img id="works-lb-img" src="" alt="" class="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl"/>
+    <div class="text-center">
+        <p id="works-lb-label" class="text-white font-bold text-base"></p>
+        <p id="works-lb-sub" class="text-gray-500 text-sm mt-0.5"></p>
+    </div>
+</div>
+
 <!-- ═══════════════════════════════════════════════ PROCESS -->
 <section class="py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,6 +372,23 @@ const faq      = getFAQData(lang);
 </Layout>
 
 <script is:inline>
+function openWorksLightbox(src, label, sub) {
+    const lb = document.getElementById('works-lightbox');
+    document.getElementById('works-lb-img').src = src;
+    document.getElementById('works-lb-label').textContent = label;
+    document.getElementById('works-lb-sub').textContent = sub;
+    lb.classList.remove('hidden');
+    lb.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+function closeWorksLightbox() {
+    const lb = document.getElementById('works-lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWorksLightbox(); });
+
 function toggleFaq(btn) {
     const body  = btn.nextElementSibling;
     const icon  = btn.querySelector('i');
