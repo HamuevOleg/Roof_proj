@@ -132,56 +132,146 @@ const colorMap: Record<string, string> = {
 </div>
 
 <!-- ═══════════════════════════════════════════════ FEATURES -->
-<section class="py-28 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-            <div class="lg:w-1/2">
-                <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
-                    <span class="w-8 h-0.5 bg-blue-600"></span>{text.featSub}
-                </p>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                    {text.featTitle1} <span class="text-blue-600">{text.featTitle2}</span>
-                </h2>
-                <p class="text-lg text-gray-600 leading-relaxed mb-10">{text.featDesc}</p>
+<section class="py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden relative">
 
-                <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
-                    <img
-                        src={`${base}images/portfolio/Reliability.jpg`}
-                        alt="Надёжность" loading="lazy" decoding="async"
-                        class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-7">
-                        <div class="inline-flex items-center gap-2 bg-blue-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-xl font-bold mb-2 text-sm">
-                            <i class="ph-fill ph-check-circle text-lg"></i>{text.featControl}
+    <!-- Decorative blobs -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none opacity-70"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-50 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl pointer-events-none opacity-70"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+
+        <!-- Section header — centered -->
+        <div class="text-center mb-16">
+            <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-4 flex items-center justify-center gap-3">
+                <span class="w-8 h-0.5 bg-blue-600"></span>{text.featSub}<span class="w-8 h-0.5 bg-blue-600"></span>
+            </p>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-5 leading-tight">
+                {text.featTitle1} <span class="text-blue-600">{text.featTitle2}</span>
+            </h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">{text.featDesc}</p>
+        </div>
+
+        <!-- Feature cards — 3 columns -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {features.map((feature, idx) => {
+                const proofPoints = [
+                    lang === 'ru'
+                        ? ["Фиксируется в договоре", "Юридическое обязательство компании"]
+                        : ["Fixat în contract", "Obligație juridică a companiei"],
+                    lang === 'ru'
+                        ? ["50+ штатных специалистов", "Сертификат партнёра Технониколь"]
+                        : ["50+ specialiști angajați", "Certificat partener Technonicol"],
+                    lang === 'ru'
+                        ? ["Сроки прописаны в договоре", "Штрафные санкции за задержку"]
+                        : ["Termene scrise în contract", "Penalități pentru depășire"],
+                ][idx];
+                const gradients = [
+                    "from-blue-600 to-blue-700",
+                    "from-orange-500 to-orange-600",
+                    "from-emerald-500 to-emerald-600",
+                ];
+                const lightBg = ["bg-blue-50 text-blue-600", "bg-orange-50 text-orange-500", "bg-emerald-50 text-emerald-600"][idx];
+                const numColor = ["text-blue-100", "text-orange-100", "text-emerald-100"][idx];
+                return (
+                    <div class="group relative bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col">
+                        <!-- Gradient top bar -->
+                        <div class={`h-1.5 bg-gradient-to-r ${gradients[idx]}`}></div>
+
+                        <div class="p-8 flex flex-col flex-grow">
+                            <!-- Icon row -->
+                            <div class="flex items-start justify-between mb-6">
+                                <div class={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradients[idx]} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                    <i class={`${feature.icon} text-3xl`}></i>
+                                </div>
+                                <span class={`text-7xl font-black ${numColor} select-none leading-none`}>0{idx + 1}</span>
+                            </div>
+
+                            <!-- Text -->
+                            <h3 class="text-xl font-extrabold text-gray-900 mb-3 leading-snug">{feature.title}</h3>
+                            <p class="text-gray-500 leading-relaxed mb-6 flex-grow">{feature.desc}</p>
+
+                            <!-- Proof points -->
+                            <div class="pt-5 border-t border-gray-100 space-y-2.5">
+                                {proofPoints.map(p => (
+                                    <div class="flex items-center gap-2.5">
+                                        <div class={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${lightBg}`}>
+                                            <i class="ph-fill ph-check text-xs"></i>
+                                        </div>
+                                        <span class="text-sm font-semibold text-gray-700">{p}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <p class="text-xl font-bold text-white">{text.featControlDesc}</p>
                     </div>
+                );
+            })}
+        </div>
+
+        <!-- Bottom row: image + sidebar cards -->
+        <div class="flex flex-col lg:flex-row gap-6 items-stretch">
+
+            <!-- Photo -->
+            <div class="lg:w-2/3 relative rounded-3xl overflow-hidden shadow-2xl group min-h-64">
+                <img
+                    src={`${base}images/portfolio/Reliability.jpg`}
+                    alt="Надёжность" loading="lazy" decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-900/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-7">
+                    <div class="inline-flex items-center gap-2 bg-blue-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-xl font-bold mb-3 text-sm shadow-lg">
+                        <i class="ph-fill ph-check-circle text-lg"></i>{text.featControl}
+                    </div>
+                    <p class="text-xl font-bold text-white drop-shadow">{text.featControlDesc}</p>
+                </div>
+                <!-- Badge top-right -->
+                <div class="absolute top-5 right-5 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg text-center">
+                    <p class="text-2xl font-black text-blue-600">15</p>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">{lang === 'ru' ? 'лет гарантии' : 'ani garanție'}</p>
                 </div>
             </div>
 
-            <div class="lg:w-1/2 space-y-5">
-                {features.map((feature, idx) => (
-                    <div class="group relative bg-gray-50 hover:bg-white p-7 rounded-3xl border border-gray-100 hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                        <div class="absolute -right-3 -top-4 text-[110px] font-black text-gray-200/60 group-hover:text-blue-50 transition-colors duration-500 pointer-events-none select-none leading-none">
-                            0{idx + 1}
-                        </div>
-                        <div class="relative z-10 flex gap-5 items-start">
-                            <div class="bg-white w-14 h-14 rounded-2xl shadow flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform border border-gray-100 text-orange-500">
-                                <i class={`${feature.icon} text-3xl`}></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{feature.title}</h3>
-                                <p class="text-gray-500 leading-relaxed">{feature.desc}</p>
-                            </div>
-                        </div>
+            <!-- Right sidebar -->
+            <div class="lg:w-1/3 flex flex-col gap-5">
+
+                <!-- Partner card -->
+                <div class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm flex-grow flex flex-col justify-center">
+                    <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-5 shadow-md shadow-blue-600/30">
+                        <i class="ph ph-certificate text-2xl"></i>
                     </div>
-                ))}
-                <a href={`${base}${lang}/about`} class="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors pt-2">
-                    <i class="ph ph-buildings text-lg"></i>
-                    {lang === 'ru' ? 'Подробнее о компании' : 'Mai multe despre companie'}
-                    <i class="ph ph-arrow-right"></i>
+                    <h3 class="text-lg font-extrabold text-gray-900 mb-2">
+                        {lang === 'ru' ? 'Официальный партнёр Технониколь' : 'Partener oficial Technonicol'}
+                    </h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-5">
+                        {lang === 'ru'
+                            ? 'Только сертифицированные материалы с официальной гарантией производителя.'
+                            : 'Doar materiale certificate cu garanție oficială a producătorului.'}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">
+                            <i class="ph-fill ph-shield-check"></i> {lang === 'ru' ? 'Сертификат' : 'Certificat'}
+                        </span>
+                        <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full">
+                            <i class="ph-fill ph-check-circle"></i> {lang === 'ru' ? 'Гарантия 15 лет' : 'Garanție 15 ani'}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CTA card -->
+                <a href={`${base}${lang}/about`} class="group bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 rounded-3xl p-7 flex items-center justify-between text-white transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50">
+                    <div>
+                        <p class="font-extrabold text-lg leading-tight">
+                            {lang === 'ru' ? 'О компании' : 'Despre companie'}
+                        </p>
+                        <p class="text-blue-200 text-sm mt-1">
+                            {lang === 'ru' ? 'История, команда, ценности' : 'Istorie, echipă, valori'}
+                        </p>
+                    </div>
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors flex-shrink-0 ml-4">
+                        <i class="ph ph-arrow-right text-xl group-hover:translate-x-0.5 transition-transform"></i>
+                    </div>
                 </a>
+
             </div>
         </div>
     </div>

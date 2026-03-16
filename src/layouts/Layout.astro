@@ -25,7 +25,7 @@ const navItems = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} - ProRoof</title>
+    <title>{title} - ProAcoperis.md</title>
 
     <!-- Performance: preconnect to external origins -->
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -39,26 +39,33 @@ const navItems = [
 <body class="font-sans bg-white text-gray-900 flex flex-col min-h-screen">
 
 <!-- ═══════════════════════════════════════════════════════ HEADER -->
-<header class="sticky top-0 z-50 bg-white shadow-md">
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+
+    <!-- Accent bar -->
+    <div class="h-1 bg-gradient-to-r from-blue-800 via-blue-500 to-cyan-400"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
 
             <!-- Logo -->
-            <a href={`${base}${lang}/`} class="flex items-center gap-3 flex-shrink-0">
-                <div class="bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center">
+            <a href={`${base}${lang}/`} class="flex items-center gap-3 flex-shrink-0 group">
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 text-white p-2.5 rounded-xl flex items-center justify-center shadow-md shadow-blue-600/30 group-hover:shadow-blue-600/50 group-hover:scale-105 transition-all duration-300">
                     <i class="ph ph-buildings text-2xl"></i>
                 </div>
                 <div>
-                    <p class="text-2xl font-bold text-gray-900 leading-tight">ProRoof</p>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">{text.brandExpert}</p>
+                    <p class="text-2xl font-black leading-tight tracking-tight">
+                        <span class="text-gray-900">Pro</span><span class="text-blue-600">Acoperis</span><span class="text-cyan-500">.md</span>
+                    </p>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">{text.brandExpert}</p>
                 </div>
             </a>
 
             <!-- Desktop nav -->
-            <nav class="hidden lg:flex items-center gap-1">
+            <nav class="hidden lg:flex items-center gap-0.5">
                 {navItems.map(item => (
-                    <a href={item.href} class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors rounded-lg hover:bg-gray-50">
+                    <a href={item.href} class="relative px-4 py-2 text-sm font-semibold text-gray-600 hover:text-blue-600 transition-colors rounded-lg hover:bg-blue-50 group/nav">
                         {item.label}
+                        <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 group-hover/nav:w-3/5 h-0.5 bg-blue-500 rounded-full transition-all duration-300"></span>
                     </a>
                 ))}
             </nav>
@@ -69,22 +76,22 @@ const navItems = [
                     <a href={getLangLink('ru')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ru' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}>RU</a>
                     <a href={getLangLink('ro')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}>RO</a>
                 </div>
-                <a href="tel:+37360000000" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-full font-medium transition-colors">
-                    <i class="ph ph-phone text-blue-600 text-lg"></i>
+                <a href="tel:+37360000000" class="flex items-center gap-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-800 px-4 py-2 rounded-full font-medium transition-colors text-sm">
+                    <i class="ph-fill ph-phone text-blue-600 text-base"></i>
                     +373 60 000 000
                 </a>
-                <a href={`${base}${lang}/contacts`} class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full font-medium transition-colors whitespace-nowrap">
+                <a href={`${base}${lang}/contacts`} class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-5 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap shadow-md shadow-blue-600/30 hover:shadow-blue-600/50 text-sm">
                     {text.freeEst}
                 </a>
             </div>
 
             <!-- Mobile actions -->
-            <div class="lg:hidden flex items-center gap-3">
+            <div class="lg:hidden flex items-center gap-2">
                 <div class="flex items-center bg-gray-100 rounded-full p-1">
                     <a href={getLangLink('ru')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ru' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500'}`}>RU</a>
                     <a href={getLangLink('ro')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500'}`}>RO</a>
                 </div>
-                <button id="mobile-menu-toggle" class="text-gray-600 hover:text-gray-900 focus:outline-none flex items-center justify-center w-10 h-10">
+                <button id="mobile-menu-toggle" class="text-gray-600 hover:text-blue-600 focus:outline-none flex items-center justify-center w-10 h-10 rounded-xl hover:bg-blue-50 transition-colors">
                     <i class="ph ph-list text-3xl" id="menu-icon"></i>
                 </button>
             </div>
@@ -92,20 +99,22 @@ const navItems = [
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-lg">
-        <div class="px-4 pt-2 pb-6 space-y-1">
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl">
+        <div class="px-4 pt-3 pb-6 space-y-1">
             {navItems.map(item => (
-                <a href={item.href} class="block px-3 py-3 rounded-lg text-base font-medium text-gray-900 hover:bg-gray-50 transition-colors">
+                <a href={item.href} class="flex items-center px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                     {item.label}
                 </a>
             ))}
-            <a href="tel:+37360000000" class="flex items-center justify-center gap-2 w-full mt-4 bg-gray-100 text-gray-900 px-4 py-3 rounded-xl font-medium">
-                <i class="ph ph-phone text-blue-600 text-xl"></i>
-                +373 60 000 000
-            </a>
-            <a href={`${base}${lang}/contacts`} class="block text-center w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl font-medium transition-colors">
-                {text.freeEst}
-            </a>
+            <div class="pt-3 border-t border-gray-100 space-y-2.5 mt-2">
+                <a href="tel:+37360000000" class="flex items-center justify-center gap-2 w-full bg-gray-50 border border-gray-200 text-gray-900 px-4 py-3 rounded-xl font-medium">
+                    <i class="ph-fill ph-phone text-blue-600 text-xl"></i>
+                    +373 60 000 000
+                </a>
+                <a href={`${base}${lang}/contacts`} class="flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-3.5 rounded-xl font-semibold shadow-md shadow-blue-600/25 transition-all">
+                    {text.freeEst}
+                </a>
+            </div>
         </div>
     </div>
 </header>
@@ -125,7 +134,7 @@ const navItems = [
                     <div class="bg-white text-blue-600 p-1.5 rounded-lg flex items-center justify-center">
                         <i class="ph ph-buildings text-xl"></i>
                     </div>
-                    <span class="text-xl font-bold">ProRoof</span>
+                    <span class="text-xl font-black"><span class="text-white">Pro</span><span class="text-blue-400">Acoperis</span><span class="text-cyan-400">.md</span></span>
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed">{text.footDesc}</p>
             </div>
@@ -161,7 +170,7 @@ const navItems = [
         </div>
 
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-500 text-sm">
-            <p>&copy; {currentYear} ProRoof. {text.footRights}</p>
+            <p>&copy; {currentYear} ProAcoperis.md. {text.footRights}</p>
             <p>{text.footMade}</p>
         </div>
     </div>
