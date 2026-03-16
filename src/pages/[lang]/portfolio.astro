@@ -26,15 +26,15 @@ const videos    = getVideosData(lang, base);
     />
     <div class="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/70 to-transparent"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-blue-100 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <i class="ph-fill ph-buildings text-blue-400"></i>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-orange-100 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <i class="ph-fill ph-buildings text-orange-400"></i>
             {text.portPageHeroBadge}
         </div>
         <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-5 leading-tight">
-            {text.portPageHeroTitle} <span class="text-blue-400">{text.portPageHeroTitle2}</span>
+            {text.portPageHeroTitle} <span class="text-orange-400">{text.portPageHeroTitle2}</span>
         </h1>
         <p class="text-gray-300 text-xl max-w-xl leading-relaxed mb-8">{text.portPageHeroDesc}</p>
-        <a href={`${base}${lang}/contacts`} class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-7 py-4 rounded-2xl font-bold transition-all hover:-translate-y-0.5 shadow-lg shadow-blue-600/30">
+        <a href={`${base}${lang}/contacts`} class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-7 py-4 rounded-2xl font-bold transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-500/30">
             {text.btnCall} <i class="ph ph-arrow-right"></i>
         </a>
     </div>
@@ -43,8 +43,8 @@ const videos    = getVideosData(lang, base);
 <!-- ═══════════════════════════════════════════════ PORTFOLIO GRID -->
 <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
-            <span class="w-8 h-0.5 bg-blue-600"></span>{text.portPageAllSub}
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>{text.portPageAllSub}
         </p>
         <h2 class="text-4xl font-extrabold text-gray-900 mb-10">{text.portPageAllTitle}</h2>
 
@@ -53,24 +53,22 @@ const videos    = getVideosData(lang, base);
             {portfolio.slice(0, 6).map((item) => (
                 <div class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
                      onclick="openLightbox(this.querySelector('img').src)">
-                    <img src={item.image} alt="" loading="lazy" decoding="async"
+                    <img src={item.image} alt={item.title} loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/25 transition-colors duration-300 flex items-center justify-center">
-                        <div class="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="ph ph-magnifying-glass-plus text-gray-900 text-lg"></i>
-                        </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white font-bold text-sm leading-snug">{item.title}</p>
+                        <p class="text-gray-300 text-xs mt-0.5">{item.location} · {item.area} · {item.year}</p>
                     </div>
                 </div>
             ))}
             {portfolio.slice(6).map((item) => (
                 <div class="portfolio-extra hidden group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
                      onclick="openLightbox(this.querySelector('img').src)">
-                    <img data-src={item.image} src="" alt="" loading="lazy" decoding="async"
+                    <img data-src={item.image} src="" alt={item.title} loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/25 transition-colors duration-300 flex items-center justify-center">
-                        <div class="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
-                            <i class="ph ph-magnifying-glass-plus text-gray-900 text-lg"></i>
-                        </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white font-bold text-sm leading-snug">{item.title}</p>
+                        <p class="text-gray-300 text-xs mt-0.5">{item.location} · {item.area} · {item.year}</p>
                     </div>
                 </div>
             ))}
@@ -91,8 +89,8 @@ const videos    = getVideosData(lang, base);
 <!-- ═══════════════════════════════════════════════ FULL GALLERY -->
 <section class="py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
-            <span class="w-8 h-0.5 bg-blue-600"></span>{text.portPageGallerySub}
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>{text.portPageGallerySub}
         </p>
         <h2 class="text-4xl font-extrabold text-gray-900 mb-12">{text.portPageGalleryTitle}</h2>
 
@@ -121,8 +119,8 @@ const videos    = getVideosData(lang, base);
 <!-- ═══════════════════════════════════════════════ VIDEOS -->
 <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
-            <span class="w-8 h-0.5 bg-blue-600"></span>
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>
             {lang === 'ru' ? 'Видео о процессе' : 'Video despre proces'}
         </p>
         <h2 class="text-4xl font-extrabold text-gray-900 mb-12">
@@ -139,7 +137,7 @@ const videos    = getVideosData(lang, base);
                         class="w-full h-56 object-cover"
                     ></video>
                     <div class="p-4">
-                        <span class="inline-block bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full mb-2">{video.type}</span>
+                        <span class="inline-block bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full mb-2">{video.type}</span>
                         <h3 class="text-white font-bold text-sm leading-snug">{video.title}</h3>
                         <p class="text-gray-400 text-xs mt-1">{video.desc}</p>
                     </div>
@@ -150,13 +148,13 @@ const videos    = getVideosData(lang, base);
 </section>
 
 <!-- ═══════════════════════════════════════════════ CTA -->
-<section class="bg-gradient-to-br from-blue-600 to-blue-800 py-20 relative overflow-hidden">
-    <div class="absolute -top-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-5">{text.ctaTitle}</h2>
-        <p class="text-blue-100 text-xl mb-10 leading-relaxed">{text.ctaDesc}</p>
-        <a href={`${base}${lang}/contacts`} class="inline-block bg-white text-blue-600 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-all hover:scale-105 shadow-2xl">
+<section class="bg-gray-900 py-20 relative overflow-hidden">
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
+        <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-white mb-5">{text.ctaTitle}</h2>
+        <p class="text-gray-400 text-xl mb-10 leading-relaxed">{text.ctaDesc}</p>
+        <a href={`${base}${lang}/contacts`} class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-2xl shadow-orange-500/30 btn-pulse">
             {text.ctaBtn}
         </a>
     </div>

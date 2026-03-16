@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from '../../layouts/Layout.astro';
 import {
     ui, languages,
@@ -22,25 +22,6 @@ const videos    = getVideosData(lang, base);
 
 const phone     = '+373 60 000 000';
 const phoneHref = 'tel:+37360000000';
-
-const pricing = lang === 'ru' ? [
-    { icon: 'ph ph-waves',     title: 'Полимерная мембрана',   price: 'от 180',  unit: 'лей/м²', badge: 'ТПО / ПВХ',     color: 'blue',    perks: ['Гарантия 15 лет', 'Срок службы 30–50 лет', 'Без швов'] },
-    { icon: 'ph ph-fire',      title: 'Еврорубероид',          price: 'от 120',  unit: 'лей/м²', badge: 'Битумная',       color: 'orange',  perks: ['Проверено годами', 'Быстрый монтаж', 'Доступная цена'] },
-    { icon: 'ph ph-wrench',    title: 'Ремонт кровли',         price: 'от 80',   unit: 'лей/м²', badge: 'Любой тип',      color: 'cyan',    perks: ['Диагностика бесплатно', 'Без демонтажа', 'Гарантия на ремонт'] },
-    { icon: 'ph ph-house-line',title: 'Скатная кровля',        price: 'от 220',  unit: 'лей/м²', badge: 'Под ключ',       color: 'emerald', perks: ['Шинглас / Металл', '3D проект', 'Гарантия 15 лет'] },
-] : [
-    { icon: 'ph ph-waves',     title: 'Membrană polimerică',   price: 'de la 180', unit: 'lei/m²', badge: 'TPO / PVC',     color: 'blue',    perks: ['Garanție 15 ani', 'Durată 30–50 ani', 'Fără rosturi'] },
-    { icon: 'ph ph-fire',      title: 'Euroruberoid',          price: 'de la 120', unit: 'lei/m²', badge: 'Bituminos',     color: 'orange',  perks: ['Dovedit în timp', 'Montaj rapid', 'Preț accesibil'] },
-    { icon: 'ph ph-wrench',    title: 'Reparație acoperiș',    price: 'de la 80',  unit: 'lei/m²', badge: 'Orice tip',     color: 'cyan',    perks: ['Diagnostic gratuit', 'Fără demontare', 'Garanție'] },
-    { icon: 'ph ph-house-line',title: 'Acoperiș în pantă',     price: 'de la 220', unit: 'lei/m²', badge: 'La cheie',      color: 'emerald', perks: ['Shinglas / Metal', 'Proiect 3D', 'Garanție 15 ani'] },
-];
-
-const colorMap: Record<string, string> = {
-    blue:    'bg-blue-600',
-    orange:  'bg-orange-500',
-    cyan:    'bg-cyan-600',
-    emerald: 'bg-emerald-600',
-};
 ---
 
 <Layout lang={lang} title={text.nav.home}>
@@ -68,16 +49,34 @@ const colorMap: Record<string, string> = {
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 py-20">
         <div class="max-w-2xl">
-            <!-- Eyebrow -->
-            <p class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-5 flex items-center gap-3">
-                <span class="w-8 h-0.5 bg-blue-400"></span>
-                {lang === 'ru' ? 'Кровельные работы в Молдове' : 'Lucrări acoperișuri în Moldova'}
-            </p>
+            <!-- Eyebrow badge -->
+            <div class="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 text-orange-300 text-sm font-bold px-4 py-2 rounded-full mb-6">
+                <i class="ph-fill ph-star text-orange-400 text-base"></i>
+                {text.heroBadge}
+            </div>
 
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.06] tracking-tight mb-6">
-                <span class="block">{text.heroTitle1}</span>
-                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">{text.heroTitle2}</span>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold font-heading text-white leading-[1.06] tracking-tight mb-6">
+                <span class="block hero-title-left">{text.heroTitle1}</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 hero-title-right">{text.heroTitle2}</span>
             </h1>
+
+            <!-- Process strip -->
+            <div class="flex flex-wrap items-center gap-2 mb-6">
+                <div class="flex items-center gap-2 bg-white/10 border border-white/15 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
+                    <i class="ph-fill ph-check-circle text-orange-400"></i>
+                    {text.heroProcess1}
+                </div>
+                <i class="ph ph-arrow-right text-gray-500 hidden sm:block"></i>
+                <div class="flex items-center gap-2 bg-white/10 border border-white/15 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
+                    <i class="ph-fill ph-check-circle text-orange-400"></i>
+                    {text.heroProcess2}
+                </div>
+                <i class="ph ph-arrow-right text-gray-500 hidden sm:block"></i>
+                <div class="flex items-center gap-2 bg-white/10 border border-white/15 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
+                    <i class="ph-fill ph-check-circle text-orange-400"></i>
+                    {text.heroProcess3}
+                </div>
+            </div>
 
             <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-xl">
                 {text.heroDesc}
@@ -85,24 +84,24 @@ const colorMap: Record<string, string> = {
 
             <!-- CTA buttons -->
             <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href={phoneHref}
-                   class="sm:w-64 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-7 py-4 rounded-2xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-xl shadow-blue-600/40 flex items-center justify-center gap-2">
-                    <i class="ph-fill ph-phone text-lg"></i>
-                    {lang === 'ru' ? 'Позвонить сейчас' : 'Sună acum'}
-                </a>
                 <a href={`${base}${lang}/contacts`}
-                   class="sm:w-64 bg-white/10 hover:bg-white/20 text-white border border-white/25 px-7 py-4 rounded-2xl font-bold text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
-                    {lang === 'ru' ? 'Бесплатная смета' : 'Deviz gratuit'}
+                   class="sm:w-72 btn-pulse bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-7 py-4 rounded-2xl font-bold text-base transition-all hover:-translate-y-0.5 shadow-xl shadow-orange-600/40 flex items-center justify-center gap-2">
+                    <i class="ph-fill ph-ruler text-lg"></i>
+                    {text.btnCall}
+                </a>
+                <a href={`${base}${lang}/portfolio`}
+                   class="sm:w-56 bg-white/10 hover:bg-white/20 text-white border border-white/25 px-7 py-4 rounded-2xl font-bold text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
+                    {text.btnPort}
                     <i class="ph ph-arrow-right text-lg"></i>
                 </a>
             </div>
 
             <!-- Phone number prominent -->
             <a href={phoneHref} class="group inline-flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
-                    <i class="ph-fill ph-phone text-blue-400 group-hover:text-white text-lg transition-colors"></i>
+                <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+                    <i class="ph-fill ph-phone text-orange-400 group-hover:text-white text-lg transition-colors"></i>
                 </div>
-                <span class="text-3xl font-extrabold text-white tracking-tight group-hover:text-blue-300 transition-colors">{phone}</span>
+                <span class="text-3xl font-extrabold text-white tracking-tight group-hover:text-orange-300 transition-colors">{phone}</span>
                 <span class="text-gray-400 text-sm hidden sm:block">
                     — {lang === 'ru' ? 'выезд бесплатно' : 'deplasare gratuită'}
                 </span>
@@ -111,16 +110,16 @@ const colorMap: Record<string, string> = {
     </div>
 
     <!-- Decorative glow -->
-    <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-blue-600 rounded-full blur-[120px] opacity-40 pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-orange-600 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
 </section>
 
 <!-- ═══════════════════════════════════════════════ STATS — floating -->
-<div class="relative z-20 -mt-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="reveal relative z-20 -mt-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white rounded-3xl shadow-2xl shadow-gray-900/15 border border-gray-100">
         <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100">
             {stats.map((stat) => (
                 <div class="flex flex-col items-center justify-center text-center px-6 py-8">
-                    <div class="bg-blue-50 text-blue-600 w-12 h-12 rounded-2xl flex items-center justify-center mb-3">
+                    <div class="bg-orange-50 text-orange-500 w-12 h-12 rounded-2xl flex items-center justify-center mb-3">
                         <i class={`${stat.icon} text-2xl`}></i>
                     </div>
                     <div class="text-3xl font-extrabold text-gray-900 mb-1">{stat.number}</div>
@@ -135,18 +134,18 @@ const colorMap: Record<string, string> = {
 <section class="py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden relative">
 
     <!-- Decorative blobs -->
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none opacity-70"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-50 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl pointer-events-none opacity-70"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-50 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none opacity-50"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-orange-50 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl pointer-events-none opacity-50"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
         <!-- Section header — centered -->
         <div class="text-center mb-16">
-            <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-4 flex items-center justify-center gap-3">
-                <span class="w-8 h-0.5 bg-blue-600"></span>{text.featSub}<span class="w-8 h-0.5 bg-blue-600"></span>
+            <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-4 flex items-center justify-center gap-3">
+                <span class="w-8 h-0.5 bg-orange-500"></span>{text.featSub}<span class="w-8 h-0.5 bg-orange-500"></span>
             </p>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-5 leading-tight">
-                {text.featTitle1} <span class="text-blue-600">{text.featTitle2}</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-gray-900 mb-5 leading-tight">
+                {text.featTitle1} <span class="text-orange-500">{text.featTitle2}</span>
             </h2>
             <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">{text.featDesc}</p>
         </div>
@@ -166,12 +165,12 @@ const colorMap: Record<string, string> = {
                         : ["Termene scrise în contract", "Penalități pentru depășire"],
                 ][idx];
                 const gradients = [
-                    "from-blue-600 to-blue-700",
                     "from-orange-500 to-orange-600",
-                    "from-emerald-500 to-emerald-600",
+                    "from-orange-500 to-orange-600",
+                    "from-orange-500 to-orange-600",
                 ];
-                const lightBg = ["bg-blue-50 text-blue-600", "bg-orange-50 text-orange-500", "bg-emerald-50 text-emerald-600"][idx];
-                const numColor = ["text-blue-100", "text-orange-100", "text-emerald-100"][idx];
+                const lightBg = "bg-orange-50 text-orange-500";
+                const numColor = "text-orange-100";
                 return (
                     <div class="group relative bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col">
                         <!-- Gradient top bar -->
@@ -219,14 +218,14 @@ const colorMap: Record<string, string> = {
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-900/20 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 p-7">
-                    <div class="inline-flex items-center gap-2 bg-blue-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-xl font-bold mb-3 text-sm shadow-lg">
+                    <div class="inline-flex items-center gap-2 bg-orange-600/90 backdrop-blur-sm text-white px-4 py-2 rounded-xl font-bold mb-3 text-sm shadow-lg">
                         <i class="ph-fill ph-check-circle text-lg"></i>{text.featControl}
                     </div>
                     <p class="text-xl font-bold text-white drop-shadow">{text.featControlDesc}</p>
                 </div>
                 <!-- Badge top-right -->
                 <div class="absolute top-5 right-5 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg text-center">
-                    <p class="text-2xl font-black text-blue-600">15</p>
+                    <p class="text-2xl font-black text-orange-500">15</p>
                     <p class="text-xs font-bold text-gray-500 uppercase tracking-wide">{lang === 'ru' ? 'лет гарантии' : 'ani garanție'}</p>
                 </div>
             </div>
@@ -236,7 +235,7 @@ const colorMap: Record<string, string> = {
 
                 <!-- Partner card -->
                 <div class="bg-white rounded-3xl p-7 border border-gray-100 shadow-sm flex-grow flex flex-col justify-center">
-                    <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-5 shadow-md shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-orange-500 rounded-2xl flex items-center justify-center text-white mb-5 shadow-md shadow-orange-500/30">
                         <i class="ph ph-certificate text-2xl"></i>
                     </div>
                     <h3 class="text-lg font-extrabold text-gray-900 mb-2">
@@ -248,7 +247,7 @@ const colorMap: Record<string, string> = {
                             : 'Doar materiale certificate cu garanție oficială a producătorului.'}
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="inline-flex items-center gap-1 bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">
+                        <span class="inline-flex items-center gap-1 bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1.5 rounded-full">
                             <i class="ph-fill ph-shield-check"></i> {lang === 'ru' ? 'Сертификат' : 'Certificat'}
                         </span>
                         <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full">
@@ -258,16 +257,16 @@ const colorMap: Record<string, string> = {
                 </div>
 
                 <!-- CTA card -->
-                <a href={`${base}${lang}/about`} class="group bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 rounded-3xl p-7 flex items-center justify-between text-white transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50">
+                <a href={`${base}${lang}/about`} class="group bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 rounded-3xl p-7 flex items-center justify-between text-white transition-all shadow-lg border border-white/5">
                     <div>
                         <p class="font-extrabold text-lg leading-tight">
                             {lang === 'ru' ? 'О компании' : 'Despre companie'}
                         </p>
-                        <p class="text-blue-200 text-sm mt-1">
+                        <p class="text-gray-400 text-sm mt-1">
                             {lang === 'ru' ? 'История, команда, ценности' : 'Istorie, echipă, valori'}
                         </p>
                     </div>
-                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center group-hover:bg-white/30 transition-colors flex-shrink-0 ml-4">
+                    <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-orange-500/30 transition-colors flex-shrink-0 ml-4">
                         <i class="ph ph-arrow-right text-xl group-hover:translate-x-0.5 transition-transform"></i>
                     </div>
                 </a>
@@ -278,14 +277,14 @@ const colorMap: Record<string, string> = {
 </section>
 
 <!-- ═══════════════════════════════════════════════ PORTFOLIO PREVIEW -->
-<section class="py-24 bg-gray-50">
+<section class="py-24 bg-gray-50 reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-                <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3">{text.portSub}</p>
-                <h2 class="text-4xl font-extrabold text-gray-900">{text.portTitle}</h2>
+                <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3">{text.portSub}</p>
+                <h2 class="text-4xl font-extrabold font-heading text-gray-900">{text.portTitle}</h2>
             </div>
-            <a href={`${base}${lang}/portfolio`} class="group flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors text-base whitespace-nowrap">
+            <a href={`${base}${lang}/portfolio`} class="group flex items-center gap-2 text-orange-500 font-bold hover:text-orange-700 transition-colors text-base whitespace-nowrap">
                 {text.portAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
@@ -294,7 +293,10 @@ const colorMap: Record<string, string> = {
                 <a href={`${base}${lang}/portfolio`} class="group relative rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 h-[360px] block">
                     <img src={item.image} alt="" loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
-                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/30 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <p class="text-white font-bold text-base leading-snug">{item.title}</p>
+                        <p class="text-gray-300 text-sm mt-1">{item.location} · {item.area}</p>
+                    </div>
                 </a>
             ))}
         </div>
@@ -302,27 +304,27 @@ const colorMap: Record<string, string> = {
 </section>
 
 <!-- ═══════════════════════════════════════════════ GALLERY — bento designer grid -->
-<section class="py-24 bg-white">
+<section class="py-24 bg-white reveal">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-                <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3">{text.gallerySub}</p>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+                <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3">{text.gallerySub}</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-gray-900">
                     {text.galleryTitle1}
                     <span class="relative inline-block">
-                        <span class="text-blue-600"> {text.galleryTitle2}</span>
-                        <span class="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600/20 rounded-full"></span>
+                        <span class="text-orange-500"> {text.galleryTitle2}</span>
+                        <span class="absolute -bottom-1 left-0 right-0 h-1 bg-orange-500/20 rounded-full"></span>
                     </span>
                 </h2>
             </div>
-            <a href={`${base}${lang}/portfolio`} class="group flex items-center gap-2 text-blue-600 font-bold hover:text-blue-800 transition-colors text-base whitespace-nowrap">
+            <a href={`${base}${lang}/portfolio`} class="group flex items-center gap-2 text-orange-500 font-bold hover:text-orange-700 transition-colors text-base whitespace-nowrap">
                 {text.galleryAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
 
-        <!-- Bento grid -->
-        <div class="grid grid-cols-4 grid-rows-3 gap-3 h-[660px] md:h-[780px]">
-            <!-- Big left (2×2) -->
+        <!-- 4-photo teaser grid: big left + 3 right -->
+        <div class="grid grid-cols-4 grid-rows-2 gap-3 h-[360px] md:h-[460px]">
+            <!-- Big left (2 cols × 2 rows) -->
             <a href={`${base}${lang}/portfolio`} class="col-span-2 row-span-2 group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
                 <img src={gallery[0].image} alt={gallery[0].label} loading="lazy" decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
@@ -330,7 +332,7 @@ const colorMap: Record<string, string> = {
                     <span class="text-white font-bold text-sm">{gallery[0].label}</span>
                 </div>
             </a>
-            <!-- Top right 2 (1×1 each) -->
+            <!-- Top right -->
             <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
                 <img src={gallery[1].image} alt={gallery[1].label} loading="lazy" decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
@@ -338,6 +340,7 @@ const colorMap: Record<string, string> = {
                     <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[1].label}</span>
                 </div>
             </a>
+            <!-- Top right 2 -->
             <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
                 <img src={gallery[2].image} alt={gallery[2].label} loading="lazy" decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
@@ -345,41 +348,16 @@ const colorMap: Record<string, string> = {
                     <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[2].label}</span>
                 </div>
             </a>
-            <!-- Middle right 2 -->
-            <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
+            <!-- Bottom right wide (2 cols) — with "see all" overlay -->
+            <a href={`${base}${lang}/portfolio`} class="col-span-2 group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
                 <img src={gallery[3].image} alt={gallery[3].label} loading="lazy" decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
-                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[3].label}</span>
-                </div>
-            </a>
-            <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
-                <img src={gallery[4].image} alt={gallery[4].label} loading="lazy" decoding="async"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
-                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[4].label}</span>
-                </div>
-            </a>
-            <!-- Bottom row (2+1+1) -->
-            <a href={`${base}${lang}/portfolio`} class="col-span-2 group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
-                <img src={gallery[5].image} alt={gallery[5].label} loading="lazy" decoding="async"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-4">
-                    <span class="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">{gallery[5].label}</span>
-                </div>
-            </a>
-            <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
-                <img src={gallery[6].image} alt={gallery[6].label} loading="lazy" decoding="async"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
-                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[6].label}</span>
-                </div>
-            </a>
-            <a href={`${base}${lang}/portfolio`} class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow">
-                <img src={gallery[7].image} alt={gallery[7].label} loading="lazy" decoding="async"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-colors flex items-end p-3">
-                    <span class="text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity">{gallery[7].label}</span>
+                <div class="absolute inset-0 bg-gray-900/50 group-hover:bg-gray-900/70 transition-colors flex items-center justify-center gap-2">
+                    <span class="text-white font-extrabold text-base flex items-center gap-2 drop-shadow">
+                        <i class="ph ph-images text-xl"></i>
+                        {text.galleryAll}
+                        <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </span>
                 </div>
             </a>
         </div>
@@ -387,11 +365,11 @@ const colorMap: Record<string, string> = {
 </section>
 
 <!-- ═══════════════════════════════════════════════ MID-PAGE PHONE CTA -->
-<section class="bg-blue-600 py-10">
+<section class="bg-gray-900 py-10 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-                <p class="text-blue-100 text-sm font-semibold uppercase tracking-wider mb-1">
+                <p class="text-gray-400 text-sm font-semibold uppercase tracking-wider mb-1">
                     {lang === 'ru' ? 'Не ждите — каждый день без крыши это риск' : 'Nu așteptați — fiecare zi fără acoperiș este un risc'}
                 </p>
                 <h2 class="text-2xl md:text-3xl font-extrabold text-white">
@@ -399,7 +377,7 @@ const colorMap: Record<string, string> = {
                 </h2>
             </div>
             <a href={phoneHref}
-               class="flex-shrink-0 flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-2xl font-extrabold text-xl hover:bg-blue-50 transition-all hover:scale-105 shadow-xl whitespace-nowrap">
+               class="flex-shrink-0 flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-extrabold text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30 whitespace-nowrap">
                 <i class="ph-fill ph-phone text-2xl"></i>
                 {phone}
             </a>
@@ -410,11 +388,11 @@ const colorMap: Record<string, string> = {
 <!-- ═══════════════════════════════════════════════ VIDEOS (2 only) -->
 <section class="py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center gap-3">
-            <span class="w-8 h-0.5 bg-blue-600"></span>
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>
             {lang === 'ru' ? 'Видео о процессе' : 'Video despre proces'}
         </p>
-        <h2 class="text-4xl font-extrabold text-gray-900 mb-10">
+        <h2 class="text-4xl font-extrabold font-heading text-gray-900 mb-10">
             {lang === 'ru' ? 'Смотрите как мы работаем' : 'Vedeți cum lucrăm'}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -428,7 +406,7 @@ const colorMap: Record<string, string> = {
                         class="w-full h-72 object-cover"
                     ></video>
                     <div class="p-5">
-                        <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">{video.type}</span>
+                        <span class="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">{video.type}</span>
                         <h3 class="text-white font-bold text-lg leading-snug">{video.title}</h3>
                         <p class="text-gray-400 text-sm mt-1">{video.desc}</p>
                     </div>
@@ -443,30 +421,41 @@ const colorMap: Record<string, string> = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-                <p class="text-sm font-bold tracking-widest text-blue-400 uppercase mb-3">{text.servSub}</p>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-white">{text.servTitle}</h2>
+                <p class="text-sm font-bold tracking-widest text-orange-400 uppercase mb-3">{text.servSub}</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-white">{text.servTitle}</h2>
             </div>
-            <a href={`${base}${lang}/services`} class="group flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors text-base whitespace-nowrap">
+            <a href={`${base}${lang}/services`} class="group flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors text-base whitespace-nowrap">
                 {text.servAll} <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
             </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {services.slice(0, 4).map((service) => (
-                <a href={`${base}${lang}/services`} class="group relative h-[400px] rounded-3xl overflow-hidden shadow-2xl block">
+                <a href={`${base}${lang}/services`} class="group relative h-[460px] rounded-3xl overflow-hidden shadow-2xl block">
                     <img src={service.image} alt={service.title} loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/60 to-gray-900/10 group-hover:via-gray-900/80 transition-all duration-500"></div>
-                    <div class="absolute inset-0 p-7 flex flex-col justify-end">
-                        <div class="bg-white/10 backdrop-blur-md w-12 h-12 rounded-2xl flex items-center justify-center mb-5 border border-white/20 group-hover:-translate-y-3 transition-transform duration-500 text-white">
-                            <i class={`${service.icon} text-2xl`}></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:-translate-y-3 transition-transform duration-500 leading-snug">{service.title}</h3>
-                        <div class="overflow-hidden max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 group-hover:-translate-y-3 -translate-y-2 transition-all duration-500">
-                            <span class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">{service.price}</span>
-                            <p class="text-gray-300 text-sm line-clamp-2 mb-3">{service.shortDesc}</p>
-                            <span class="text-blue-400 font-bold text-xs inline-flex items-center gap-1 uppercase tracking-wider">
-                                {text.servMore} <i class="ph ph-arrow-right"></i>
-                            </span>
+                    <!-- Gradient overlays -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/50 to-gray-900/10"></div>
+
+                    <!-- Floating price tag — top right -->
+                    <div class="absolute top-5 right-5 bg-black/55 backdrop-blur-md border border-white/15 rounded-2xl px-4 py-3 text-right shadow-xl group-hover:border-orange-500/40 transition-colors duration-300">
+                        <p class="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none mb-1">
+                            {lang === 'ru' ? 'от' : 'de la'}
+                        </p>
+                        <p class="text-3xl font-black text-orange-400 leading-none tracking-tight">{service.priceNum}</p>
+                        <p class="text-white/50 text-[10px] font-semibold mt-1 uppercase tracking-wider">{service.priceUnit}</p>
+                    </div>
+
+                    <!-- Icon badge — top left -->
+                    <div class="absolute top-5 left-5 w-11 h-11 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center text-white group-hover:bg-orange-500/80 group-hover:border-orange-500 transition-all duration-300">
+                        <i class={`${service.icon} text-xl`}></i>
+                    </div>
+
+                    <!-- Bottom content -->
+                    <div class="absolute inset-0 flex flex-col justify-end p-6">
+                        <h3 class="text-lg font-extrabold text-white mb-1.5 leading-snug group-hover:text-orange-100 transition-colors">{service.title}</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 mb-4 leading-relaxed">{service.shortDesc}</p>
+                        <div class="flex items-center gap-1.5 text-orange-400 font-bold text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                            {text.servMore} <i class="ph ph-arrow-right"></i>
                         </div>
                     </div>
                 </a>
@@ -486,43 +475,40 @@ const colorMap: Record<string, string> = {
     <div class="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/90"></div>
 
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-blue-400 text-sm font-bold uppercase tracking-widest mb-4">
+        <p class="text-orange-400 text-sm font-bold uppercase tracking-widest mb-4">
             {lang === 'ru' ? 'Бесплатно и без обязательств' : 'Gratuit și fără obligații'}
         </p>
-        <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
+        <h2 class="text-4xl md:text-6xl font-extrabold font-heading text-white mb-6 leading-tight">
             {lang === 'ru'
-                ? <>Получите точную смету<br/><span class="text-blue-400">за 24 часа</span></>
-                : <>Obțineți devizul exact<br/><span class="text-blue-400">în 24 de ore</span></>
+                ? <>{text.ctaTitle}<br/><span class="text-orange-400">{lang === 'ru' ? 'за 24 часа' : 'în 24 de ore'}</span></>
+                : <>{text.ctaTitle}<br/><span class="text-orange-400">{lang === 'ru' ? 'за 24 часа' : 'în 24 de ore'}</span></>
             }
         </h2>
         <p class="text-gray-300 text-xl mb-10 max-w-xl mx-auto leading-relaxed">
-            {lang === 'ru'
-                ? 'Инженер приедет, замерит крышу, сделает 3D эскиз и отдаст смету. Всё бесплатно. Без давления.'
-                : 'Inginerul vine, măsoară acoperișul, face schița 3D și prezintă devizul. Totul gratuit. Fără presiune.'
-            }
+            {text.ctaDesc}
         </p>
 
         <!-- Two big CTAs -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href={phoneHref}
-               class="w-full sm:w-auto flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-extrabold text-xl transition-all hover:-translate-y-1 shadow-2xl shadow-blue-600/40">
-                <i class="ph-fill ph-phone text-2xl"></i>
-                {phone}
-            </a>
             <a href={`${base}${lang}/contacts`}
+               class="w-full sm:w-auto flex items-center justify-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-2xl font-extrabold text-xl transition-all hover:-translate-y-1 shadow-2xl shadow-orange-600/40 btn-pulse">
+                <i class="ph-fill ph-ruler text-2xl"></i>
+                {text.ctaBtn}
+            </a>
+            <a href={phoneHref}
                class="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-10 py-5 rounded-2xl font-bold text-xl transition-all backdrop-blur-md">
-                {lang === 'ru' ? 'Оставить заявку' : 'Lasă o cerere'}
-                <i class="ph ph-arrow-right"></i>
+                <i class="ph-fill ph-phone text-xl"></i>
+                {phone}
             </a>
         </div>
 
         <!-- Trust badges -->
         <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-            <span class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-blue-400 text-lg"></i>{lang === 'ru' ? 'Гарантия 15 лет' : 'Garanție 15 ani'}</span>
+            <span class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-orange-400 text-lg"></i>{lang === 'ru' ? 'Гарантия 15 лет' : 'Garanție 15 ani'}</span>
             <span class="text-gray-700">•</span>
             <span class="flex items-center gap-2"><i class="ph-fill ph-star text-yellow-400 text-lg"></i>{lang === 'ru' ? '500+ объектов' : '500+ obiecte'}</span>
             <span class="text-gray-700">•</span>
-            <span class="flex items-center gap-2"><i class="ph-fill ph-certificate text-blue-400 text-lg"></i>{lang === 'ru' ? 'Партнёр Технониколь' : 'Partener Technonicol'}</span>
+            <span class="flex items-center gap-2"><i class="ph-fill ph-certificate text-orange-400 text-lg"></i>{lang === 'ru' ? 'Партнёр Технониколь' : 'Partener Technonicol'}</span>
         </div>
     </div>
 </section>

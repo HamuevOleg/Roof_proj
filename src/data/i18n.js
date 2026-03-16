@@ -5,18 +5,21 @@ export const ui = {
         nav: { home: 'Главная', services: 'Услуги', portfolio: 'Наши работы', about: 'О компании', contacts: 'Контакты' },
 
         // Hero
-        heroBadge: "№1 в Молдове по плоским кровлям",
-        heroTitle1: "Безупречная гидроизоляция",
-        heroTitle2: "вашей крыши",
-        heroDesc: "Современные ПВХ мембраны и надёжный еврорубероид. Официальная гарантия 15 лет по договору.",
-        btnCall: "Вызвать специалиста",
+        heroBadge: "500+ крыш за 12 лет в Молдове",
+        heroTitle1: "Плоская кровля под ключ",
+        heroTitle2: "от 180 лей/м²",
+        heroDesc: "Бесплатный замер — Смета за 24 часа — Монтаж от 5 дней. ПВХ мембраны и еврорубероид. Официальная гарантия 15 лет по договору.",
+        heroProcess1: "Бесплатный замер",
+        heroProcess2: "Смета за 24 часа",
+        heroProcess3: "Монтаж от 5 дней",
+        btnCall: "Бесплатный замер за 24 часа",
         btnPort: "Наши работы",
 
         // Features section
         featSub: "Преимущества",
-        featTitle1: "Надёжность, за которую",
-        featTitle2: "мы ручаемся",
-        featDesc: "Мы не просто укладываем кровельные материалы. Мы создаём комплексные системы гидроизоляции, которые надёжно защищают ваше здание десятилетиями.",
+        featTitle1: "Конкретные гарантии,",
+        featTitle2: "а не обещания",
+        featDesc: "Три обещания, которые мы вписываем в договор. Нарушим — платим неустойку.",
         featControl: "Строгий контроль",
         featControlDesc: "Каждый этап под надзором инженера",
 
@@ -37,18 +40,24 @@ export const ui = {
         servAll: "Все услуги",
         servMore: "Подробнее",
 
+        // Pricing section
+        pricingSub: "Прозрачные цены",
+        pricingTitle: "Сколько стоит крыша?",
+        pricingExample: "Например: крыша 100 м² мембрана ПВХ ≈ 18 000 лей — под ключ",
+
         // CTA
-        ctaTitle: "Готовы начать проект?",
-        ctaDesc: "Оставьте заявку сейчас, и наш инженер приедет на объект для замеров и составления прозрачной сметы абсолютно бесплатно.",
-        ctaBtn: "Получить расчёт стоимости",
+        ctaTitle: "Узнайте цену своей крыши",
+        ctaDesc: "Оставьте заявку — инженер приедет бесплатно, замерит и пришлёт смету за 24 часа. Без давления и скрытых платежей.",
+        ctaBtn: "Узнать цену моей крыши — бесплатно",
 
         // Footer
-        footDesc: "Профессиональный монтаж и ремонт плоских крыш в Молдове. Качество, проверенное временем.",
+        footDesc: "500+ крыш с 2012 года. Официальный партнёр Технониколь.",
         footNav: "Навигация",
         footServ: "Услуги",
         footCont: "Контакты",
+        footLegal: "SRL ProAcoperis.md",
         footRights: "Все права защищены.",
-        footMade: "Разработано с заботой о вашей крыше",
+        footMade: "500+ крыш с 2012 года. Партнёр Технониколь",
 
         // ── Services page ──────────────────────────────────────────────────
         servPageHeroBadge: "Профессиональные кровельные работы",
@@ -62,9 +71,9 @@ export const ui = {
         servPageSystemsTitle2: "кровли",
         servPageSystemsClient: "Клиент:",
         servPageSystemsWeOffer: "Мы выполняем:",
-        servPageProcessSub: "Как мы работаем",
-        servPageProcessTitle1: "Путь от заявки",
-        servPageProcessTitle2: "до готовой крыши",
+        servPageProcessSub: "Сервис",
+        servPageProcessTitle1: "Как мы работаем:",
+        servPageProcessTitle2: "от звонка до сухой крыши",
         servPageProcessAsk: "Клиент говорит:",
         servPageProcessAskText: "«Нужна плоская крыша под ключ с утеплением»",
         servPageFaqSub: "Частые вопросы",
@@ -112,13 +121,21 @@ export const ui = {
         contInfoTitle: "Как с нами связаться",
         contPhone: "Телефон",
         contPhoneVal: "+373 60 000 000",
+        contAddress: "Адрес",
+        contAddressVal: "Кишинёв, Молдова",
         contHours: "Режим работы",
         contHoursVal: "Пн–Пт: 8:00 – 18:00",
         contHoursVal2: "Сб: 9:00 – 14:00",
         contCity: "Город",
         contCityVal: "Кишинёв, Молдова",
         contWhatsapp: "WhatsApp",
+        contWhatsappHref: "https://wa.me/37360000000",
         contViber: "Viber",
+        contViberHref: "viber://chat?number=%2B37360000000",
+        contTelegram: "Telegram",
+        contTelegramHref: "https://t.me/ProAcoperis",
+        contLegal: "Компания",
+        contLegalVal: "SRL ProAcoperis.md",
     },
 
     ro: {
@@ -126,17 +143,20 @@ export const ui = {
         freeEst: "Deviz gratuit",
         nav: { home: 'Acasă', services: 'Servicii', portfolio: 'Portofoliu', about: 'Despre noi', contacts: 'Contacte' },
 
-        heroBadge: "Nr.1 în Moldova la acoperișuri plate",
-        heroTitle1: "Hidroizolare impecabilă a",
-        heroTitle2: "acoperișului tău",
-        heroDesc: "Membrane PVC moderne și euroruberoid de încredere. Garanție oficială 15 ani prin contract.",
-        btnCall: "Cheamă un specialist",
+        heroBadge: "500+ acoperișuri în 12 ani în Moldova",
+        heroTitle1: "Acoperiș plat la cheie",
+        heroTitle2: "de la 180 lei/m²",
+        heroDesc: "Măsurători gratuite — Deviz în 24 ore — Montaj de la 5 zile. Membrane PVC și euroruberoid. Garanție oficială 15 ani prin contract.",
+        heroProcess1: "Măsurători gratuite",
+        heroProcess2: "Deviz în 24 ore",
+        heroProcess3: "Montaj de la 5 zile",
+        btnCall: "Măsurători gratuite în 24 ore",
         btnPort: "Lucrările noastre",
 
         featSub: "Avantaje",
-        featTitle1: "Calitate și fiabilitate",
-        featTitle2: "garantată",
-        featDesc: "Nu doar montăm materiale, ci creăm sisteme complexe de hidroizolare care vă protejează clădirea zeci de ani.",
+        featTitle1: "Garanții concrete,",
+        featTitle2: "nu promisiuni",
+        featDesc: "Trei angajamente pe care le scriem în contract. Le încălcăm — plătim penalități.",
         featControl: "Control strict",
         featControlDesc: "Fiecare etapă supravegheată de inginer",
 
@@ -154,16 +174,21 @@ export const ui = {
         servAll: "Toate serviciile",
         servMore: "Detalii",
 
-        ctaTitle: "Sunteți gata să începeți?",
-        ctaDesc: "Lăsați o cerere acum, iar inginerul nostru va veni pe șantier pentru măsurări și întocmirea unui deviz transparent absolut gratuit.",
-        ctaBtn: "Obține calculul costului",
+        pricingSub: "Prețuri transparente",
+        pricingTitle: "Cât costă un acoperiș?",
+        pricingExample: "Exemplu: acoperiș 100 m² membrană PVC ≈ 18 000 lei — la cheie",
 
-        footDesc: "Montaj profesional și reparația acoperișurilor plate în Moldova. Calitate testată în timp.",
+        ctaTitle: "Aflați prețul acoperișului dvs.",
+        ctaDesc: "Lăsați o cerere — inginerul vine gratuit, măsoară și trimite devizul în 24 ore. Fără presiune și costuri ascunse.",
+        ctaBtn: "Aflați prețul acoperișului meu — gratuit",
+
+        footDesc: "500+ acoperișuri din 2012. Partener oficial Technonicol.",
         footNav: "Navigare",
         footServ: "Servicii",
         footCont: "Contacte",
+        footLegal: "SRL ProAcoperis.md",
         footRights: "Toate drepturile rezervate.",
-        footMade: "Elaborat cu grijă pentru acoperișul tău",
+        footMade: "500+ acoperișuri din 2012. Partener Technonicol",
 
         servPageHeroBadge: "Lucrări profesionale de acoperiș",
         servPageHeroTitle: "Servicii",
@@ -176,9 +201,9 @@ export const ui = {
         servPageSystemsTitle2: "de acoperiș",
         servPageSystemsClient: "Clientul:",
         servPageSystemsWeOffer: "Noi executăm:",
-        servPageProcessSub: "Cum lucrăm",
-        servPageProcessTitle1: "De la cerere",
-        servPageProcessTitle2: "la acoperiș finalizat",
+        servPageProcessSub: "Serviciu",
+        servPageProcessTitle1: "Cum lucrăm:",
+        servPageProcessTitle2: "de la apel la acoperiș uscat",
         servPageProcessAsk: "Clientul spune:",
         servPageProcessAskText: "«Am nevoie de acoperiș plat la cheie cu izolație termică»",
         servPageFaqSub: "Întrebări frecvente",
@@ -223,13 +248,21 @@ export const ui = {
         contInfoTitle: "Cum să ne contactați",
         contPhone: "Telefon",
         contPhoneVal: "+373 60 000 000",
+        contAddress: "Adresă",
+        contAddressVal: "Chișinău, Moldova",
         contHours: "Program de lucru",
         contHoursVal: "Lun–Vin: 8:00 – 18:00",
         contHoursVal2: "Sâm: 9:00 – 14:00",
         contCity: "Oraș",
         contCityVal: "Chișinău, Moldova",
         contWhatsapp: "WhatsApp",
+        contWhatsappHref: "https://wa.me/37360000000",
         contViber: "Viber",
+        contViberHref: "viber://chat?number=%2B37360000000",
+        contTelegram: "Telegram",
+        contTelegramHref: "https://t.me/ProAcoperis",
+        contLegal: "Companie",
+        contLegalVal: "SRL ProAcoperis.md",
     }
 };
 
@@ -247,6 +280,7 @@ export const getServicesData = (lang, base = '/') => [
             ? "Полимерные мембраны — золотой стандарт гидроизоляции плоских кровель. Материал сваривается горячим воздухом, образуя монолитное покрытие без стыков. Срок службы 30–50 лет. Идеально для коммерческих и промышленных зданий, торговых центров, паркингов."
             : "Membranele polimerice sunt standardul de aur al hidroizolării acoperișurilor plate. Materialul se sudează cu aer cald, formând un înveliș monolitic fără îmbinări. Durată de viață 30–50 ani. Ideal pentru clădiri comerciale și industriale.",
         price: lang === 'ru' ? "от 180 лей/м²" : "de la 180 lei/m²",
+        priceNum: "180", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-buildings",
         image: `${base}images/services/Services01.jpg`,
         benefits: lang === 'ru'
@@ -263,6 +297,7 @@ export const getServicesData = (lang, base = '/') => [
             ? "Битумно-полимерные материалы наплавляются горелкой послойно, создавая многоуровневую защиту. Отличный выбор при ограниченном бюджете. Применяется на жилых домах, промышленных и административных зданиях."
             : "Materialele bitum-polimerice se aplică cu arzătorul strat cu strat, creând o protecție multistrat. Opțiune excelentă la buget limitat. Se aplică pe clădiri rezidențiale, industriale și administrative.",
         price: lang === 'ru' ? "от 120 лей/м²" : "de la 120 lei/m²",
+        priceNum: "120", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-drop",
         image: `${base}images/services/Services02.jpg`,
         benefits: lang === 'ru'
@@ -279,6 +314,7 @@ export const getServicesData = (lang, base = '/') => [
             ? "Диагностика протечек тепловизором и визуальным осмотром, локальный или капитальный ремонт. Работаем с любыми типами существующих покрытий: рубероид, мембрана, мастика. Результат — полностью герметичная кровля."
             : "Diagnosticarea scurgerilor cu termovizor și inspecție vizuală, reparație locală sau capitală. Lucrăm cu orice tip de acoperire existentă: ruberoid, membrană, mastic. Rezultat — acoperiș complet etanș.",
         price: lang === 'ru' ? "от 80 лей/м²" : "de la 80 lei/m²",
+        priceNum: "80", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-wrench",
         image: `${base}images/services/Services03.jpg`,
         benefits: lang === 'ru'
@@ -295,6 +331,7 @@ export const getServicesData = (lang, base = '/') => [
             ? "Применяем три вида утеплителей: XPS (экструдированный пенополистирол), минеральная вата и PIR-плиты. Подбираем материал исходя из конструкции кровли, требований проекта и бюджета. Снижает теплопотери здания на 20–30%."
             : "Aplicăm trei tipuri de izolație: XPS (polistiren extrudat), vată minerală și plăci PIR. Selectăm materialul în funcție de construcția acoperișului, cerințele proiectului și buget. Reduce pierderile de căldură cu 20–30%.",
         price: lang === 'ru' ? "от 150 лей/м²" : "de la 150 lei/m²",
+        priceNum: "150", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-sun",
         image: `${base}images/services/Services04.jpg`,
         benefits: lang === 'ru'
@@ -311,6 +348,7 @@ export const getServicesData = (lang, base = '/') => [
             ? "Полный комплекс работ по системе Технониколь Шинглас: строительство стропильной системы, монтаж утеплителя, ветрозащиты, ОСБ и гибкой черепицы. Устанавливаем водосточные системы, аэраторы и при необходимости — солнечные панели."
             : "Complex complet de lucrări conform sistemului Technonicol Shinglas: construcția sistemului de căpriori, montaj izolație, protecție vânt, OSB și șindrilă flexibilă. Instalăm sisteme de scurgere, aeratoare și, dacă este necesar, panouri solare.",
         price: lang === 'ru' ? "от 220 лей/м²" : "de la 220 lei/m²",
+        priceNum: "220", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-house-line",
         image: `${base}images/services/Services05.jpg`,
         benefits: lang === 'ru'
@@ -327,6 +365,7 @@ export const getServicesData = (lang, base = '/') => [
             ? "До начала любых работ мы выполняем выезд на объект, замеры, разрабатываем 3D эскиз кровельной системы с визуализацией всех узлов и составляем подробную локальную смету. Клиент видит итоговую стоимость ещё до подписания договора."
             : "Înainte de orice lucrare facem deplasarea la obiect, măsurători, elaborăm o schiță 3D a sistemului de acoperiș cu vizualizarea tuturor nodurilor și întocmim un deviz local detaliat. Clientul vede costul final înainte de semnarea contractului.",
         price: lang === 'ru' ? "Бесплатно" : "Gratuit",
+        priceNum: null, priceUnit: null,
         icon: "ph ph-cube",
         image: `${base}images/services/Service06.jpg`,
         benefits: lang === 'ru'
@@ -337,31 +376,31 @@ export const getServicesData = (lang, base = '/') => [
 
 export const getFeaturesData = (lang) => [
     {
-        title: lang === 'ru' ? "Гарантия до 15 лет" : "Garanție până la 15 ani",
-        desc: lang === 'ru' ? "Мы уверены в качестве своей работы и даём официальную гарантию по договору." : "Suntem siguri de calitatea muncii noastre și oferim o garanție oficială prin contract.",
+        title: lang === 'ru' ? "Гарантия 15 лет. Потечёт — ремонт за наш счёт" : "Garanție 15 ani. Curge — reparație pe cheltuiala noastră",
+        desc: lang === 'ru' ? "Официальное обязательство по договору. Гарантийный ремонт выполняется за наш счёт — без споров и дополнительных платежей." : "Obligație oficială prin contract. Reparațiile în garanție se efectuează pe cheltuiala noastră — fără dispute și plăți suplimentare.",
         icon: "ph ph-shield-check"
     },
     {
-        title: lang === 'ru' ? "Опытные бригады" : "Echipe cu experiență",
-        desc: lang === 'ru' ? "Наши специалисты сертифицированы ведущими производителями кровельных материалов." : "Specialiștii noștri sunt certificați de principalii producători de materiale pentru acoperiș.",
+        title: lang === 'ru' ? "50+ кровельщиков в штате. Без субподрядчиков" : "50+ acoperitori angajați. Fără subcontractare",
+        desc: lang === 'ru' ? "Все работы выполняют только наши штатные специалисты, сертифицированные Технониколь. Никаких посредников — только ответственность перед вами." : "Toate lucrările sunt executate doar de specialiștii noștri certificați Technonicol. Nicio subcontractare — doar responsabilitate față de dvs.",
         icon: "ph ph-hammer"
     },
     {
-        title: lang === 'ru' ? "Точно в срок" : "Exact la timp",
-        desc: lang === 'ru' ? "Соблюдаем оговоренные сроки. Никаких задержек и непредвиденных простоев." : "Respectăm termenele stabilite. Fără întârzieri și opriri neprevăzute.",
+        title: lang === 'ru' ? "Средний срок — 7 дней. Штраф за просрочку в договоре" : "Termen mediu — 7 zile. Penalitate pentru depășire în contract",
+        desc: lang === 'ru' ? "Сроки прописаны в договоре. Задержка по нашей вине — неустойка из нашего бюджета. Клиент защищён юридически." : "Termenele sunt scrise în contract. Întârziere din vina noastră — penalitate din bugetul nostru. Clientul este protejat juridic.",
         icon: "ph ph-clock"
     }
 ];
 
 export const getPortfolioData = (lang, base = '/') => [
-    { id: 1, title: lang === 'ru' ? "Объект 1" : "Obiect 1", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p01.jpg` },
-    { id: 2, title: lang === 'ru' ? "Объект 2" : "Obiect 2", category: lang === 'ru' ? "Мембрана ТПО" : "Membrană TPO",              area: "—", year: "2024", image: `${base}images/portfolio/p02.jpg` },
-    { id: 3, title: lang === 'ru' ? "Объект 3" : "Obiect 3", category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",              area: "—", year: "2024", image: `${base}images/portfolio/p03.jpg` },
-    { id: 4, title: lang === 'ru' ? "Объект 4" : "Obiect 4", category: lang === 'ru' ? "Теплоизоляция" : "Termoizolație",            area: "—", year: "2024", image: `${base}images/portfolio/p04.jpg` },
-    { id: 5, title: lang === 'ru' ? "Объект 5" : "Obiect 5", category: lang === 'ru' ? "Скатная кровля" : "Acoperiș în pantă",       area: "—", year: "2024", image: `${base}images/portfolio/p05.jpg` },
-    { id: 6, title: lang === 'ru' ? "Объект 6" : "Obiect 6", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p06.jpg` },
-    { id: 7, title: lang === 'ru' ? "Объект 7" : "Obiect 7", category: lang === 'ru' ? "Ремонт кровли" : "Reparație acoperiș",       area: "—", year: "2024", image: `${base}images/portfolio/p07.jpg` },
-    { id: 8, title: lang === 'ru' ? "Объект 8" : "Obiect 8", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",              area: "—", year: "2024", image: `${base}images/portfolio/p08.jpg` },
+    { id: 1, title: lang === 'ru' ? "Логистический центр, ул. Дачия" : "Centru logistic, str. Dacia",       category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "850 м²",   year: "2024", image: `${base}images/portfolio/p01.jpg` },
+    { id: 2, title: lang === 'ru' ? "Жилой дом, Ботаника"             : "Bloc locativ, Botanica",           category: lang === 'ru' ? "Мембрана ТПО" : "Membrană TPO",          location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "320 м²",   year: "2024", image: `${base}images/portfolio/p02.jpg` },
+    { id: 3, title: lang === 'ru' ? "Коммерческое здание, Измаилская" : "Clădire comercială, Ismail",       category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",          location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "560 м²",   year: "2024", image: `${base}images/portfolio/p03.jpg` },
+    { id: 4, title: lang === 'ru' ? "Промышленный объект, Буюканы"    : "Obiect industrial, Buiucani",      category: lang === 'ru' ? "Теплоизоляция" : "Termoizolație",        location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "1 200 м²", year: "2023", image: `${base}images/portfolio/p04.jpg` },
+    { id: 5, title: lang === 'ru' ? "Частный дом, Чиоканы"            : "Casă privată, Ciocana",            category: lang === 'ru' ? "Скатная кровля" : "Acoperiș în pantă",  location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "180 м²",   year: "2024", image: `${base}images/portfolio/p05.jpg` },
+    { id: 6, title: lang === 'ru' ? "Торговый центр, Рышкановка"      : "Centru comercial, Râșcani",        category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "2 400 м²", year: "2023", image: `${base}images/portfolio/p06.jpg` },
+    { id: 7, title: lang === 'ru' ? "Офисное здание, Центр"           : "Clădire de birouri, Centru",       category: lang === 'ru' ? "Ремонт кровли" : "Reparație acoperiș",  location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "420 м²",   year: "2024", image: `${base}images/portfolio/p07.jpg` },
+    { id: 8, title: lang === 'ru' ? "Многоквартирный дом, Телецентр"  : "Bloc de apartamente, Telecentru", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв" : "Chișinău", area: "680 м²",   year: "2024", image: `${base}images/portfolio/p08.jpg` },
 ];
 
 export const getStatsData = (lang) => [
@@ -372,116 +411,82 @@ export const getStatsData = (lang) => [
 ];
 
 export const getProcessData = (lang) => [
-    { step: 1, title: lang === 'ru' ? "Выезд и замеры крыши" : "Deplasare și măsurători",           desc: lang === 'ru' ? "Инженер выезжает на объект, выполняет точные замеры и оценивает текущее состояние кровли." : "Inginerul se deplasează la obiect, efectuează măsurători precise și evaluează starea acoperișului.", icon: "ph ph-map-pin" },
-    { step: 2, title: lang === 'ru' ? "3D эскиз и визуализация" : "Schiță 3D și vizualizare",      desc: lang === 'ru' ? "Разрабатываем трёхмерный эскиз кровельной системы с детальной визуализацией всех узлов." : "Elaborăm o schiță 3D a sistemului de acoperiș cu vizualizarea detaliată a tuturor nodurilor.", icon: "ph ph-cube" },
-    { step: 3, title: lang === 'ru' ? "Составление локальной сметы" : "Întocmirea devizului local", desc: lang === 'ru' ? "Составляем подробную смету с разбивкой по материалам и работам. Никаких скрытых платежей." : "Întocmim un deviz detaliat cu defalcarea pe materiale și lucrări. Fără plăți ascunse.", icon: "ph ph-file-text" },
-    { step: 4, title: lang === 'ru' ? "Документы клиенту" : "Documente clientului",                 desc: lang === 'ru' ? "Отправляем все документы на ознакомление. Клиент изучает предложение и принимает решение." : "Trimitem toate documentele pentru examinare. Clientul studiază propunerea și ia o decizie.", icon: "ph ph-paper-plane-tilt" },
-    { step: 5, title: lang === 'ru' ? "Договор, аванс и планирование" : "Contract, avans și planificare", desc: lang === 'ru' ? "После согласования подписываем договор, берём аванс и приступаем к планированию работ." : "După aprobare semnăm contractul, luăm avansul și trecem la planificarea lucrărilor.", icon: "ph ph-handshake" },
-    { step: 6, title: lang === 'ru' ? "Сдача и взаиморасчёт" : "Predare și decontare",             desc: lang === 'ru' ? "Завершаем все работы, проводим финальный осмотр с клиентом и производим окончательный расчёт." : "Finalizăm toate lucrările, efectuăm inspecția finală cu clientul și realizăm decontarea finală.", icon: "ph ph-seal-check" },
+    { step: 1, title: lang === 'ru' ? "Выезд и замеры" : "Deplasare și măsurători",                    desc: lang === 'ru' ? "Инженер приезжает на объект, осматривает крышу и делает точные замеры." : "Inginerul vine la obiect, inspectează acoperișul și efectuează măsurători exacte.", icon: "ph ph-map-pin" },
+    { step: 2, title: lang === 'ru' ? "3D-эскиз — бесплатно" : "Schiță 3D — gratuit",               desc: lang === 'ru' ? "Разрабатываем 3D-модель вашей будущей крыши с визуализацией всех узлов и слоёв." : "Elaborăm modelul 3D al viitorului dvs. acoperiș cu vizualizarea tuturor nodurilor și straturilor.", icon: "ph ph-cube" },
+    { step: 3, title: lang === 'ru' ? "Точная смета" : "Deviz exact",                                desc: lang === 'ru' ? "Составляем детальную локальную смету. Никаких скрытых платежей — цена фиксируется в договоре." : "Întocmim un deviz local detaliat. Nicio plată ascunsă — prețul este fixat în contract.", icon: "ph ph-file-text" },
+    { step: 4, title: lang === 'ru' ? "Договор" : "Contract",                                        desc: lang === 'ru' ? "Отправляем все документы для ознакомления и согласовываем все детали." : "Trimitem toate documentele spre examinare și convenim toate detaliile.", icon: "ph ph-handshake" },
+    { step: 5, title: lang === 'ru' ? "Старт работ" : "Începerea lucrărilor",                        desc: lang === 'ru' ? "Получаем аванс, завозим материалы и начинаем монтаж строго по графику." : "Primim avansul, aducem materialele și începem montajul strict conform graficului.", icon: "ph ph-hammer" },
+    { step: 6, title: lang === 'ru' ? "Сдача объекта" : "Predarea obiectului",                       desc: lang === 'ru' ? "Заканчиваем работы, убираем мусор, проверяем качество и производим финальный расчёт." : "Finalizăm lucrările, curățăm șantierul, verificăm calitatea și efectuăm decontarea finală.", icon: "ph ph-seal-check" },
 ];
 
 export const getRoofSystemsData = (lang) => [
     {
-        id: 'flat-insulated', tag: 'ТН Стандарт ПМ', colorClass: "bg-blue-600", lightClass: "bg-blue-50 text-blue-700",
-        clientAsk: lang === 'ru' ? "Нужна плоская крыша под ключ с утеплением" : "Am nevoie de acoperiș plat la cheie cu izolație termică",
-        title: lang === 'ru' ? "Новая плоская крыша с утеплением" : "Acoperiș plat nou cu izolație termică",
-        desc: lang === 'ru' ? "Полный цикл работ по устройству плоской кровли под ключ с полимерной мембраной." : "Ciclu complet de lucrări pentru acoperiș plat la cheie cu membrană polimerică.",
+        id: 'flat-insulated', tag: lang === 'ru' ? 'Плоская · Новая · С утеплением' : 'Plat · Nou · Cu izolație',
         icon: "ph ph-stack",
-        steps: lang === 'ru' ? [
-            "Праймирование плиты и парапета на высоту теплоизоляции",
-            "Наплавление пароизоляции из рубероида",
-            "Утепление плиты перекрытия и парапета экструдированным пенопластом XPS (толщина 0.15–0.30 м в зависимости от проекта)",
-            "Создание уклонообразующего слоя из полистиролбетона — уклон 1.5–2% на метр",
-            "Устройство полусухой цементно-песчаной стяжки h = 50 мм со сварной сеткой ВР-1",
-            "Монтаж разделительного слоя между стяжкой и мембраной — геотекстиль 300 г/м²",
-            "Укладка полимерной мембраны (ТПО или ПВХ) на всю поверхность крыши",
-            "Устройство аэраторов, водосточных воронок, подогревающих кабелей в воронки",
-            "По желанию: монтаж солнечных панелей, кондиционеров, коммуникаций и прочего оборудования"
-        ] : [
-            "Amorsarea plăcii și a parapetului pe înălțimea termoizolației",
-            "Aplicarea barierei de vapori din ruberoid",
-            "Termoizolarea plăcii de planșeu și a parapetului cu spumă XPS extrudată (grosime 0.15–0.30 m)",
-            "Crearea stratului de formare a pantei din polistirenbeton — pantă 1.5–2% pe metru",
-            "Șapă semiumedă ciment-nisip h = 50 mm cu plasă sudată BR-1",
-            "Montaj strat separator între șapă și membrană — geotextil 300 g/m²",
-            "Montarea membranei polimerice (TPO sau PVC) pe toată suprafața acoperișului",
-            "Montarea aeratoarelor, pâlniilor cu încălzire și altor elemente",
-            "La dorință: panouri solare, aparate de aer condiționat, comunicații și alte echipamente"
-        ]
+        badge: lang === 'ru' ? "🔥 Хит продаж" : "🔥 Best seller",
+        title:   lang === 'ru' ? "Плоская крыша под ключ" : "Acoperiș plat la cheie",
+        tagline: lang === 'ru' ? "Капитальный монтаж с утеплением и разуклонкой — тепло, сухо, навечно." : "Montaj capital cu izolație și pantă — cald, uscat, pentru totdeauna.",
+        priceNum: "180", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
+        includes: lang === 'ru'
+            ? ["Пароизоляция и утепление XPS (150–300 мм)", "Разуклонка полистиролбетоном (вода не застаивается)", "Армированная стяжка (жёсткое основание)", "Мембрана ПВХ/ТПО с защитным геотекстилем", "Воронки с подогревом и аэраторы"]
+            : ["Barieră vapori și izolație XPS (150–300 mm)", "Pantă din polistirenbeton (apa nu stagnează)", "Șapă armată (bază rigidă)", "Membrană PVC/TPO cu geotextil protector", "Pâlnii cu încălzire și aeratoare"],
+        results: lang === 'ru'
+            ? ["Подготовка под солнечные панели и террасу", "Нулевые теплопотери (нет мостиков холода)", "Срок службы 30–50 лет"]
+            : ["Pregătit pentru panouri solare și terasă", "Zero pierderi de căldură (fără punți termice)", "Durată de viață 30–50 ani"],
     },
     {
-        id: 'flat-membrane', tag: 'ТН Лайт ПМ', colorClass: "bg-cyan-600", lightClass: "bg-cyan-50 text-cyan-700",
-        clientAsk: lang === 'ru' ? "Нужен ремонт плоской крыши без теплоизоляции — мембрана" : "Am nevoie de reparație acoperiș plat fără izolație — membrană",
-        title: lang === 'ru' ? "Ремонт кровли — полимерная мембрана" : "Reparație acoperiș — membrană polimerică",
-        desc: lang === 'ru' ? "Лёгкое и эффективное решение без демонтажа существующего покрытия." : "Soluție ușoară și eficientă fără demontarea acoperirii existente.",
+        id: 'flat-membrane', tag: lang === 'ru' ? 'Плоская · Ремонт · Мембрана ПВХ' : 'Plat · Reparație · Membrană PVC',
         icon: "ph ph-waves",
-        steps: lang === 'ru' ? [
-            "Монтаж геотекстиля на поверхность крыши",
-            "Монтаж полимерной мембраны (ПВХ или ТПО)",
-            "Устройство аэраторов и водосточных воронок из того же материала (ПВХ или ТПО)"
-        ] : [
-            "Montarea geotextilului pe suprafața acoperișului",
-            "Montarea membranei polimerice (PVC sau TPO)",
-            "Montarea aeratoarelor și pâlniilor din același material (PVC sau TPO)"
-        ]
+        badge: null,
+        title:   lang === 'ru' ? "Ремонт кровли — мембрана" : "Reparație acoperiș — membrană",
+        tagline: lang === 'ru' ? "Надёжная гидроизоляция поверх старой крыши — без грязи и демонтажа." : "Hidroizolare fiabilă peste acoperișul vechi — fără murdărie și demontare.",
+        priceNum: "120", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
+        includes: lang === 'ru'
+            ? ["Монтаж без снятия старого пирога", "Защитный разделитель (геотекстиль 300 гр/м²)", "Укладка современной мембраны ПВХ / ТПО", "Установка полимерных воронок и аэраторов"]
+            : ["Montaj fără îndepărtarea structurii vechi", "Separator protector (geotextil 300 g/m²)", "Montarea membranei moderne PVC / TPO", "Instalarea pâlniilor polimerice și aeratoarelor"],
+        results: lang === 'ru'
+            ? ["Крыша перестаёт течь в первый же день", "Экономия времени и денег на демонтаже", "Официальная гарантия 10 лет"]
+            : ["Acoperișul nu mai curge chiar din prima zi", "Economie de timp și bani la demontare", "Garanție oficială 10 ani"],
     },
     {
-        id: 'flat-bitumen', tag: 'ТН Лайт', colorClass: "bg-orange-500", lightClass: "bg-orange-50 text-orange-700",
-        clientAsk: lang === 'ru' ? "Нужен ремонт плоской крыши без теплоизоляции — битум" : "Am nevoie de reparație acoperiș plat fără izolație — bitum",
-        title: lang === 'ru' ? "Ремонт кровли — битумная мембрана" : "Reparație acoperiș — membrană bituminoasă",
-        desc: lang === 'ru' ? "Проверенное решение для ремонта старой рубероидной кровли с минимальными затратами." : "Soluție dovedită pentru repararea unui acoperiș vechi din ruberoid, cu costuri minime.",
+        id: 'flat-bitumen', tag: lang === 'ru' ? 'Плоская · Ремонт · Еврорубероид' : 'Plat · Reparație · Euroruberoid',
         icon: "ph ph-fire",
-        steps: lang === 'ru' ? [
-            "Праймирование основания старой кровли (рубероид)",
-            "Наплавление одного или двух слоёв битумной мембраны (количество слоёв зависит от бюджета клиента)",
-            "Устройство аэраторов и водосточных воронок"
-        ] : [
-            "Amorsarea bazei acoperișului vechi (ruberoid)",
-            "Aplicarea unuia sau a două straturi de membrană bituminoasă (cantitatea depinde de buget)",
-            "Montarea aeratoarelor și pâlniilor de scurgere"
-        ]
+        badge: null,
+        title:   lang === 'ru' ? "Ремонт кровли — еврорубероид" : "Reparație acoperiș — euroruberoid",
+        tagline: lang === 'ru' ? "Классический бюджетный ремонт — быстро, надёжно, без сюрпризов." : "Reparație clasică economică — rapid, fiabil, fără surprize.",
+        priceNum: "80", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
+        includes: lang === 'ru'
+            ? ["Обработка старого основания праймером", "Наплавление 1–2 слоёв битумной мембраны", "Монтаж новых аэраторов и водосточных воронок", "Надёжная герметизация всех примыканий"]
+            : ["Tratarea bazei vechi cu primer", "Aplicarea 1–2 straturi de membrană bituminoasă", "Montaj aeratoare noi și pâlnii de scurgere", "Etanșare fiabilă a tuturor racordurilor"],
+        results: lang === 'ru'
+            ? ["Устранение любых протечек", "Минимальные финансовые вложения", "Гарантия 5 лет"]
+            : ["Eliminarea oricăror scurgeri", "Investiție financiară minimă", "Garanție 5 ani"],
     },
     {
-        id: 'pitched', tag: 'ТН Шинглас Мансарда', colorClass: "bg-emerald-600", lightClass: "bg-emerald-50 text-emerald-700",
-        clientAsk: lang === 'ru' ? "Нужна новая скатная крыша под ключ с утеплением" : "Am nevoie de acoperiș în pantă nou la cheie cu izolație termică",
-        title: lang === 'ru' ? "Скатная кровля с мягкой черепицей" : "Acoperiș în pantă cu șindrilă flexibilă",
-        desc: lang === 'ru' ? "Полный комплекс работ по системе Технониколь Шинглас Мансарда." : "Complex complet de lucrări conform sistemului Technonicol Shinglas Mansardă.",
+        id: 'pitched', tag: lang === 'ru' ? 'Скатная · Новая · Под ключ' : 'Pantă · Nou · La cheie',
         icon: "ph ph-house-line",
-        steps: lang === 'ru' ? [
-            "Строительство стропильной системы из дерева",
-            "Монтаж пароизоляционной плёнки",
-            "Теплоизоляция стропильной системы и плиты перекрытия минеральной ватой или PIR (пенополиизоциануратом)",
-            "Монтаж супердиффузионной плёнки (ветрозащита, 150–160 г/м²)",
-            "Монтаж плит ОСБ на стропила (12–15 мм)",
-            "Монтаж подкладочного ковра под гибкую черепицу",
-            "Монтаж гибкой черепицы (гонт)",
-            "Монтаж аэраторов и водосточной системы (желоба и трубы)",
-            "Устройство карнизного свеса: закрытый тип (профнастил) или открытый тип (декоративный конёк + лакированная доска)",
-            "По желанию: солнечные панели, подогрев водостоков и прочее оборудование"
-        ] : [
-            "Construcția sistemului de căpriori din lemn",
-            "Montarea foliei de barieră vapori",
-            "Termoizolarea sistemului de căpriori și plăcii de planșeu cu vată minerală sau PIR",
-            "Montarea foliei superdifuzive (protecție vânt, 150–160 g/m²)",
-            "Montarea plăcilor OSB pe căpriori (12–15 mm)",
-            "Montarea covorului suport sub șindrilă flexibilă",
-            "Montarea șindrilei flexibile (șindrile)",
-            "Montarea aeratoarelor și sistemului de scurgere (jgheaburi și burlane)",
-            "Amenajarea streașinii: tip închis (tablă profilată) sau tip deschis (coamă decorativă + scândură lăcuită)",
-            "La dorință: panouri solare, încălzire jgheaburi și alte echipamente"
-        ]
-    }
+        badge: null,
+        title:   lang === 'ru' ? "Скатная крыша под ключ" : "Acoperiș în pantă la cheie",
+        tagline: lang === 'ru' ? "От стропил до гибкой черепицы строго по стандартам Технониколь." : "De la căpriori la șindrilă flexibilă strict conform standardelor Technonicol.",
+        priceNum: "220", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
+        includes: lang === 'ru'
+            ? ["Возведение стропильной системы и сплошное ОСБ", "Многослойный пирог (пароизоляция, PIR/минвата, ветрозащита)", "Монтаж гибкой черепицы (Шинглас)", "Монтаж водостоков и подшивка карнизов"]
+            : ["Construcția sistemului de căpriori și OSB continuu", "Strat multistrat (barieră vapori, PIR/vată minerală, protecție vânt)", "Montarea șindrilei flexibile (Shinglas)", "Montarea jgheaburilor și placarea cornișelor"],
+        results: lang === 'ru'
+            ? ["Идеальный микроклимат в мансарде", "Подготовка под солнечные панели и коммуникации", "Красивый внешний вид на десятки лет"]
+            : ["Microclimat ideal în mansardă", "Pregătit pentru panouri solare și comunicații", "Aspect frumos pentru zeci de ani"],
+    },
 ];
 
 export const getGalleryData = (base = '/') => [
-    { image: `${base}images/gallery/PVC.jpg`,         label: "Монтаж мембраны" },
-    { image: `${base}images/gallery/Roofing.jpg`,     label: "Кровельные работы" },
-    { image: `${base}images/gallery/Industrial.jpg`,  label: "Промышленный объект" },
-    { image: `${base}images/gallery/Finished.jpg`,    label: "Готовый объект" },
-    { image: `${base}images/gallery/RoofDetails.jpg`, label: "Детали и Узлы" },
-    { image: `${base}images/gallery/Private.jpg`,     label: "Частный дом" },
-    { image: `${base}images/gallery/Commercial.jpg`,  label: "Коммерческий объект" },
-    { image: `${base}images/gallery/Junctions.jpg`,   label: "Примыкания к стенам" },
+    { image: `${base}images/gallery/PVC.jpg`,         label: "Монтаж ПВХ мембраны — 850 м²" },
+    { image: `${base}images/gallery/Roofing.jpg`,     label: "Кровельные работы — Кишинёв" },
+    { image: `${base}images/gallery/Industrial.jpg`,  label: "Промышленный объект — 1 200 м²" },
+    { image: `${base}images/gallery/Finished.jpg`,    label: "Сдача объекта заказчику" },
+    { image: `${base}images/gallery/RoofDetails.jpg`, label: "Технические узлы и примыкания" },
+    { image: `${base}images/gallery/Private.jpg`,     label: "Частный дом — 180 м²" },
+    { image: `${base}images/gallery/Commercial.jpg`,  label: "Коммерческий объект — 560 м²" },
+    { image: `${base}images/gallery/Junctions.jpg`,   label: "Примыкания к стенам и парапету" },
 ];
 
 export const getFAQData = (lang) => [

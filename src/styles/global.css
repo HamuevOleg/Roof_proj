@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
     --animate-pulse-slow: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-pulse-cta: pulseCta 2s ease-in-out infinite;
+    --font-family-heading: 'Montserrat', sans-serif;
 
     @keyframes pulseSlow {
         0%, 100% { opacity: 0.5; }
         50% { opacity: 0.7; }
+    }
+    @keyframes pulseCta {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.5); }
+        70% { box-shadow: 0 0 0 16px rgba(234, 88, 12, 0); }
     }
 }
 
@@ -17,10 +24,49 @@
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
+    .btn-pulse {
+        animation: pulseCta 2s ease-in-out infinite;
+    }
+    .font-heading {
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+/* ── Scroll reveal animation ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Hero text load animation ── */
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-48px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(48px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+.hero-title-left {
+    animation: slideInLeft 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-title-right {
+    animation: slideInRight 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
 }
 
 /* Hero video: hide video and show static image for users who prefer no motion */
 @media (prefers-reduced-motion: reduce) {
     .hero-video { display: none; }
     .hero-img-fallback { display: block !important; }
+    .btn-pulse { animation: none; }
+    .hero-title-left, .hero-title-right { animation: none; }
 }

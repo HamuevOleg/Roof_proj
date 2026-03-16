@@ -10,9 +10,8 @@ const { lang } = Astro.params;
 const base     = import.meta.env.BASE_URL;
 const text     = ui[lang];
 
-const phone     = '+373 60 000 000';
-const phoneHref = 'tel:+37360000000';
-// TODO: замените на реальную ссылку Facebook страницы
+const phone     = text.contPhoneVal;
+const phoneHref = `tel:${phone.replace(/\s/g, '')}`;
 const fbHref    = 'https://www.facebook.com/ProAcoperis';
 ---
 
@@ -27,12 +26,12 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
     />
     <div class="absolute inset-0 bg-gradient-to-b from-gray-950/80 to-gray-900/90"></div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-blue-100 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <i class="ph-fill ph-phone text-blue-400"></i>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-orange-200 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <i class="ph-fill ph-phone text-orange-400"></i>
             {text.contPageHeroBadge}
         </div>
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-5 leading-tight">
-            {text.contPageHeroTitle} <span class="text-blue-400">{text.contPageHeroTitle2}</span>
+        <h1 class="text-5xl md:text-6xl font-extrabold font-heading text-white mb-5 leading-tight">
+            {text.contPageHeroTitle} <span class="text-orange-400">{text.contPageHeroTitle2}</span>
         </h1>
         <p class="text-gray-300 text-xl leading-relaxed">{text.contPageHeroDesc}</p>
     </div>
@@ -41,12 +40,12 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
 <!-- ═══════════════════════════════════════════════ MAIN CONTACT BLOCK -->
 <section class="py-24 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-sm font-bold tracking-widest text-blue-600 uppercase mb-3 flex items-center justify-center gap-3">
-            <span class="w-8 h-0.5 bg-blue-600"></span>
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center justify-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>
             {lang === 'ru' ? 'Свяжитесь с нами' : 'Contactați-ne'}
-            <span class="w-8 h-0.5 bg-blue-600"></span>
+            <span class="w-8 h-0.5 bg-orange-500"></span>
         </p>
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-5">
+        <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-gray-900 mb-5">
             {lang === 'ru' ? 'Позвоните прямо сейчас' : 'Sunați chiar acum'}
         </h2>
         <p class="text-gray-500 text-lg mb-12 max-w-md mx-auto leading-relaxed">
@@ -57,14 +56,14 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
 
         <!-- Big phone button -->
         <a href={phoneHref}
-           class="group inline-flex flex-col items-center justify-center bg-blue-600 hover:bg-blue-500 text-white rounded-3xl px-12 py-8 transition-all hover:-translate-y-1 shadow-2xl shadow-blue-600/40 mb-8 w-full sm:w-auto">
+           class="group inline-flex flex-col items-center justify-center bg-gray-900 hover:bg-gray-800 text-white rounded-3xl px-12 py-8 transition-all hover:-translate-y-1 shadow-2xl shadow-gray-900/40 mb-8 w-full sm:w-auto">
             <div class="flex items-center gap-4 mb-1">
-                <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                    <i class="ph-fill ph-phone text-white text-3xl"></i>
+                <div class="w-14 h-14 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
+                    <i class="ph-fill ph-phone text-orange-400 text-3xl"></i>
                 </div>
                 <span class="text-4xl md:text-5xl font-extrabold tracking-tight">{phone}</span>
             </div>
-            <span class="text-blue-200 text-sm font-medium mt-1">
+            <span class="text-gray-400 text-sm font-medium mt-1">
                 {lang === 'ru' ? 'Пн–Пт 8:00–18:00, Сб 9:00–14:00' : 'Lun–Vin 8:00–18:00, Sâm 9:00–14:00'}
             </span>
         </a>
@@ -73,54 +72,78 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
         <div class="flex items-center gap-4 my-8 max-w-xs mx-auto">
             <span class="flex-1 h-px bg-gray-200"></span>
             <span class="text-gray-400 text-sm font-medium uppercase tracking-wider">
-                {lang === 'ru' ? 'или' : 'sau'}
+                {lang === 'ru' ? 'или напишите' : 'sau scrieți'}
             </span>
             <span class="flex-1 h-px bg-gray-200"></span>
         </div>
 
-        <!-- Facebook button -->
-        <a href={fbHref} target="_blank" rel="noopener noreferrer"
-           class="group inline-flex items-center gap-4 bg-[#1877F2] hover:bg-[#1565d8] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-blue-900/30 w-full sm:w-auto justify-center">
-            <!-- Facebook SVG icon -->
-            <svg class="w-8 h-8 flex-shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="white">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-            <div class="text-left">
-                <p class="font-extrabold text-xl leading-tight">Facebook</p>
-                <p class="text-blue-200 text-sm">ProAcoperis.md</p>
-            </div>
-        </a>
+        <!-- Messenger buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <!-- WhatsApp -->
+            <a href={text.contWhatsappHref} target="_blank" rel="noopener noreferrer"
+               class="group inline-flex items-center gap-4 bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-green-600/30 justify-center">
+                <i class="ph ph-whatsapp-logo text-4xl flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                <div class="text-left">
+                    <p class="font-extrabold text-xl leading-tight">{text.contWhatsapp}</p>
+                    <p class="text-green-100 text-sm">{lang === 'ru' ? 'Ответим за 15 минут' : 'Răspundem în 15 min'}</p>
+                </div>
+            </a>
+
+            <!-- Viber -->
+            <a href={text.contViberHref}
+               class="group inline-flex items-center gap-4 bg-[#7360F2] hover:bg-[#6552d4] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-purple-600/30 justify-center">
+                <i class="ph ph-chat-circle text-4xl flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                <div class="text-left">
+                    <p class="font-extrabold text-xl leading-tight">{text.contViber}</p>
+                    <p class="text-purple-200 text-sm">{lang === 'ru' ? 'Фото и документы' : 'Foto și documente'}</p>
+                </div>
+            </a>
+
+            <!-- Telegram -->
+            <a href={text.contTelegramHref} target="_blank" rel="noopener noreferrer"
+               class="group inline-flex items-center gap-4 bg-[#229ED9] hover:bg-[#1a8bc2] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-sky-600/30 justify-center">
+                <i class="ph ph-telegram-logo text-4xl flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                <div class="text-left">
+                    <p class="font-extrabold text-xl leading-tight">{text.contTelegram}</p>
+                    <p class="text-sky-200 text-sm">{lang === 'ru' ? 'Быстрые ответы' : 'Răspunsuri rapide'}</p>
+                </div>
+            </a>
+
+            <!-- Facebook -->
+            <a href={fbHref} target="_blank" rel="noopener noreferrer"
+               class="group inline-flex items-center gap-4 bg-[#1877F2] hover:bg-[#1565d8] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-blue-900/30 justify-center">
+                <svg class="w-9 h-9 flex-shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="white">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <div class="text-left">
+                    <p class="font-extrabold text-xl leading-tight">Facebook</p>
+                    <p class="text-blue-200 text-sm">ProAcoperis.md</p>
+                </div>
+            </a>
+        </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════ INFO CARDS -->
 <section class="py-16 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <!-- Phone -->
             <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
-                <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white mx-auto mb-4 shadow-md shadow-blue-600/30">
+                <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white mx-auto mb-4 shadow-md shadow-orange-500/30">
                     <i class="ph ph-phone text-xl"></i>
                 </div>
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{text.contPhone}</p>
-                <a href={phoneHref} class="text-xl font-extrabold text-gray-900 hover:text-blue-600 transition-colors block">{phone}</a>
+                <a href={phoneHref} class="text-xl font-extrabold text-gray-900 hover:text-orange-500 transition-colors block">{phone}</a>
             </div>
             <!-- Hours -->
             <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
-                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mx-auto mb-4">
+                <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mx-auto mb-4">
                     <i class="ph ph-clock text-xl"></i>
                 </div>
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{text.contHours}</p>
                 <p class="font-semibold text-gray-800 text-sm">{text.contHoursVal}</p>
                 <p class="font-semibold text-gray-800 text-sm">{text.contHoursVal2}</p>
-            </div>
-            <!-- City -->
-            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
-                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mx-auto mb-4">
-                    <i class="ph-fill ph-map-pin text-xl"></i>
-                </div>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{text.contCity}</p>
-                <p class="font-bold text-gray-900">{text.contCityVal}</p>
             </div>
         </div>
     </div>
@@ -129,7 +152,7 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
 <!-- ═══════════════════════════════════════════════ WHAT HAPPENS AFTER -->
 <section class="py-16 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-extrabold text-gray-900 mb-8 text-center">
+        <h2 class="text-2xl font-extrabold font-heading text-gray-900 mb-8 text-center">
             {lang === 'ru' ? 'Что будет после звонка?' : 'Ce se întâmplă după apel?'}
         </h2>
         <div class="flex flex-col sm:flex-row gap-4">
@@ -139,10 +162,10 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
                 { step: '3', icon: 'ph ph-file-text',   ru: 'Смета без скрытых платежей',    ro: 'Deviz fără costuri ascunse' },
             ].map((item) => (
                 <div class="flex-1 flex flex-col items-center text-center bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                    <div class="w-11 h-11 bg-blue-600 rounded-full flex items-center justify-center text-white font-extrabold text-lg mb-3 shadow-md shadow-blue-600/30">
+                    <div class="w-11 h-11 bg-orange-500 rounded-full flex items-center justify-center text-white font-extrabold text-lg mb-3 shadow-md shadow-orange-500/30">
                         {item.step}
                     </div>
-                    <i class={`${item.icon} text-blue-400 text-2xl mb-2`}></i>
+                    <i class={`${item.icon} text-orange-400 text-2xl mb-2`}></i>
                     <p class="text-gray-700 font-semibold text-sm">{lang === 'ru' ? item.ru : item.ro}</p>
                 </div>
             ))}
@@ -150,37 +173,30 @@ const fbHref    = 'https://www.facebook.com/ProAcoperis';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════ MAP PLACEHOLDER -->
-<section class="h-72 bg-gray-100 relative overflow-hidden border-t border-gray-200">
-    <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
-        <i class="ph-fill ph-map-pin text-4xl text-blue-600"></i>
-        <p class="font-bold text-gray-600">{lang === 'ru' ? 'Кишинёв, Молдова' : 'Chișinău, Moldova'}</p>
-        <p class="text-xs text-gray-400">{lang === 'ru' ? '← Вставьте iframe Google Maps' : '← Inserați iframe Google Maps'}</p>
-    </div>
-    <!--
-    TODO: replace with:
-    <iframe src="https://www.google.com/maps/embed?pb=YOUR_KEY"
-        class="w-full h-full border-0" loading="lazy">
-    </iframe>
-    -->
-</section>
-
 <!-- ═══════════════════════════════════════════════ BOTTOM CTA -->
-<section class="bg-blue-600 py-14">
+<section class="bg-gray-900 py-14">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-extrabold text-white mb-6">
+        <h2 class="text-3xl font-extrabold font-heading text-white mb-2">
             {lang === 'ru' ? 'Просто позвоните — мы всё объясним' : 'Sunați pur și simplu — vă explicăm totul'}
         </h2>
+        <p class="text-gray-400 mb-8">
+            {lang === 'ru' ? 'Свободные бригады на март — записывайтесь сейчас' : 'Echipe disponibile în martie — înregistrați-vă acum'}
+        </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href={phoneHref}
-               class="flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-2xl font-extrabold text-xl hover:bg-blue-50 transition-all hover:scale-105 shadow-xl">
+               class="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-extrabold text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30">
                 <i class="ph-fill ph-phone text-2xl"></i>
                 {phone}
             </a>
-            <a href={fbHref} target="_blank" rel="noopener"
-               class="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white border border-white/30 px-6 py-4 rounded-2xl font-bold text-base transition-all backdrop-blur-md">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                Facebook
+            <a href={text.contWhatsappHref} target="_blank" rel="noopener"
+               class="flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white border-0 px-6 py-4 rounded-2xl font-bold text-base transition-all shadow-lg">
+                <i class="ph ph-whatsapp-logo text-xl"></i>
+                WhatsApp
+            </a>
+            <a href={text.contTelegramHref} target="_blank" rel="noopener"
+               class="flex items-center gap-2 bg-[#229ED9] hover:bg-[#1a8bc2] text-white border-0 px-6 py-4 rounded-2xl font-bold text-base transition-all shadow-lg">
+                <i class="ph ph-telegram-logo text-xl"></i>
+                Telegram
             </a>
         </div>
     </div>
