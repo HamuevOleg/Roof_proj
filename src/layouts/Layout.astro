@@ -28,6 +28,25 @@ const navItems = [
     <meta name="theme-color" content="#111827">
     <title>{title} - ProAcoperis.md</title>
 
+    <!-- Google Analytics (loads only after cookie consent) -->
+    <script is:inline>
+        window.GA_ID = 'G-XXXXXXXXXX'; // ← замени на свой GA4 Measurement ID
+        function loadGA() {
+            if (window._gaLoaded) return;
+            window._gaLoaded = true;
+            var s = document.createElement('script');
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_ID;
+            s.async = true;
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', window.GA_ID, { anonymize_ip: true });
+        }
+        if (localStorage.getItem('cookieConsent') === 'yes') loadGA();
+    </script>
+
     <!-- Performance: preconnect to external origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -227,6 +246,23 @@ const navItems = [
     </a>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════ COOKIE BANNER -->
+<div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 z-[200] bg-gray-950/95 backdrop-blur-md border-t border-white/10 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+        <p class="text-gray-300 text-sm leading-relaxed max-w-2xl" id="cookie-text"></p>
+        <div class="flex items-center gap-3 flex-shrink-0">
+            <button id="cookie-decline"
+                class="px-4 py-2 rounded-xl text-sm font-semibold text-gray-400 hover:text-white border border-white/15 hover:border-white/30 transition-colors">
+                <span class="ru-text">Отказаться</span><span class="ro-text hidden">Refuz</span>
+            </button>
+            <button id="cookie-accept"
+                class="px-5 py-2 rounded-xl text-sm font-bold bg-orange-500 hover:bg-orange-600 text-white transition-colors shadow-md shadow-orange-600/30">
+                <span class="ru-text">Принять</span><span class="ro-text hidden">Accept</span>
+            </button>
+        </div>
+    </div>
+</div>
+
 <!-- Phosphor icons: loaded after page renders, non-blocking -->
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 
@@ -249,6 +285,28 @@ const navItems = [
         });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Cookie consent banner
+    (function() {
+        if (localStorage.getItem('cookieConsent')) return;
+        var banner = document.getElementById('cookie-banner');
+        var isRo   = document.documentElement.lang === 'ro';
+        document.getElementById('cookie-text').textContent = isRo
+            ? 'Folosim cookie-uri pentru analitica anonimă (Google Analytics) pentru a înțelege cum utilizați site-ul. Nu colectăm date personale fără acordul dvs.'
+            : 'Мы используем файлы cookie для анонимной аналитики (Google Analytics), чтобы понимать как вы используете сайт. Личные данные без вашего согласия не собираются.';
+        banner.querySelectorAll('.ru-text').forEach(function(el){ el.classList.toggle('hidden', isRo); });
+        banner.querySelectorAll('.ro-text').forEach(function(el){ el.classList.toggle('hidden', !isRo); });
+        banner.classList.remove('hidden');
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'yes');
+            banner.remove();
+            loadGA();
+        });
+        document.getElementById('cookie-decline').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'no');
+            banner.remove();
+        });
+    })();
 
     // Shrink header on scroll
     const header = document.getElementById('site-header');
