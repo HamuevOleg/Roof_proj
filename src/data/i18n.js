@@ -7,7 +7,7 @@ export const ui = {
         // Hero
         heroBadge: "500+ крыш за 12 лет в Молдове",
         heroTitle1: "Плоская кровля под ключ",
-        heroTitle2: "от 180 лей/м²",
+        heroTitle2: "от 80 лей/м²",
         heroDesc: "Бесплатный замер — Смета за 24 часа — Монтаж от 5 дней. ПВХ мембраны и еврорубероид. Официальная гарантия 15 лет по договору.",
         heroProcess1: "Бесплатный замер",
         heroProcess2: "Смета за 24 часа",
@@ -43,7 +43,7 @@ export const ui = {
         // Pricing section
         pricingSub: "Прозрачные цены",
         pricingTitle: "Сколько стоит крыша?",
-        pricingExample: "Например: крыша 100 м² мембрана ПВХ ≈ 18 000 лей — под ключ",
+        pricingExample: "Например: ремонт кровли 100 м² от 80 лей/м² ≈ 8 000 лей — под ключ",
 
         // CTA
         ctaTitle: "Узнайте цену своей крыши",
@@ -51,13 +51,13 @@ export const ui = {
         ctaBtn: "Узнать цену моей крыши — бесплатно",
 
         // Footer
-        footDesc: "500+ крыш с 2012 года. Официальный партнёр Технониколь.",
+        footDesc: "Профессиональная кровля с 2012 года. Используем только лучшие материалы.",
         footNav: "Навигация",
         footServ: "Услуги",
         footCont: "Контакты",
         footLegal: "SRL ProAcoperis.md",
         footRights: "Все права защищены.",
-        footMade: "500+ крыш с 2012 года. Партнёр Технониколь",
+        footMade: "Используем только лучшие материалы",
 
         // ── Services page ──────────────────────────────────────────────────
         servPageHeroBadge: "Профессиональные кровельные работы",
@@ -98,7 +98,7 @@ export const ui = {
         aboutStoryTitle: "Из небольшой бригады — в лидеры рынка",
         aboutStoryText1: "ProAcoperis.md начинался в 2012 году как небольшая бригада кровельщиков. Сегодня — это полноценная компания с собственным инженерным отделом, складом материалов и более чем 50 специалистами в штате.",
         aboutStoryText2: "За 12+ лет мы выполнили более 500 объектов — от небольших частных домов до крупных логистических центров площадью свыше 10 000 м². Каждый проект для нас — это возможность подтвердить нашу репутацию.",
-        aboutStoryText3: "Мы официальные партнёры Технониколь и используем только сертифицированные материалы. Это позволяет нам давать официальную гарантию до 15 лет по договору.",
+        aboutStoryText3: "Мы используем только лучшие сертифицированные материалы от проверенных производителей. Это позволяет нам давать официальную гарантию до 15 лет по договору.",
         aboutValuesSub: "Наши принципы",
         aboutValuesTitle: "Чем мы отличаемся",
         aboutTeamSub: "Команда",
@@ -120,7 +120,7 @@ export const ui = {
         contInfoSub: "Контакты",
         contInfoTitle: "Как с нами связаться",
         contPhone: "Телефон",
-        contPhoneVal: "+373 60 000 000",
+        contPhoneVal: "+373 60 680 819",
         contAddress: "Адрес",
         contAddressVal: "Кишинёв, Молдова",
         contHours: "Режим работы",
@@ -129,9 +129,9 @@ export const ui = {
         contCity: "Город",
         contCityVal: "Кишинёв, Молдова",
         contWhatsapp: "WhatsApp",
-        contWhatsappHref: "https://wa.me/37360000000",
+        contWhatsappHref: "https://wa.me/37360680819",
         contViber: "Viber",
-        contViberHref: "viber://chat?number=%2B37360000000",
+        contViberHref: "viber://chat?number=%2B37360680819",
         contTelegram: "Telegram",
         contTelegramHref: "https://t.me/ProAcoperis",
         contLegal: "Компания",
@@ -145,7 +145,7 @@ export const ui = {
 
         heroBadge: "500+ acoperișuri în 12 ani în Moldova",
         heroTitle1: "Acoperiș plat la cheie",
-        heroTitle2: "de la 180 lei/m²",
+        heroTitle2: "de la 80 lei/m²",
         heroDesc: "Măsurători gratuite — Deviz în 24 ore — Montaj de la 5 zile. Membrane PVC și euroruberoid. Garanție oficială 15 ani prin contract.",
         heroProcess1: "Măsurători gratuite",
         heroProcess2: "Deviz în 24 ore",
@@ -176,19 +176,19 @@ export const ui = {
 
         pricingSub: "Prețuri transparente",
         pricingTitle: "Cât costă un acoperiș?",
-        pricingExample: "Exemplu: acoperiș 100 m² membrană PVC ≈ 18 000 lei — la cheie",
+        pricingExample: "Exemplu: reparație acoperiș 100 m² de la 80 lei/m² ≈ 8 000 lei — la cheie",
 
         ctaTitle: "Aflați prețul acoperișului dvs.",
         ctaDesc: "Lăsați o cerere — inginerul vine gratuit, măsoară și trimite devizul în 24 ore. Fără presiune și costuri ascunse.",
         ctaBtn: "Aflați prețul acoperișului meu — gratuit",
 
-        footDesc: "500+ acoperișuri din 2012. Partener oficial Technonicol.",
+        footDesc: "Acoperișuri profesionale din 2012. Folosim doar cele mai bune materiale.",
         footNav: "Navigare",
         footServ: "Servicii",
         footCont: "Contacte",
         footLegal: "SRL ProAcoperis.md",
         footRights: "Toate drepturile rezervate.",
-        footMade: "500+ acoperișuri din 2012. Partener Technonicol",
+        footMade: "Folosim doar cele mai bune materiale",
 
         servPageHeroBadge: "Lucrări profesionale de acoperiș",
         servPageHeroTitle: "Servicii",
@@ -226,7 +226,7 @@ export const ui = {
         aboutStoryTitle: "De la o echipă mică — la liderii pieței",
         aboutStoryText1: "ProAcoperis.md a început în 2012 ca o mică echipă de acoperitori. Astăzi este o companie completă cu departament propriu de inginerie, depozit de materiale și peste 50 de specialiști.",
         aboutStoryText2: "În 12+ ani am realizat peste 500 de obiecte — de la case private mici până la mari centre logistice cu suprafața de peste 10.000 m². Fiecare proiect este o oportunitate de a ne confirma reputația.",
-        aboutStoryText3: "Suntem parteneri oficiali Technonicol și folosim doar materiale certificate. Aceasta ne permite să oferim garanție oficială de până la 15 ani prin contract.",
+        aboutStoryText3: "Folosim doar materiale certificate de la producători verificați. Aceasta ne permite să oferim garanție oficială de până la 15 ani prin contract.",
         aboutValuesSub: "Principiile noastre",
         aboutValuesTitle: "Ce ne diferențiază",
         aboutTeamSub: "Echipa",
@@ -247,7 +247,7 @@ export const ui = {
         contInfoSub: "Contacte",
         contInfoTitle: "Cum să ne contactați",
         contPhone: "Telefon",
-        contPhoneVal: "+373 60 000 000",
+        contPhoneVal: "+373 60 680 819",
         contAddress: "Adresă",
         contAddressVal: "Chișinău, Moldova",
         contHours: "Program de lucru",
@@ -256,9 +256,9 @@ export const ui = {
         contCity: "Oraș",
         contCityVal: "Chișinău, Moldova",
         contWhatsapp: "WhatsApp",
-        contWhatsappHref: "https://wa.me/37360000000",
+        contWhatsappHref: "https://wa.me/37360680819",
         contViber: "Viber",
-        contViberHref: "viber://chat?number=%2B37360000000",
+        contViberHref: "viber://chat?number=%2B37360680819",
         contTelegram: "Telegram",
         contTelegramHref: "https://t.me/ProAcoperis",
         contLegal: "Companie",
@@ -347,8 +347,8 @@ export const getServicesData = (lang, base = '/') => [
         desc: lang === 'ru'
             ? "Полный комплекс работ по системе Технониколь Шинглас: строительство стропильной системы, монтаж утеплителя, ветрозащиты, ОСБ и гибкой черепицы. Устанавливаем водосточные системы, аэраторы и при необходимости — солнечные панели."
             : "Complex complet de lucrări conform sistemului Technonicol Shinglas: construcția sistemului de căpriori, montaj izolație, protecție vânt, OSB și șindrilă flexibilă. Instalăm sisteme de scurgere, aeratoare și, dacă este necesar, panouri solare.",
-        price: lang === 'ru' ? "от 220 лей/м²" : "de la 220 lei/m²",
-        priceNum: "220", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
+        price: lang === 'ru' ? "от 400 лей/м²" : "de la 400 lei/m²",
+        priceNum: "400", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-house-line",
         image: `${base}images/services/Services05.jpg`,
         benefits: lang === 'ru'
@@ -382,7 +382,7 @@ export const getFeaturesData = (lang) => [
     },
     {
         title: lang === 'ru' ? "50+ кровельщиков в штате. Без субподрядчиков" : "50+ acoperitori angajați. Fără subcontractare",
-        desc: lang === 'ru' ? "Все работы выполняют только наши штатные специалисты, сертифицированные Технониколь. Никаких посредников — только ответственность перед вами." : "Toate lucrările sunt executate doar de specialiștii noștri certificați Technonicol. Nicio subcontractare — doar responsabilitate față de dvs.",
+        desc: lang === 'ru' ? "Все работы выполняют только наши штатные специалисты. Никаких посредников — только ответственность перед вами." : "Toate lucrările sunt executate doar de specialiștii noștri angajați. Nicio subcontractare — doar responsabilitate față de dvs.",
         icon: "ph ph-hammer"
     },
     {
@@ -426,7 +426,7 @@ export const getRoofSystemsData = (lang) => [
         badge: lang === 'ru' ? "🔥 Хит продаж" : "🔥 Best seller",
         title:   lang === 'ru' ? "Плоская крыша под ключ" : "Acoperiș plat la cheie",
         tagline: lang === 'ru' ? "Капитальный монтаж с утеплением и разуклонкой — тепло, сухо, навечно." : "Montaj capital cu izolație și pantă — cald, uscat, pentru totdeauna.",
-        priceNum: "180", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
+        priceNum: "80", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
         includes: lang === 'ru'
             ? ["Пароизоляция и утепление XPS (150–300 мм)", "Разуклонка полистиролбетоном (вода не застаивается)", "Армированная стяжка (жёсткое основание)", "Мембрана ПВХ/ТПО с защитным геотекстилем", "Воронки с подогревом и аэраторы"]
             : ["Barieră vapori și izolație XPS (150–300 mm)", "Pantă din polistirenbeton (apa nu stagnează)", "Șapă armată (bază rigidă)", "Membrană PVC/TPO cu geotextil protector", "Pâlnii cu încălzire și aeratoare"],
@@ -467,8 +467,8 @@ export const getRoofSystemsData = (lang) => [
         icon: "ph ph-house-line",
         badge: null,
         title:   lang === 'ru' ? "Скатная крыша под ключ" : "Acoperiș în pantă la cheie",
-        tagline: lang === 'ru' ? "От стропил до гибкой черепицы строго по стандартам Технониколь." : "De la căpriori la șindrilă flexibilă strict conform standardelor Technonicol.",
-        priceNum: "220", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
+        tagline: lang === 'ru' ? "От стропил до финишного покрытия — полный цикл под ключ." : "De la căpriori la acoperirea finală — ciclu complet la cheie.",
+        priceNum: "400", priceUnit: lang === 'ru' ? "лей / м²" : "lei / m²",
         includes: lang === 'ru'
             ? ["Возведение стропильной системы и сплошное ОСБ", "Многослойный пирог (пароизоляция, PIR/минвата, ветрозащита)", "Монтаж гибкой черепицы (Шинглас)", "Монтаж водостоков и подшивка карнизов"]
             : ["Construcția sistemului de căpriori și OSB continuu", "Strat multistrat (barieră vapori, PIR/vată minerală, protecție vânt)", "Montarea șindrilei flexibile (Shinglas)", "Montarea jgheaburilor și placarea cornișelor"],
@@ -519,8 +519,8 @@ export const getFAQData = (lang) => [
 export const getAboutValuesData = (lang) => [
     {
         icon: "ph ph-certificate",
-        title: lang === 'ru' ? "Официальный партнёр Технониколь" : "Partener oficial Technonicol",
-        desc: lang === 'ru' ? "Мы сертифицированный партнёр крупнейшего производителя кровельных материалов. Это гарантирует качество материалов и доступ к технической поддержке." : "Suntem partener certificat al celui mai mare producător de materiale de acoperiș. Aceasta garantează calitatea materialelor și accesul la suport tehnic."
+        title: lang === 'ru' ? "Используем только лучшие материалы" : "Folosim doar cele mai bune materiale",
+        desc: lang === 'ru' ? "Работаем только с проверенными производителями и используем сертифицированные материалы с официальной гарантией. Качество — без компромиссов." : "Lucrăm doar cu producători verificați și folosim materiale certificate cu garanție oficială. Calitate fără compromisuri."
     },
     {
         icon: "ph ph-users-three",

@@ -20,8 +20,8 @@ const stats     = getStatsData(lang);
 const gallery   = getGalleryData(base);
 const videos    = getVideosData(lang, base);
 
-const phone     = '+373 60 000 000';
-const phoneHref = 'tel:+37360000000';
+const phone     = '+373 60 680 819';
+const phoneHref = 'tel:+37360680819';
 ---
 
 <Layout lang={lang} title={text.nav.home}>
@@ -49,32 +49,27 @@ const phoneHref = 'tel:+37360000000';
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 py-20">
         <div class="max-w-2xl">
-            <!-- Eyebrow badge -->
-            <div class="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 text-orange-300 text-sm font-bold px-4 py-2 rounded-full mb-6">
-                <i class="ph-fill ph-star text-orange-400 text-base"></i>
-                {text.heroBadge}
-            </div>
-
             <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold font-heading text-white leading-[1.06] tracking-tight mb-6">
                 <span class="block hero-title-left">{text.heroTitle1}</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 hero-title-right">{text.heroTitle2}</span>
             </h1>
 
-            <!-- Process strip -->
-            <div class="flex flex-wrap items-center gap-2 mb-6">
-                <div class="flex items-center gap-2 bg-white/10 border border-white/15 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
-                    <i class="ph-fill ph-check-circle text-orange-400"></i>
-                    {text.heroProcess1}
+            <!-- Process strip — liquid glass -->
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <div class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-2xl overflow-hidden backdrop-blur-xl text-white text-sm font-semibold" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.20),0 4px 20px rgba(0,0,0,0.20);">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+                    <i class="ph-fill ph-ruler text-orange-400 text-sm relative z-10"></i>
+                    <span class="relative z-10">{text.heroProcess1}</span>
                 </div>
-                <i class="ph ph-arrow-right text-gray-500 hidden sm:block"></i>
-                <div class="flex items-center gap-2 bg-white/10 border border-white/15 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
-                    <i class="ph-fill ph-check-circle text-orange-400"></i>
-                    {text.heroProcess2}
+                <div class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-2xl overflow-hidden backdrop-blur-xl text-white text-sm font-semibold" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.20),0 4px 20px rgba(0,0,0,0.20);">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+                    <i class="ph-fill ph-clock text-orange-400 text-sm relative z-10"></i>
+                    <span class="relative z-10">{text.heroProcess2}</span>
                 </div>
-                <i class="ph ph-arrow-right text-gray-500 hidden sm:block"></i>
-                <div class="flex items-center gap-2 bg-white/10 border border-white/15 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
-                    <i class="ph-fill ph-check-circle text-orange-400"></i>
-                    {text.heroProcess3}
+                <div class="relative flex items-center gap-2.5 px-4 py-2.5 rounded-2xl overflow-hidden backdrop-blur-xl text-white text-sm font-semibold" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);box-shadow:inset 0 1px 0 rgba(255,255,255,0.20),0 4px 20px rgba(0,0,0,0.20);">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+                    <i class="ph-fill ph-hammer text-orange-400 text-sm relative z-10"></i>
+                    <span class="relative z-10">{text.heroProcess3}</span>
                 </div>
             </div>
 
@@ -158,8 +153,8 @@ const phoneHref = 'tel:+37360000000';
                         ? ["Фиксируется в договоре", "Юридическое обязательство компании"]
                         : ["Fixat în contract", "Obligație juridică a companiei"],
                     lang === 'ru'
-                        ? ["50+ штатных специалистов", "Сертификат партнёра Технониколь"]
-                        : ["50+ specialiști angajați", "Certificat partener Technonicol"],
+                        ? ["50+ штатных специалистов", "Лучшие сертифицированные материалы"]
+                        : ["50+ specialiști angajați", "Materiale certificate de calitate"],
                     lang === 'ru'
                         ? ["Сроки прописаны в договоре", "Штрафные санкции за задержку"]
                         : ["Termene scrise în contract", "Penalități pentru depășire"],
@@ -239,12 +234,12 @@ const phoneHref = 'tel:+37360000000';
                         <i class="ph ph-certificate text-2xl"></i>
                     </div>
                     <h3 class="text-lg font-extrabold text-gray-900 mb-2">
-                        {lang === 'ru' ? 'Официальный партнёр Технониколь' : 'Partener oficial Technonicol'}
+                        {lang === 'ru' ? 'Используем только лучшие материалы' : 'Folosim doar cele mai bune materiale'}
                     </h3>
                     <p class="text-gray-500 text-sm leading-relaxed mb-5">
                         {lang === 'ru'
-                            ? 'Только сертифицированные материалы с официальной гарантией производителя.'
-                            : 'Doar materiale certificate cu garanție oficială a producătorului.'}
+                            ? 'Только сертифицированные материалы от проверенных производителей с официальной гарантией.'
+                            : 'Doar materiale certificate de la producători verificați cu garanție oficială.'}
                     </p>
                     <div class="flex flex-wrap gap-2">
                         <span class="inline-flex items-center gap-1 bg-orange-50 text-orange-600 text-xs font-bold px-3 py-1.5 rounded-full">
@@ -508,7 +503,7 @@ const phoneHref = 'tel:+37360000000';
             <span class="text-gray-700">•</span>
             <span class="flex items-center gap-2"><i class="ph-fill ph-star text-yellow-400 text-lg"></i>{lang === 'ru' ? '500+ объектов' : '500+ obiecte'}</span>
             <span class="text-gray-700">•</span>
-            <span class="flex items-center gap-2"><i class="ph-fill ph-certificate text-orange-400 text-lg"></i>{lang === 'ru' ? 'Партнёр Технониколь' : 'Partener Technonicol'}</span>
+            <span class="flex items-center gap-2"><i class="ph-fill ph-certificate text-orange-400 text-lg"></i>{lang === 'ru' ? 'Лучшие материалы' : 'Materiale de calitate'}</span>
         </div>
     </div>
 </section>

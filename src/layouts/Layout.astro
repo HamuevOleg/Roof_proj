@@ -63,7 +63,7 @@ const navItems = [
             </a>
 
             <!-- Desktop nav -->
-            <nav class="hidden lg:flex items-center gap-0.5">
+            <nav class="hidden xl:flex items-center gap-0.5">
                 {navItems.map(item => (
                     <a href={item.href} class="relative px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-white/10 group/nav">
                         {item.label}
@@ -73,14 +73,14 @@ const navItems = [
             </nav>
 
             <!-- Desktop actions -->
-            <div class="hidden lg:flex items-center gap-3">
+            <div class="hidden xl:flex items-center gap-3">
                 <div class="flex items-center bg-white/10 rounded-full p-1">
                     <a href={getLangLink('ru')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ru' ? 'bg-white/20 text-orange-400' : 'text-gray-400 hover:text-white'}`}>RU</a>
                     <a href={getLangLink('ro')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white/20 text-orange-400' : 'text-gray-400 hover:text-white'}`}>RO</a>
                 </div>
-                <a href="tel:+37360000000" class="flex items-center gap-2 bg-white/8 hover:bg-white/15 border border-white/15 text-white px-4 py-2 rounded-full font-medium transition-colors text-sm">
+                <a href="tel:+37360680819" class="flex items-center gap-2 bg-white/8 hover:bg-white/15 border border-white/15 text-white px-4 py-2 rounded-full font-medium transition-colors text-sm">
                     <i class="ph-fill ph-phone text-orange-400 text-base"></i>
-                    +373 60 000 000
+                    +373 60 680 819
                 </a>
                 <a href={`${base}${lang}/contacts`} class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-5 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap shadow-md shadow-orange-600/40 hover:shadow-orange-600/60 text-sm">
                     {text.freeEst}
@@ -88,7 +88,7 @@ const navItems = [
             </div>
 
             <!-- Mobile actions -->
-            <div class="lg:hidden flex items-center gap-2">
+            <div class="xl:hidden flex items-center gap-2">
                 <div class="flex items-center bg-white/10 rounded-full p-1">
                     <a href={getLangLink('ru')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ru' ? 'bg-white/20 text-orange-400' : 'text-gray-400'}`}>RU</a>
                     <a href={getLangLink('ro')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white/20 text-orange-400' : 'text-gray-400'}`}>RO</a>
@@ -101,7 +101,7 @@ const navItems = [
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-gray-900 border-t border-white/10 absolute w-full left-0 shadow-2xl shadow-black/50">
+    <div id="mobile-menu" class="hidden xl:hidden bg-gray-900 border-t border-white/10 absolute w-full left-0 shadow-2xl shadow-black/50">
         <div class="px-4 pt-3 pb-6 space-y-1">
             {navItems.map(item => (
                 <a href={item.href} class="flex items-center px-4 py-3 rounded-xl text-base font-semibold text-gray-300 hover:bg-white/10 hover:text-white transition-colors">
@@ -109,9 +109,9 @@ const navItems = [
                 </a>
             ))}
             <div class="pt-3 border-t border-white/10 space-y-2.5 mt-2">
-                <a href="tel:+37360000000" class="flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white px-4 py-3 rounded-xl font-medium">
+                <a href="tel:+37360680819" class="flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white px-4 py-3 rounded-xl font-medium">
                     <i class="ph-fill ph-phone text-orange-400 text-xl"></i>
-                    +373 60 000 000
+                    +373 60 680 819
                 </a>
                 <a href={`${base}${lang}/contacts`} class="flex items-center justify-center w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3.5 rounded-xl font-semibold shadow-md shadow-orange-600/30 transition-all">
                     {text.freeEst}
@@ -166,22 +166,26 @@ const navItems = [
             <div>
                 <h3 class="text-base font-semibold mb-4 pb-2 border-b border-gray-700">{text.footCont}</h3>
                 <div class="space-y-3">
-                    <a href="tel:+37360000000" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                    <a href="tel:+37360680819" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
                         <i class="ph-fill ph-phone text-orange-400 text-xl flex-shrink-0"></i>
-                        <span class="text-lg font-bold">+373 60 000 000</span>
+                        <span class="text-lg font-bold">+373 60 680 819</span>
                     </a>
                     <div class="flex flex-wrap gap-2 pt-1">
-                        <a href="https://wa.me/37360000000" target="_blank" rel="noopener noreferrer"
+                        <a href="https://wa.me/37360680819" target="_blank" rel="noopener noreferrer"
                            class="flex items-center gap-1.5 bg-green-600/20 hover:bg-green-600/30 text-green-400 border border-green-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
                             <i class="ph ph-whatsapp-logo text-base"></i> WhatsApp
                         </a>
-                        <a href="viber://chat?number=%2B37360000000"
+                        <a href="viber://chat?number=%2B37360680819"
                            class="flex items-center gap-1.5 bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
                             <i class="ph ph-chat-circle text-base"></i> Viber
                         </a>
                         <a href="https://t.me/ProAcoperis" target="_blank" rel="noopener noreferrer"
                            class="flex items-center gap-1.5 bg-sky-600/20 hover:bg-sky-600/30 text-sky-400 border border-sky-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
                             <i class="ph ph-telegram-logo text-base"></i> Telegram
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61581585747077" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
+                            <i class="ph ph-facebook-logo text-base"></i> Facebook
                         </a>
                     </div>
                 </div>
@@ -197,6 +201,30 @@ const navItems = [
         </div>
     </div>
 </footer>
+
+<!-- Sticky messenger buttons -->
+<div class="fixed bottom-5 right-3 sm:bottom-6 sm:right-4 z-50 flex flex-col gap-2 sm:gap-2.5">
+    <a href="https://wa.me/37360680819" target="_blank" rel="noopener noreferrer"
+       class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#25D366] hover:bg-[#1ebe5d] rounded-full flex items-center justify-center shadow-lg shadow-green-500/40 hover:shadow-green-500/60 transition-all duration-200 hover:scale-110"
+       aria-label="WhatsApp">
+        <i class="ph ph-whatsapp-logo text-white text-lg sm:text-xl"></i>
+    </a>
+    <a href="viber://chat?number=%2B37360680819"
+       class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#7360F2] hover:bg-[#6250e0] rounded-full flex items-center justify-center shadow-lg shadow-purple-500/40 hover:shadow-purple-500/60 transition-all duration-200 hover:scale-110"
+       aria-label="Viber">
+        <i class="ph ph-chat-circle-dots text-white text-lg sm:text-xl"></i>
+    </a>
+    <a href="https://t.me/ProAcoperis" target="_blank" rel="noopener noreferrer"
+       class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#29A8EB] hover:bg-[#1a96d8] rounded-full flex items-center justify-center shadow-lg shadow-sky-500/40 hover:shadow-sky-500/60 transition-all duration-200 hover:scale-110"
+       aria-label="Telegram">
+        <i class="ph ph-telegram-logo text-white text-lg sm:text-xl"></i>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61581585747077" target="_blank" rel="noopener noreferrer"
+       class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#1877F2] hover:bg-[#0d6ce0] rounded-full flex items-center justify-center shadow-lg shadow-blue-500/40 hover:shadow-blue-500/60 transition-all duration-200 hover:scale-110"
+       aria-label="Facebook">
+        <i class="ph ph-facebook-logo text-white text-lg sm:text-xl"></i>
+    </a>
+</div>
 
 <!-- Phosphor icons: loaded after page renders, non-blocking -->
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
