@@ -46,12 +46,29 @@ const videos    = getVideosData(lang, base);
         <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
             <span class="w-8 h-0.5 bg-orange-500"></span>{text.portPageAllSub}
         </p>
-        <h2 class="text-4xl font-extrabold text-gray-900 mb-10">{text.portPageAllTitle}</h2>
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-6">{text.portPageAllTitle}</h2>
 
-        <!-- Photo grid — first 6 visible, rest hidden until "show all" -->
+        <!-- Filter tabs -->
+        <div class="flex items-center gap-2 mb-8 flex-wrap" id="filter-tabs">
+            <button data-filter="all" onclick="filterPortfolio('all')"
+                    class="filter-tab px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors bg-gray-900 text-white border-gray-900">
+                {lang === 'ru' ? 'Все' : 'Toate'}
+            </button>
+            <button data-filter="flat" onclick="filterPortfolio('flat')"
+                    class="filter-tab px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-500 hover:border-gray-400 transition-colors">
+                {lang === 'ru' ? 'Плоские' : 'Plate'}
+            </button>
+            <button data-filter="pitched" onclick="filterPortfolio('pitched')"
+                    class="filter-tab px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-500 hover:border-gray-400 transition-colors">
+                {lang === 'ru' ? 'Скатные' : 'Pantă'}
+            </button>
+        </div>
+
+        <!-- Photo grid — all items rendered, JS handles visibility -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="portfolio-grid">
-            {portfolio.slice(0, 6).map((item) => (
-                <div class="group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
+            {portfolio.map((item) => (
+                <div class="portfolio-card group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
+                     data-type={item.type}
                      onclick="openLightbox(this.querySelector('img').src)">
                     <img src={item.image} alt={item.title} loading="lazy" decoding="async"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
@@ -61,27 +78,6 @@ const videos    = getVideosData(lang, base);
                     </div>
                 </div>
             ))}
-            {portfolio.slice(6).map((item) => (
-                <div class="portfolio-extra hidden group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
-                     onclick="openLightbox(this.querySelector('img').src)">
-                    <img data-src={item.image} src="" alt={item.title} loading="lazy" decoding="async"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                        <p class="text-white font-bold text-sm leading-snug">{item.title}</p>
-                        <p class="text-gray-300 text-xs mt-0.5">{item.location} · {item.area} · {item.year}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
-
-        <!-- Show all button -->
-        <div class="text-center mt-10" id="show-more-wrap">
-            <button
-                onclick="showAllPortfolio()"
-                class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:-translate-y-0.5 shadow-lg">
-                {lang === 'ru' ? 'Все фотографии' : 'Toate fotografiile'}
-                <i class="ph ph-images text-lg"></i>
-            </button>
         </div>
     </div>
 </section>
@@ -171,14 +167,23 @@ const videos    = getVideosData(lang, base);
 </Layout>
 
 <script is:inline>
-function showAllPortfolio() {
-    document.querySelectorAll('.portfolio-extra').forEach(el => {
-        el.classList.remove('hidden');
-        const img = el.querySelector('img');
-        if (img.dataset.src) img.src = img.dataset.src;
+function filterPortfolio(type) {
+    document.querySelectorAll('.portfolio-card').forEach(el => {
+        el.style.display = (type === 'all' || el.dataset.type === type) ? '' : 'none';
     });
-    document.getElementById('show-more-wrap').remove();
+    document.querySelectorAll('.filter-tab').forEach(btn => {
+        const active = btn.dataset.filter === type;
+        btn.classList.toggle('bg-gray-900', active);
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('border-gray-900', active);
+        btn.classList.toggle('text-gray-500', !active);
+        btn.classList.toggle('border-gray-200', !active);
+    });
 }
+
+// Support direct hash links: /portfolio#flat  /portfolio#pitched
+const initFilter = ['flat','pitched'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'all';
+if (initFilter !== 'all') filterPortfolio(initFilter);
 
 function openLightbox(src) {
     const lb = document.getElementById('lightbox');
