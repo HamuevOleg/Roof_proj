@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { getImg } from '../../data/imageMap.js';
 import { ui, languages } from '../../data/i18n.js';
 
 export function getStaticPaths() {
@@ -19,9 +21,11 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
 
 <!-- ═══════════════════════════════════════════════ PAGE HERO -->
 <section class="relative bg-gray-900 py-28 overflow-hidden">
-    <img
-        src={`${base}images/portfolio/p06.jpg`}
-        alt="" fetchpriority="high" decoding="async"
+    <Image
+        src={getImg('portfolio/p06.jpg')}
+        alt=""
+        fetchpriority="high"
+        decoding="async"
         class="absolute inset-0 w-full h-full object-cover opacity-25"
     />
     <div class="absolute inset-0 bg-gradient-to-b from-gray-950/80 to-gray-900/90"></div>

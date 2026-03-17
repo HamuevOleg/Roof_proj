@@ -133,7 +133,7 @@ export const ui = {
         contViber: "Viber",
         contViberHref: "viber://chat?number=%2B37360680819",
         contTelegram: "Telegram",
-        contTelegramHref: "https://t.me/ProAcoperis",
+        contTelegramHref: "https://t.me/+37360680819",
         contLegal: "Компания",
         contLegalVal: "SRL ProAcoperis.md",
     },
@@ -260,7 +260,7 @@ export const ui = {
         contViber: "Viber",
         contViberHref: "viber://chat?number=%2B37360680819",
         contTelegram: "Telegram",
-        contTelegramHref: "https://t.me/ProAcoperis",
+        contTelegramHref: "https://t.me/+37360680819",
         contLegal: "Companie",
         contLegalVal: "SRL ProAcoperis.md",
     }
@@ -282,7 +282,7 @@ export const getServicesData = (lang, base = '/') => [
         price: lang === 'ru' ? "от 180 лей/м²" : "de la 180 lei/m²",
         priceNum: "180", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-buildings",
-        image: `${base}images/services/Services01.jpg`,
+        image: 'services/Services01.jpg',
         benefits: lang === 'ru'
             ? ["Гарантия до 15 лет", "Срок службы 30–50 лет", "Монолитное покрытие без швов", "Устойчива к УФ и перепадам температур"]
             : ["Garanție până la 15 ani", "Durată de viață 30–50 ani", "Înveliș monolitic fără rosturi", "Rezistentă la UV și variații de temperatură"]
@@ -299,7 +299,7 @@ export const getServicesData = (lang, base = '/') => [
         price: lang === 'ru' ? "от 120 лей/м²" : "de la 120 lei/m²",
         priceNum: "120", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-drop",
-        image: `${base}images/services/Services02.jpg`,
+        image: 'services/Services02.jpg',
         benefits: lang === 'ru'
             ? ["Проверено десятилетиями", "Доступная стоимость", "Быстрый монтаж", "Хорошая гибкость при низких температурах"]
             : ["Verificat de zeci de ani", "Cost accesibil", "Montaj rapid", "Flexibilitate bună la temperaturi scăzute"]
@@ -316,7 +316,7 @@ export const getServicesData = (lang, base = '/') => [
         price: lang === 'ru' ? "от 80 лей/м²" : "de la 80 lei/m²",
         priceNum: "80", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-wrench",
-        image: `${base}images/services/Services03.jpg`,
+        image: 'services/Services03.jpg',
         benefits: lang === 'ru'
             ? ["Диагностика тепловизором", "Работа без демонтажа", "Гарантия на ремонт", "Выезд в день обращения"]
             : ["Diagnosticare cu termovizor", "Lucru fără demontare", "Garanție la reparație", "Deplasare în ziua solicitării"]
@@ -333,7 +333,7 @@ export const getServicesData = (lang, base = '/') => [
         price: lang === 'ru' ? "от 150 лей/м²" : "de la 150 lei/m²",
         priceNum: "150", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-sun",
-        image: `${base}images/services/Services04.jpg`,
+        image: 'services/Services04.jpg',
         benefits: lang === 'ru'
             ? ["XPS / минвата / PIR-плиты", "Снижение теплопотерь 20–30%", "Соответствие СНиП", "Подбор под любой бюджет"]
             : ["XPS / vată minerală / plăci PIR", "Reducerea pierderilor 20–30%", "Conformitate cu normele", "Selecție pentru orice buget"]
@@ -350,7 +350,7 @@ export const getServicesData = (lang, base = '/') => [
         price: lang === 'ru' ? "от 400 лей/м²" : "de la 400 lei/m²",
         priceNum: "400", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
         icon: "ph ph-house-line",
-        image: `${base}images/services/Services05.jpg`,
+        image: 'services/Services05.jpg',
         benefits: lang === 'ru'
             ? ["Система Технониколь Шинглас", "Гарантия 15 лет", "Полный цикл под ключ", "3D проект до начала работ"]
             : ["Sistem Technonicol Shinglas", "Garanție 15 ani", "Ciclu complet la cheie", "Proiect 3D înainte de lucrări"]
@@ -367,7 +367,7 @@ export const getServicesData = (lang, base = '/') => [
         price: lang === 'ru' ? "Бесплатно" : "Gratuit",
         priceNum: null, priceUnit: null,
         icon: "ph ph-cube",
-        image: `${base}images/services/Service06.jpg`,
+        image: 'services/Service06.jpg',
         benefits: lang === 'ru'
             ? ["Бесплатный выезд инженера", "Детальный 3D эскиз", "Прозрачная смета", "Без скрытых платежей"]
             : ["Deplasare gratuită a inginerului", "Schiță 3D detaliată", "Deviz transparent", "Fără plăți ascunse"]
@@ -393,14 +393,14 @@ export const getFeaturesData = (lang) => [
 ];
 
 export const getPortfolioData = (lang, base = '/') => [
-    { id: 1, type: 'pitched', title: lang === 'ru' ? "Беседка на территории частного дома (зона отдыха)" : "Foișor pe teritoriul casei private (zonă de odihnă)",           category: lang === 'ru' ? "Скатная кровля" : "Acoperiș în pantă",    location: lang === 'ru' ? "пригород Кишинёва, г. Дурлешты" : "suburbia Chișinău, or. Durlești",      area: "25 м²",   year: "2022", image: `${base}images/portfolio/p01.jpg` },
-    { id: 2, type: 'pitched', title: lang === 'ru' ? "Частный дом (скатная крыша из металлочерепицы)" : "Casă privată (acoperiș în pantă din tablă profilată)",              category: lang === 'ru' ? "Металлочерепица" : "Țiglă metalică",       location: lang === 'ru' ? "коммуна Ставчены" : "com. Stăuceni",                                   area: "160 м²",  year: "2020", image: `${base}images/portfolio/p02.jpg` },
-    { id: 3, type: 'flat',    title: lang === 'ru' ? "Промышленный / складской объект (наплавляемая рулонная кровля)" : "Obiect industrial / depozit (acoperiș rulat sudat)",  category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",            location: lang === 'ru' ? "Кишинёв, промзона Чеканы" : "Chișinău, zona industrială Ciocana",     area: "450 м²",  year: "2018", image: `${base}images/portfolio/p03.jpg` },
-    { id: 4, type: 'flat',    title: lang === 'ru' ? "Офисное / коммерческое здание (плоская кровля, ПВХ-мембрана)" : "Clădire de birouri / comercială (acoperiș plat, membrană PVC)", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",   location: lang === 'ru' ? "Кишинёв, сектор Рышкановка" : "Chișinău, sectorul Râșcani",            area: "300 м²",  year: "2023", image: `${base}images/portfolio/p04.jpg` },
-    { id: 5, type: 'flat',    title: lang === 'ru' ? "Элитный частный дом / Вилла (эксплуатируемая плоская кровля)" : "Casă privată de lux / Vilă (acoperiș plat exploatabil)", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв, район Валя Морилор" : "Chișinău, zona Valia Morilor",         area: "250 м²",  year: "2021", image: `${base}images/portfolio/p05.jpg` },
-    { id: 6, type: 'flat',    title: lang === 'ru' ? "Многоквартирный дом старого фонда (ремонт рубероидной крыши)" : "Bloc locativ vechi (reparație acoperiș din ruberoid)",   category: lang === 'ru' ? "Ремонт кровли" : "Reparație acoperiș",    location: lang === 'ru' ? "Кишинёв, сектор Ботаника" : "Chișinău, sectorul Botanica",             area: "600 м²",  year: "2016", image: `${base}images/portfolio/p06.jpg` },
-    { id: 7, type: 'flat',    title: lang === 'ru' ? "Многоквартирный дом / Новострой (плоская мембранная кровля)" : "Bloc locativ / Construcție nouă (acoperiș plat membrană)", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв, сектор Чеканы" : "Chișinău, sectorul Ciocana",               area: "850 м²",  year: "2022", image: `${base}images/portfolio/p07.jpg` },
-    { id: 8, type: 'pitched', title: lang === 'ru' ? "Частный дом (скатная крыша, битумная / гибкая черепица)" : "Casă privată (acoperiș în pantă, șindrilă bituminoasă)",       category: lang === 'ru' ? "Гибкая черепица" : "Șindrilă flexibilă",  location: lang === 'ru' ? "Кишинёв, сектор Буюканы" : "Chișinău, sectorul Buiucani",             area: "180 м²",  year: "2019", image: `${base}images/portfolio/p08.jpg` },
+    { id: 1, type: 'pitched', title: lang === 'ru' ? "Беседка на территории частного дома (зона отдыха)" : "Foișor pe teritoriul casei private (zonă de odihnă)",           category: lang === 'ru' ? "Скатная кровля" : "Acoperiș în pantă",    location: lang === 'ru' ? "пригород Кишинёва, г. Дурлешты" : "suburbia Chișinău, or. Durlești",      area: "25 м²",   year: "2022", image: 'portfolio/p01.jpg' },
+    { id: 2, type: 'pitched', title: lang === 'ru' ? "Частный дом (скатная крыша из металлочерепицы)" : "Casă privată (acoperiș în pantă din tablă profilată)",              category: lang === 'ru' ? "Металлочерепица" : "Țiglă metalică",       location: lang === 'ru' ? "коммуна Ставчены" : "com. Stăuceni",                                   area: "160 м²",  year: "2020", image: 'portfolio/p02.jpg' },
+    { id: 3, type: 'flat',    title: lang === 'ru' ? "Промышленный / складской объект (наплавляемая рулонная кровля)" : "Obiect industrial / depozit (acoperiș rulat sudat)",  category: lang === 'ru' ? "Еврорубероид" : "Euroruberoid",            location: lang === 'ru' ? "Кишинёв, промзона Чеканы" : "Chișinău, zona industrială Ciocana",     area: "450 м²",  year: "2018", image: 'portfolio/p03.jpg' },
+    { id: 4, type: 'flat',    title: lang === 'ru' ? "Офисное / коммерческое здание (плоская кровля, ПВХ-мембрана)" : "Clădire de birouri / comercială (acoperiș plat, membrană PVC)", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",   location: lang === 'ru' ? "Кишинёв, сектор Рышкановка" : "Chișinău, sectorul Râșcani",            area: "300 м²",  year: "2023", image: 'portfolio/p04.jpg' },
+    { id: 5, type: 'flat',    title: lang === 'ru' ? "Элитный частный дом / Вилла (эксплуатируемая плоская кровля)" : "Casă privată de lux / Vilă (acoperiș plat exploatabil)", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв, район Валя Морилор" : "Chișinău, zona Valia Morilor",         area: "250 м²",  year: "2021", image: 'portfolio/p05.jpg' },
+    { id: 6, type: 'flat',    title: lang === 'ru' ? "Многоквартирный дом старого фонда (ремонт рубероидной крыши)" : "Bloc locativ vechi (reparație acoperiș din ruberoid)",   category: lang === 'ru' ? "Ремонт кровли" : "Reparație acoperiș",    location: lang === 'ru' ? "Кишинёв, сектор Ботаника" : "Chișinău, sectorul Botanica",             area: "600 м²",  year: "2016", image: 'portfolio/p06.jpg' },
+    { id: 7, type: 'flat',    title: lang === 'ru' ? "Многоквартирный дом / Новострой (плоская мембранная кровля)" : "Bloc locativ / Construcție nouă (acoperiș plat membrană)", category: lang === 'ru' ? "Мембрана ПВХ" : "Membrană PVC",          location: lang === 'ru' ? "Кишинёв, сектор Чеканы" : "Chișinău, sectorul Ciocana",               area: "850 м²",  year: "2022", image: 'portfolio/p07.jpg' },
+    { id: 8, type: 'pitched', title: lang === 'ru' ? "Частный дом (скатная крыша, битумная / гибкая черепица)" : "Casă privată (acoperiș în pantă, șindrilă bituminoasă)",       category: lang === 'ru' ? "Гибкая черепица" : "Șindrilă flexibilă",  location: lang === 'ru' ? "Кишинёв, сектор Буюканы" : "Chișinău, sectorul Buiucani",             area: "180 м²",  year: "2019", image: 'portfolio/p08.jpg' },
 ];
 
 export const getStatsData = (lang) => [
@@ -479,14 +479,14 @@ export const getRoofSystemsData = (lang) => [
 ];
 
 export const getGalleryData = (base = '/') => [
-    { image: `${base}images/gallery/PVC.jpg`,         label: "Монтаж ПВХ мембраны — 850 м²" },
-    { image: `${base}images/gallery/Roofing.jpg`,     label: "Кровельные работы — Кишинёв" },
-    { image: `${base}images/gallery/Industrial.jpg`,  label: "Промышленный объект — 1 200 м²" },
-    { image: `${base}images/gallery/Finished.jpg`,    label: "Сдача объекта заказчику" },
-    { image: `${base}images/gallery/RoofDetails.jpg`, label: "Технические узлы и примыкания" },
-    { image: `${base}images/gallery/Private.jpg`,     label: "Частный дом — 180 м²" },
-    { image: `${base}images/gallery/Commercial.jpg`,  label: "Коммерческий объект — 560 м²" },
-    { image: `${base}images/gallery/Junctions.jpg`,   label: "Примыкания к стенам и парапету" },
+    { image: 'gallery/PVC.jpg',         label: "Монтаж ПВХ мембраны — 850 м²" },
+    { image: 'gallery/Roofing.jpg',     label: "Кровельные работы — Кишинёв" },
+    { image: 'gallery/Industrial.jpg',  label: "Промышленный объект — 1 200 м²" },
+    { image: 'gallery/Finished.jpg',    label: "Сдача объекта заказчику" },
+    { image: 'gallery/RoofDetails.jpg', label: "Технические узлы и примыкания" },
+    { image: 'gallery/Private.jpg',     label: "Частный дом — 180 м²" },
+    { image: 'gallery/Commercial.jpg',  label: "Коммерческий объект — 560 м²" },
+    { image: 'gallery/Junctions.jpg',   label: "Примыкания к стенам и парапету" },
 ];
 
 export const getFAQData = (lang) => [
@@ -540,6 +540,6 @@ export const getAboutValuesData = (lang) => [
 ];
 
 export const getVideosData = (lang, base = '/') => [
-    { src: `${base}images/videos/work1.mp4`, poster: `${base}images/portfolio/p01.jpg`, title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
-    { src: `${base}images/videos/work2.mp4`, poster: `${base}images/portfolio/p03.jpg`, title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
+    { src: `${base}images/videos/work1.mp4`, poster: 'portfolio/p01.jpg', title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
+    { src: `${base}images/videos/work2.mp4`, poster: 'portfolio/p03.jpg', title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
 ];

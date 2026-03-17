@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { getImg } from '../../data/imageMap.js';
 import {
     ui, languages,
     getServicesData, getProcessData, getRoofSystemsData, getFAQData
@@ -14,16 +16,16 @@ const base = import.meta.env.BASE_URL;
 const text     = ui[lang];
 const services = getServicesData(lang, base);
 
-// ── Work-in-progress masonry images (public/images/works/)
+// ── Work-in-progress masonry images (src/assets/images/works/)
 const works = [
-    { src: `${base}images/works/photo_2026-03-07_18-15-19.jpg`,        label: lang === 'ru' ? 'МЖД / Новострой · Праймирование плоской кровли · Телецентр, Кишинёв · ~400 м² · 2025'          : 'Bloc locativ / Construcție nouă · Amorsare acoperiș plat · Telecentru, Chișinău · ~400 m² · 2025',         live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-01-44%20(2).jpg`,  label: lang === 'ru' ? 'Частный дом / Коттедж · Утепление плоской кровли XPS · г. Кодру · ~120 м² · 2026'               : 'Casă privată / Casă de vacanță · Termoizolație acoperiș plat XPS · or. Codru · ~120 m² · 2026',           live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-01-48%20(3).jpg`,  label: lang === 'ru' ? 'Частный дом с мансардой · Стропила и гидробарьер изнутри · ком. Гратиешты · ~150 м² · 2025'     : 'Casă cu mansardă · Căpriori și hidrobarieră interior · com. Grătiești · ~150 m² · 2025',                  live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-01-48.jpg`,         label: lang === 'ru' ? 'Частный дом с мансардой · Подкровельное пространство и мансардные окна · ком. Гратиешты · ~150 м² · 2025' : 'Casă cu mansardă · Spațiu subteran și ferestre mansardă · com. Grătiești · ~150 m² · 2025', live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-08-04.jpg`,         label: lang === 'ru' ? 'Жилой комплекс · Гибкая черепица на купол · Чеканы, Кишинёв · ~80 м² · 2024'                    : 'Complex locativ · Șindrilă flexibilă pe cupolă · Ciocana, Chișinău · ~80 m² · 2024',                    live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-08-05%20(2).jpg`,  label: lang === 'ru' ? 'Частный дом · Праймирование под наплавляемые материалы ТехноНИКОЛЬ · с. Колоница · ~90 м² · 2025' : 'Casă privată · Amorsare înainte de membrane bituminoase TechnoNICOL · s. Colonița · ~90 m² · 2025',     live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-15-18%20(3).jpg`,  label: lang === 'ru' ? 'Частный дом / Пристройка · Монтаж XPS поверх гидроизоляции · г. Сынжера · ~60 м² · 2026'         : 'Casă privată / Extensie · Montaj XPS peste hidroizolație · or. Sângera · ~60 m² · 2026',                  live: true },
-    { src: `${base}images/works/photo_2026-03-07_18-15-18.jpg`,         label: lang === 'ru' ? 'Частный дом / Пристройка · Утепление примыканий и парапетов XPS · г. Сынжера · ~60 м² · 2026'    : 'Casă privată / Extensie · Termoizolație racorduri și parapete XPS · or. Sângera · ~60 m² · 2026',        live: true },
+    { imageKey: 'works/photo_2026-03-07_18-15-19.jpg',          label: lang === 'ru' ? 'МЖД / Новострой · Праймирование плоской кровли · Телецентр, Кишинёв · ~400 м² · 2025'          : 'Bloc locativ / Construcție nouă · Amorsare acoperiș plat · Telecentru, Chișinău · ~400 m² · 2025',         live: true },
+    { imageKey: 'works/photo_2026-03-07_18-01-44 (2).jpg',       label: lang === 'ru' ? 'Частный дом / Коттедж · Утепление плоской кровли XPS · г. Кодру · ~120 м² · 2026'               : 'Casă privată / Casă de vacanță · Termoizolație acoperiș plat XPS · or. Codru · ~120 m² · 2026',           live: true },
+    { imageKey: 'works/photo_2026-03-07_18-01-48 (3).jpg',       label: lang === 'ru' ? 'Частный дом с мансардой · Стропила и гидробарьер изнутри · ком. Гратиешты · ~150 м² · 2025'     : 'Casă cu mansardă · Căpriori și hidrobarieră interior · com. Grătiești · ~150 m² · 2025',                  live: true },
+    { imageKey: 'works/photo_2026-03-07_18-01-48.jpg',            label: lang === 'ru' ? 'Частный дом с мансардой · Подкровельное пространство и мансардные окна · ком. Гратиешты · ~150 м² · 2025' : 'Casă cu mansardă · Spațiu subteran și ferestre mansardă · com. Grătiești · ~150 m² · 2025', live: true },
+    { imageKey: 'works/photo_2026-03-07_18-08-04.jpg',            label: lang === 'ru' ? 'Жилой комплекс · Гибкая черепица на купол · Чеканы, Кишинёв · ~80 м² · 2024'                    : 'Complex locativ · Șindrilă flexibilă pe cupolă · Ciocana, Chișinău · ~80 m² · 2024',                    live: true },
+    { imageKey: 'works/photo_2026-03-07_18-08-05 (2).jpg',        label: lang === 'ru' ? 'Частный дом · Праймирование под наплавляемые материалы ТехноНИКОЛЬ · с. Колоница · ~90 м² · 2025' : 'Casă privată · Amorsare înainte de membrane bituminoase TechnoNICOL · s. Colonița · ~90 m² · 2025',     live: true },
+    { imageKey: 'works/photo_2026-03-07_18-15-18 (3).jpg',        label: lang === 'ru' ? 'Частный дом / Пристройка · Монтаж XPS поверх гидроизоляции · г. Сынжера · ~60 м² · 2026'         : 'Casă privată / Extensie · Montaj XPS peste hidroizolație · or. Sângera · ~60 m² · 2026',                  live: true },
+    { imageKey: 'works/photo_2026-03-07_18-15-18.jpg',            label: lang === 'ru' ? 'Частный дом / Пристройка · Утепление примыканий и парапетов XPS · г. Сынжера · ~60 м² · 2026'    : 'Casă privată / Extensie · Termoizolație racorduri și parapete XPS · or. Sângera · ~60 m² · 2026',        live: true },
 ];
 const process  = getProcessData(lang);
 const systems  = getRoofSystemsData(lang);
@@ -34,9 +36,11 @@ const faq      = getFAQData(lang);
 
 <!-- ═══════════════════════════════════════════════ PAGE HERO -->
 <section class="relative bg-gray-900 py-28 overflow-hidden">
-    <img
-        src={`${base}images/portfolio/p07.jpg`}
-        alt="" fetchpriority="high" decoding="async"
+    <Image
+        src={getImg('portfolio/p07.jpg')}
+        alt=""
+        fetchpriority="high"
+        decoding="async"
         class="absolute inset-0 w-full h-full object-cover opacity-30"
     />
     <div class="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/70 to-transparent"></div>
@@ -68,8 +72,8 @@ const faq      = getFAQData(lang);
                 <div class={`reveal group flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-0 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-gray-50`}>
                     <!-- Image -->
                     <div class="lg:w-2/5 relative overflow-hidden h-64 lg:h-auto min-h-[260px]">
-                        <img
-                            src={service.image} alt={service.title}
+                        <Image
+                            src={getImg(service.image)} alt={service.title}
                             loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
@@ -243,11 +247,11 @@ const faq      = getFAQData(lang);
         <div class="columns-1 sm:columns-2 lg:columns-3 gap-3">
             {works.map((item) => (
                 <div class="break-inside-avoid mb-3 group relative overflow-hidden rounded-xl cursor-zoom-in"
-                     onclick={`openWorksLightbox('${item.src}', '${item.label}')`}>
+                     onclick={`openWorksLightbox('${getImg(item.imageKey).src}', '${item.label}')`}>
 
                     <!-- Image — natural height = masonry effect -->
-                    <img
-                        src={item.src} alt={item.label}
+                    <Image
+                        src={getImg(item.imageKey)} alt={item.label}
                         loading="lazy" decoding="async"
                         class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
