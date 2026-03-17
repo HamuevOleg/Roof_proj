@@ -397,6 +397,7 @@ const phoneHref = 'tel:+37360680819';
                         src={video.src}
                         poster={video.poster}
                         controls
+                        muted
                         preload="none"
                         class="w-full h-72 object-cover"
                     ></video>
@@ -509,4 +510,11 @@ const phoneHref = 'tel:+37360680819';
 </section>
 
 </div>
+
+<script is:inline>
+    document.querySelectorAll('video').forEach(v => {
+        v.muted = true;
+        v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
+    });
+</script>
 </Layout>

@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Hide video volume controls in all browsers */
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-volume-slider-container,
+video::-webkit-media-controls-volume-control-container,
+video::-webkit-media-controls-volume-control-hover-background {
+    display: none !important;
+}
+
 @theme {
     --animate-pulse-slow: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --animate-pulse-cta: pulseCta 2s ease-in-out infinite;
