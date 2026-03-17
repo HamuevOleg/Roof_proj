@@ -25,6 +25,7 @@ const navItems = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
     <title>{title} - ProAcoperis.md</title>
 
     <!-- Performance: preconnect to external origins -->
@@ -50,15 +51,15 @@ const navItems = [
         <div class="flex justify-between items-center h-20 transition-all duration-300" id="header-inner">
 
             <!-- Logo -->
-            <a href={`${base}${lang}/`} class="flex items-center gap-3 flex-shrink-0 group">
-                <div class="bg-gradient-to-br from-orange-500 to-orange-700 text-white p-2.5 rounded-xl flex items-center justify-center shadow-md shadow-orange-600/40 group-hover:shadow-orange-600/60 group-hover:scale-105 transition-all duration-300">
-                    <i class="ph ph-buildings text-2xl"></i>
+            <a href={`${base}${lang}/`} class="flex items-center gap-2 xl:gap-3 flex-shrink-0 group">
+                <div class="bg-gradient-to-br from-orange-500 to-orange-700 text-white p-2 xl:p-2.5 rounded-xl flex items-center justify-center shadow-md shadow-orange-600/40 group-hover:shadow-orange-600/60 group-hover:scale-105 transition-all duration-300">
+                    <i class="ph ph-buildings text-xl xl:text-2xl"></i>
                 </div>
                 <div>
-                    <p class="text-2xl font-black leading-tight tracking-tight font-heading">
+                    <p class="text-base xl:text-2xl font-black leading-tight tracking-tight font-heading">
                         <span class="text-white">Pro</span><span class="text-orange-400">Acoperis</span><span class="text-amber-400">.md</span>
                     </p>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest font-semibold">{text.brandExpert}</p>
+                    <p class="hidden xl:block text-xs text-gray-500 uppercase tracking-widest font-semibold">{text.brandExpert}</p>
                 </div>
             </a>
 
