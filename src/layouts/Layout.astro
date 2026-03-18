@@ -2,21 +2,36 @@
 import '../styles/global.css';
 import { ui, getServicesData } from '../data/i18n.js';
 
-const { lang, title } = Astro.props;
+const { lang, title, description = '' } = Astro.props;
 const text = ui[lang];
 const base = import.meta.env.BASE_URL;
 const services = getServicesData(lang, base);
 const currentYear = new Date().getFullYear(); // always trailing slash from astro.config base: '/Roof_proj/'
 const rawPath = Astro.url.pathname.startsWith(base.slice(0, -1)) ? Astro.url.pathname.slice(base.length - 1) : Astro.url.pathname;
 const currentPath = rawPath.replace(`/${lang}`, '') || '/';
-const getLangLink = (targetLang) => `${base}${targetLang}${currentPath}`;
+const getLangLink = (targetLang) => targetLang === 'ro'
+    ? `${base}${currentPath.slice(1)}`          // RO at root: /services, /
+    : `${base}${targetLang}${currentPath}`;     // RU: /ru/services
+
+// RO lives at root (/), RU at /ru/
+const langPfx = lang === 'ro' ? '' : `${lang}/`;
+
+// SEO: canonical + hreflang (only on production domain)
+const siteOrigin = Astro.site ? Astro.site.origin : null;
+const roPath     = currentPath === '/' ? '/' : currentPath;  // /services, /about …
+const ruPath     = currentPath;                               // /services, /about …
+const canonicalURL = siteOrigin
+    ? (lang === 'ro' ? `${siteOrigin}${roPath}` : `${siteOrigin}/ru${ruPath}`)
+    : null;
+const hreflangRo = siteOrigin ? `${siteOrigin}${roPath}` : null;
+const hreflangRu = siteOrigin ? `${siteOrigin}/ru${ruPath}` : null;
 
 const navItems = [
-    { id: 'home',      label: text.nav.home,      href: `${base}${lang}/` },
-    { id: 'services',  label: text.nav.services,  href: `${base}${lang}/services` },
-    { id: 'portfolio', label: text.nav.portfolio,  href: `${base}${lang}/portfolio` },
-    { id: 'about',     label: text.nav.about,      href: `${base}${lang}/about` },
-    { id: 'contacts',  label: text.nav.contacts,   href: `${base}${lang}/contacts` }
+    { id: 'home',      label: text.nav.home,      href: `${base}${langPfx}` },
+    { id: 'services',  label: text.nav.services,  href: `${base}${langPfx}services` },
+    { id: 'portfolio', label: text.nav.portfolio,  href: `${base}${langPfx}portfolio` },
+    { id: 'about',     label: text.nav.about,      href: `${base}${langPfx}about` },
+    { id: 'contacts',  label: text.nav.contacts,   href: `${base}${langPfx}contacts` }
 ];
 ---
 
@@ -26,7 +41,18 @@ const navItems = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#111827">
-    <title>{title} - ProAcoperis.md</title>
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'ru' ? 'ru_RU' : 'ro_RO'} />
+    <meta property="og:image" content={`${base}images/logo/LogoTranspBG.png`} />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    {hreflangRu   && <link rel="alternate" hreflang="ru"        href={hreflangRu} />}
+    {hreflangRo   && <link rel="alternate" hreflang="ro"        href={hreflangRo} />}
+    {hreflangRu   && <link rel="alternate" hreflang="x-default" href={hreflangRu} />}
+    <link rel="icon" type="image/png" href={`${base}images/logo/Favicon.png`} />
 
     <!-- Google Analytics (loads only after cookie consent) -->
     <script is:inline>
@@ -47,9 +73,13 @@ const navItems = [
         if (localStorage.getItem('cookieConsent') === 'yes') loadGA();
     </script>
 
-    <!-- Performance: preconnect to external origins -->
+    <!-- Google Fonts: non-blocking via preload swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap"></noscript>
+
+    <!-- Performance: preconnect to external origins -->
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.youtube.com">
     <link rel="dns-prefetch" href="https://img.youtube.com">
@@ -71,9 +101,7 @@ const navItems = [
 
             <!-- Logo -->
             <a href={`${base}${lang}/`} class="flex items-center gap-2 xl:gap-3 flex-shrink-0 group">
-                <div class="bg-gradient-to-br from-orange-500 to-orange-700 text-white p-2 xl:p-2.5 rounded-xl flex items-center justify-center shadow-md shadow-orange-600/40 group-hover:shadow-orange-600/60 group-hover:scale-105 transition-all duration-300">
-                    <i class="ph ph-buildings text-xl xl:text-2xl"></i>
-                </div>
+                <img src={`${base}images/logo/LogoTranspBG.svg`} alt="ProAcoperis.md" class="h-9 xl:h-11 w-auto group-hover:scale-105 transition-transform duration-300" />
                 <div>
                     <p class="text-base xl:text-2xl font-black leading-tight tracking-tight font-heading">
                         <span class="text-white">Pro</span><span class="text-orange-400">Acoperis</span><span class="text-amber-400">.md</span>
@@ -153,10 +181,7 @@ const navItems = [
             <!-- Brand -->
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <div class="bg-orange-500/20 text-orange-400 p-1.5 rounded-lg flex items-center justify-center">
-                        <i class="ph ph-buildings text-xl"></i>
-                    </div>
-                    <span class="text-xl font-black font-heading"><span class="text-white">Pro</span><span class="text-orange-400">Acoperis</span><span class="text-amber-400">.md</span></span>
+                    <img src={`${base}images/logo/LogoTranspBG.svg`} alt="ProAcoperis.md" class="h-9 w-auto brightness-0 invert" />
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed mb-4">{text.footDesc}</p>
                 <p class="text-gray-600 text-xs">{text.footLegal}</p>
@@ -189,6 +214,10 @@ const navItems = [
                     <a href="tel:+37360680819" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
                         <i class="ph-fill ph-phone text-orange-400 text-xl flex-shrink-0"></i>
                         <span class="text-lg font-bold">+373 60 680 819</span>
+                    </a>
+                    <a href="mailto:proacoperis54@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
+                        <i class="ph ph-envelope text-orange-400 text-xl flex-shrink-0"></i>
+                        <span class="text-sm">proacoperis54@gmail.com</span>
                     </a>
                     <div class="flex flex-wrap gap-2 pt-1">
                         <a href="https://wa.me/37360680819" target="_blank" rel="noopener noreferrer"
@@ -224,6 +253,12 @@ const navItems = [
 
 <!-- Sticky messenger buttons -->
 <div class="fixed bottom-8 right-3 sm:bottom-8 sm:right-4 z-50 flex flex-col gap-2 sm:gap-2.5">
+    <!-- Phone call button — mobile prominent -->
+    <a href="tel:+37360680819"
+       class="group w-10 h-10 sm:w-11 sm:h-11 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-200 hover:scale-110"
+       aria-label="Позвонить / Sunați">
+        <i class="ph-fill ph-phone text-white text-lg sm:text-xl"></i>
+    </a>
     <a href="https://wa.me/37360680819" target="_blank" rel="noopener noreferrer"
        class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#25D366] hover:bg-[#1ebe5d] rounded-full flex items-center justify-center shadow-lg shadow-green-500/40 hover:shadow-green-500/60 transition-all duration-200 hover:scale-110"
        aria-label="WhatsApp">

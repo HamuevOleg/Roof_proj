@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 html, body { overflow-x: clip; }
@@ -14,7 +13,7 @@ video::-webkit-media-controls-volume-control-hover-background {
 
 @theme {
     --animate-pulse-slow: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animate-pulse-cta: pulseCta 2s ease-in-out infinite;
+    --animate-pulse-cta: pulseCta 2.5s ease-in-out infinite;
     --font-family-heading: 'Montserrat', sans-serif;
 
     @keyframes pulseSlow {
@@ -22,8 +21,8 @@ video::-webkit-media-controls-volume-control-hover-background {
         50% { opacity: 0.7; }
     }
     @keyframes pulseCta {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.5); }
-        70% { box-shadow: 0 0 0 16px rgba(234, 88, 12, 0); }
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.03); }
     }
 }
 

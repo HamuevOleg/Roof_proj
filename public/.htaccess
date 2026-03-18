@@ -1,0 +1,6 @@
+Options -Indexes
+RewriteEngine On
+
+# /ro/ and /ro/page → proper 301 to root equivalents
+RewriteRule ^ro/?$ / [R=301,L]
+RewriteRule ^ro/(.+)$ /$1 [R=301,L]

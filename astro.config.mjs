@@ -9,7 +9,7 @@ const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 //   base: '/',
 
 export default defineConfig({
-    site: isGitHubPages ? 'https://hameuevoleg.github.io' : undefined,
+    site: isGitHubPages ? 'https://hameuevoleg.github.io' : 'https://proacoperis.md',
     base: isGitHubPages ? '/Roof_proj/' : '/',
     vite: {
         plugins: [tailwindcss()],

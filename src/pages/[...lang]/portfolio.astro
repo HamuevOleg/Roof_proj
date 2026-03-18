@@ -1,0 +1,219 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { getImg } from '../../data/imageMap.js';
+import { ui, languages, getPortfolioData, getGalleryData, getVideosData } from '../../data/i18n.js';
+
+export function getStaticPaths() {
+    return [
+        { params: { lang: undefined } },
+        { params: { lang: 'ru' } },
+        { params: { lang: 'ro' } },
+    ];
+}
+
+const rawLang = Astro.params.lang;
+const base = import.meta.env.BASE_URL;
+if (rawLang === 'ro') return Astro.redirect(`${base}portfolio`, 301);
+const lang = rawLang ?? 'ro';
+const pfx = lang === 'ro' ? '' : `${lang}/`;
+const text      = ui[lang];
+const portfolio = getPortfolioData(lang, base);
+const gallery   = getGalleryData(base);
+const videos    = getVideosData(lang, base);
+
+---
+
+<Layout lang={lang} title={text.seo.portfolio.title} description={text.seo.portfolio.desc}>
+
+<!-- ═══════════════════════════════════════════════ PAGE HERO -->
+<section class="relative bg-gray-900 py-28 overflow-hidden">
+    <Image
+        src={getImg('portfolio/p08.jpg')}
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover opacity-30"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/70 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-orange-100 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <i class="ph-fill ph-buildings text-orange-400"></i>
+            {text.portPageHeroBadge}
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-5 leading-tight">
+            {text.portPageHeroTitle} <span class="text-orange-400">{text.portPageHeroTitle2}</span>
+        </h1>
+        <p class="text-gray-300 text-xl max-w-xl leading-relaxed mb-8">{text.portPageHeroDesc}</p>
+        <a href={`${base}${pfx}contacts`} class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-7 py-4 rounded-2xl font-bold transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-500/30">
+            {text.btnCall} <i class="ph ph-arrow-right"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ PORTFOLIO GRID -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>{text.portPageAllSub}
+        </p>
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-6">{text.portPageAllTitle}</h2>
+
+        <!-- Filter tabs -->
+        <div class="flex items-center gap-2 mb-8 flex-wrap" id="filter-tabs">
+            <button data-filter="all" onclick="filterPortfolio('all')"
+                    class="filter-tab px-4 py-1.5 rounded-full text-sm font-semibold border transition-colors bg-gray-900 text-white border-gray-900">
+                {lang === 'ru' ? 'Все' : 'Toate'}
+            </button>
+            <button data-filter="flat" onclick="filterPortfolio('flat')"
+                    class="filter-tab px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-500 hover:border-gray-400 transition-colors">
+                {lang === 'ru' ? 'Плоские' : 'Plate'}
+            </button>
+            <button data-filter="pitched" onclick="filterPortfolio('pitched')"
+                    class="filter-tab px-4 py-1.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-500 hover:border-gray-400 transition-colors">
+                {lang === 'ru' ? 'Скатные' : 'Pantă'}
+            </button>
+        </div>
+
+        <!-- Photo grid — all items rendered, JS handles visibility -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="portfolio-grid">
+            {portfolio.map((item) => (
+                <div class="portfolio-card group relative rounded-2xl overflow-hidden shadow hover:shadow-xl transition-shadow cursor-zoom-in aspect-[4/3]"
+                     data-type={item.type}
+                     onclick="openLightbox(this.querySelector('img').src)">
+                    <Image src={getImg(item.image)} alt={item.title} loading="lazy" decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white font-bold text-sm leading-snug">{item.title}</p>
+                        <p class="text-gray-300 text-xs mt-0.5">{item.location} · {item.area} · {item.year}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FULL GALLERY -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>{text.portPageGallerySub}
+        </p>
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-12">{text.portPageGalleryTitle}</h2>
+
+        <div class="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+            {gallery.map((item) => (
+                <div class="break-inside-avoid group relative overflow-hidden rounded-2xl shadow hover:shadow-xl transition-shadow cursor-zoom-in"
+                     onclick="openLightbox(this.querySelector('img').src)">
+                    <Image src={getImg(item.image)} alt={item.label} loading="lazy" decoding="async"
+                        class="w-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                    <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-all duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow">
+                                <i class="ph ph-magnifying-glass-plus text-gray-900 text-lg"></i>
+                            </div>
+                        </div>
+                        <span class="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 px-4 py-3 text-white text-xs font-semibold bg-gradient-to-t from-gray-900/80 to-transparent">
+                            {item.label}
+                        </span>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ VIDEOS -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-sm font-bold tracking-widest text-orange-500 uppercase mb-3 flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-orange-500"></span>
+            {lang === 'ru' ? 'Видео о процессе' : 'Video despre proces'}
+        </p>
+        <h2 class="text-4xl font-extrabold text-gray-900 mb-12">
+            {lang === 'ru' ? 'Как мы выполняем работы' : 'Cum executăm lucrările'}
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {videos.map((video) => (
+                <div class="rounded-2xl overflow-hidden shadow-md bg-gray-900">
+                    <video
+                        src={video.src}
+                        poster={getImg(video.poster).src}
+                        controls
+                        preload="none"
+                        class="w-full h-56 object-cover"
+                    ></video>
+                    <div class="p-4">
+                        <span class="inline-block bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full mb-2">{video.type}</span>
+                        <h3 class="text-white font-bold text-sm leading-snug">{video.title}</h3>
+                        <p class="text-gray-400 text-xs mt-1">{video.desc}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ CTA -->
+<section class="bg-gray-900 py-20 relative overflow-hidden">
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
+        <h2 class="text-4xl md:text-5xl font-extrabold font-heading text-white mb-5">{text.ctaTitle}</h2>
+        <p class="text-gray-400 text-xl mb-10 leading-relaxed">{text.ctaDesc}</p>
+        <a href={`${base}${pfx}contacts`} class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-2xl shadow-orange-500/30 btn-pulse">
+            {text.ctaBtn}
+        </a>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ LIGHTBOX -->
+<div id="lightbox" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4" onclick="closeLightbox()">
+    <button class="absolute top-5 right-5 text-white text-4xl hover:text-gray-300 transition-colors w-12 h-12 flex items-center justify-center">
+        <i class="ph ph-x"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-2xl shadow-2xl object-contain"/>
+</div>
+
+</Layout>
+
+<script is:inline>
+function filterPortfolio(type) {
+    document.querySelectorAll('.portfolio-card').forEach(el => {
+        el.style.display = (type === 'all' || el.dataset.type === type) ? '' : 'none';
+    });
+    document.querySelectorAll('.filter-tab').forEach(btn => {
+        const active = btn.dataset.filter === type;
+        btn.classList.toggle('bg-gray-900', active);
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('border-gray-900', active);
+        btn.classList.toggle('text-gray-500', !active);
+        btn.classList.toggle('border-gray-200', !active);
+    });
+}
+
+// Support direct hash links: /portfolio#flat  /portfolio#pitched
+const initFilter = ['flat','pitched'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'all';
+if (initFilter !== 'all') filterPortfolio(initFilter);
+
+function openLightbox(src) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    img.alt = '';
+    lb.classList.remove('hidden');
+    lb.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
+</script>

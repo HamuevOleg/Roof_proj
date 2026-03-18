@@ -4,6 +4,15 @@ export const ui = {
         freeEst: "Смета бесплатно",
         nav: { home: 'Главная', services: 'Услуги', portfolio: 'Наши работы', about: 'О компании', contacts: 'Контакты' },
 
+        // SEO titles & descriptions
+        seo: {
+            home:      { title: 'Кровля под ключ в Молдове — ПВХ мембраны от 80 лей/м² | ProAcoperis.md',             desc: 'Монтаж и ремонт плоских крыш в Молдове. ПВХ мембраны, еврорубероид, скатные крыши. Бесплатный замер, смета за 24 часа, гарантия 15 лет. Звоните: +373 60 680 819.' },
+            services:  { title: 'Услуги кровельных работ в Молдове — монтаж, ремонт, гидроизоляция | ProAcoperis.md', desc: 'Полный спектр кровельных услуг: ПВХ/ТПО мембраны, наплавляемая кровля, скатные крыши, утепление, гидроизоляция. Цены от 80 лей/м². Бесплатный выезд инженера.' },
+            portfolio:  { title: 'Наши работы — 500+ кровельных объектов в Молдове | ProAcoperis.md',                  desc: 'Портфолио выполненных проектов: жилые дома, коммерческие здания, промышленные объекты. Смотрите фото реализованных кровельных работ в Молдове.' },
+            about:     { title: 'О компании ProAcoperis.md — 12+ лет кровельного опыта в Молдове',                     desc: 'ProAcoperis.md — ведущая кровельная компания Молдовы с 2012 года. 50+ штатных специалистов, 500+ сданных объектов, официальная гарантия 15 лет по договору.' },
+            contacts:  { title: 'Контакты ProAcoperis.md — бесплатный замер кровли в Молдове',                         desc: 'Свяжитесь с нами для бесплатного замера кровли. Кишинёв, Молдова. Тел: +373 60 680 819. WhatsApp, Viber, Telegram. Ответим в течение 30 минут.' },
+        },
+
         // Hero
         heroBadge: "500+ крыш за 12 лет в Молдове",
         heroTitle1: "Плоская кровля под ключ",
@@ -142,6 +151,15 @@ export const ui = {
         brandExpert: "Experți în acoperișuri",
         freeEst: "Deviz gratuit",
         nav: { home: 'Acasă', services: 'Servicii', portfolio: 'Portofoliu', about: 'Despre noi', contacts: 'Contacte' },
+
+        // SEO titles & descriptions
+        seo: {
+            home:     { title: 'Acoperiș la cheie în Moldova — membrane PVC de la 80 lei/m² | ProAcoperis.md',           desc: 'Montaj și reparație acoperișuri plate în Moldova. Membrane PVC, euroruberoid, acoperișuri înclinate. Măsurători gratuite, deviz în 24 ore, garanție 15 ani. Tel: +373 60 680 819.' },
+            services: { title: 'Servicii de acoperișuri în Moldova — montaj, reparație, hidroizolație | ProAcoperis.md', desc: 'Gamă completă de servicii: membrane PVC/TPO, acoperiș bituminos, acoperișuri în pantă, termoizolație, hidroizolație. Prețuri de la 80 lei/m². Deplasare inginer gratuită.' },
+            portfolio: { title: 'Lucrările noastre — 500+ obiecte de acoperișuri în Moldova | ProAcoperis.md',            desc: 'Portofoliu proiecte realizate: case private, clădiri comerciale, obiective industriale. Fotografii lucrări executate de acoperișuri în Moldova.' },
+            about:    { title: 'Despre ProAcoperis.md — 12+ ani experiență acoperișuri în Moldova',                       desc: 'ProAcoperis.md — companie lider în acoperișuri din Moldova din 2012. 50+ specialiști angajați, 500+ obiecte predate, garanție oficială 15 ani prin contract.' },
+            contacts: { title: 'Contacte ProAcoperis.md — măsurători gratuite acoperișuri în Moldova',                   desc: 'Contactați-ne pentru măsurători gratuite. Chișinău, Moldova. Tel: +373 60 680 819. WhatsApp, Viber, Telegram. Răspundem în 30 de minute.' },
+        },
 
         heroBadge: "500+ acoperișuri în 12 ani în Moldova",
         heroTitle1: "Acoperiș plat la cheie",
