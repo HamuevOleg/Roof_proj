@@ -67,12 +67,12 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
 
         <!-- Big phone button -->
         <a href={phoneHref}
-           class="group inline-flex flex-col items-center justify-center bg-gray-900 hover:bg-gray-800 text-white rounded-3xl px-12 py-8 transition-all hover:-translate-y-1 shadow-2xl shadow-gray-900/40 mb-8 w-full sm:w-auto">
-            <div class="flex items-center gap-4 mb-1">
-                <div class="w-14 h-14 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition-colors">
-                    <i class="ph-fill ph-phone text-orange-400 text-3xl"></i>
+           class="group inline-flex flex-col items-center justify-center bg-gray-900 hover:bg-gray-800 text-white rounded-3xl px-6 sm:px-12 py-6 sm:py-8 transition-all hover:-translate-y-1 shadow-2xl shadow-gray-900/40 mb-8 w-full sm:w-auto">
+            <div class="flex items-center gap-3 sm:gap-4 mb-1 min-w-0">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
+                    <i class="ph-fill ph-phone text-orange-400 text-2xl sm:text-3xl"></i>
                 </div>
-                <span class="text-4xl md:text-5xl font-extrabold tracking-tight">{phone}</span>
+                <span class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight whitespace-nowrap">{phone}</span>
             </div>
             <span class="text-gray-400 text-sm font-medium mt-1">
                 {lang === 'ru' ? 'Пн–Пт 8:00–18:00, Сб 9:00–14:00' : 'Lun–Vin 8:00–18:00, Sâm 9:00–14:00'}
@@ -213,8 +213,8 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href={phoneHref}
-               class="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-extrabold text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30">
-                <i class="ph-fill ph-phone text-2xl"></i>
+               class="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-5 sm:px-8 py-4 rounded-2xl font-extrabold text-base sm:text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30 whitespace-nowrap">
+                <i class="ph-fill ph-phone text-xl sm:text-2xl"></i>
                 {phone}
             </a>
             <a href={text.contWhatsappHref} target="_blank" rel="noopener"

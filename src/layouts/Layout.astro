@@ -91,13 +91,13 @@ const navItems = [
 <body class="font-sans bg-white text-gray-900 flex flex-col min-h-screen">
 
 <!-- ═══════════════════════════════════════════════════════ HEADER -->
-<header id="site-header" class="sticky top-0 z-50 bg-gray-900 backdrop-blur-md shadow-lg shadow-black/30 transition-all duration-300">
+<header id="site-header" class="sticky top-0 z-50 bg-gray-900 backdrop-blur-md shadow-lg shadow-black/30">
 
     <!-- Accent bar — orange -->
     <div class="h-1 bg-gradient-to-r from-orange-600 via-orange-500 to-amber-400"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 transition-all duration-300" id="header-inner">
+        <div class="flex justify-between items-center h-20" id="header-inner">
 
             <!-- Logo -->
             <a href={`${base}${lang}/`} class="flex items-center gap-2 xl:gap-3 flex-shrink-0 group">
@@ -352,25 +352,6 @@ const navItems = [
         });
     })();
 
-    // Shrink header on scroll — RAF + state flag prevents jitter on single wheel tick
-    const headerInner = document.getElementById('header-inner');
-    let rafPending = false;
-    let headerScrolled = false;
-    window.addEventListener('scroll', () => {
-        if (rafPending) return;
-        rafPending = true;
-        requestAnimationFrame(() => {
-            rafPending = false;
-            const shouldShrink = window.scrollY > 80;
-            if (shouldShrink === headerScrolled) return;
-            headerScrolled = shouldShrink;
-            if (shouldShrink) {
-                headerInner.classList.replace('h-20', 'h-14');
-            } else {
-                headerInner.classList.replace('h-14', 'h-20');
-            }
-        });
-    }, { passive: true });
 </script>
 </body>
 </html>

@@ -131,6 +131,32 @@ const faq      = getFAQData(lang);
             </p>
         </div>
 
+        <!-- Price calculator callout -->
+        <a href="https://nav.tn.ru/systems/ploskaya-krysha/" target="_blank" rel="noopener noreferrer"
+           class="reveal group flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-10 bg-[#22252A] border border-orange-500/30 hover:border-orange-500/70 rounded-2xl px-6 py-5 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+            <!-- Icon -->
+            <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center flex-shrink-0">
+                <i class="ph-fill ph-calculator text-orange-400 text-2xl"></i>
+            </div>
+            <!-- Text -->
+            <div class="flex-grow min-w-0">
+                <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">
+                    {lang === 'ru' ? 'Онлайн-каталог материалов · ТехноНИКОЛЬ' : 'Catalog online materiale · TechnoNICOL'}
+                </p>
+                <p class="text-white font-bold text-base sm:text-lg leading-snug">
+                    {lang === 'ru'
+                        ? 'Посмотреть примерные цены на системы плоской кровли'
+                        : 'Vezi prețuri orientative pentru sisteme de acoperiș plat'}
+                </p>
+                <p class="text-gray-500 text-xs mt-1 truncate">nav.tn.ru/systems/ploskaya-krysha/</p>
+            </div>
+            <!-- Arrow badge -->
+            <div class="flex items-center gap-2 flex-shrink-0 bg-orange-500/10 group-hover:bg-orange-500/20 border border-orange-500/30 group-hover:border-orange-500/60 text-orange-400 font-bold text-sm px-4 py-2.5 rounded-xl transition-all duration-300 whitespace-nowrap self-start sm:self-auto">
+                <i class="ph ph-arrow-square-out text-base"></i>
+                {lang === 'ru' ? 'Открыть' : 'Deschide'}
+            </div>
+        </a>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             {systems.map((sys, idx) => (
                 <div class={`reveal reveal-delay-${Math.min(idx + 1, 4)} relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5
