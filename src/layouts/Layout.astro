@@ -311,6 +311,15 @@ const navItems = [
         icon.className = isHidden ? 'ph ph-list text-3xl' : 'ph ph-x text-3xl';
     });
 
+    // Lazy image fade-in: mark as loaded once fetched
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
+        }
+    });
+
     // Scroll reveal
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -343,15 +352,24 @@ const navItems = [
         });
     })();
 
-    // Shrink header on scroll
-    const header = document.getElementById('site-header');
+    // Shrink header on scroll — RAF + state flag prevents jitter on single wheel tick
     const headerInner = document.getElementById('header-inner');
+    let rafPending = false;
+    let headerScrolled = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 80) {
-            headerInner.classList.replace('h-20', 'h-14');
-        } else {
-            headerInner.classList.replace('h-14', 'h-20');
-        }
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+            rafPending = false;
+            const shouldShrink = window.scrollY > 80;
+            if (shouldShrink === headerScrolled) return;
+            headerScrolled = shouldShrink;
+            if (shouldShrink) {
+                headerInner.classList.replace('h-20', 'h-14');
+            } else {
+                headerInner.classList.replace('h-14', 'h-20');
+            }
+        });
     }, { passive: true });
 </script>
 </body>

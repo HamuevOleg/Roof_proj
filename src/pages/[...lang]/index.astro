@@ -32,10 +32,8 @@ const videos    = getVideosData(lang, base);
 const phone     = '+373 60 680 819';
 const phoneHref = 'tel:+37360680819';
 
-// Pre-convert poster images to WebP (poster= attr bypasses <Image> pipeline)
+// Pre-convert hero poster to WebP (poster= attr bypasses <Image> pipeline)
 const heroPosterWebP  = await getImage({ src: getImg('portfolio/p01.jpg'), format: 'webp', width: 1920 });
-const videoPoster1WebP = await getImage({ src: getImg('portfolio/p01.jpg'), format: 'webp', width: 1280 });
-const videoPoster3WebP = await getImage({ src: getImg('portfolio/p03.jpg'), format: 'webp', width: 1280 });
 ---
 
 <Layout lang={lang} title={text.seo.home.title} description={text.seo.home.desc}>
@@ -110,7 +108,7 @@ const videoPoster3WebP = await getImage({ src: getImg('portfolio/p03.jpg'), form
                 <div class="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-orange-600 transition-colors">
                     <i class="ph-fill ph-phone text-orange-400 group-hover:text-white text-lg transition-colors"></i>
                 </div>
-                <span class="text-3xl font-extrabold text-white tracking-tight group-hover:text-orange-300 transition-colors">{phone}</span>
+                <span class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight group-hover:text-orange-300 transition-colors">{phone}</span>
                 <span class="text-gray-400 text-sm hidden sm:block">
                     — {lang === 'ru' ? 'выезд бесплатно' : 'deplasare gratuită'}
                 </span>
@@ -387,7 +385,7 @@ const videoPoster3WebP = await getImage({ src: getImg('portfolio/p03.jpg'), form
                 </h2>
             </div>
             <a href={phoneHref}
-               class="flex-shrink-0 flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-extrabold text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30 whitespace-nowrap">
+               class="flex-shrink-0 flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-5 sm:px-8 py-4 rounded-2xl font-extrabold text-base sm:text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30 whitespace-nowrap">
                 <i class="ph-fill ph-phone text-2xl"></i>
                 {phone}
             </a>
@@ -410,12 +408,11 @@ const videoPoster3WebP = await getImage({ src: getImg('portfolio/p03.jpg'), form
                 <div class="rounded-3xl overflow-hidden shadow-lg bg-gray-900">
                     <video
                         src={video.src}
-                        poster={video.poster === 'portfolio/p01.jpg' ? videoPoster1WebP.src : videoPoster3WebP.src}
                         muted
                         loop
                         playsinline
                         preload="none"
-                        class="work-video w-full h-72 object-cover"
+                        class="work-video w-full h-72 object-cover bg-gray-800"
                     ></video>
                     <div class="p-5">
                         <span class="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">{video.type}</span>
@@ -533,6 +530,13 @@ const videoPoster3WebP = await getImage({ src: getImg('portfolio/p03.jpg'), form
         v.muted = true;
         v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
     });
+
+    // Force-play the hero video (some PC browsers need explicit .play() even with autoplay attr)
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+    }
 
     // Play work videos only when visible in viewport — prevents 3 simultaneous autoplay videos
     const workVideos = document.querySelectorAll('.work-video');
