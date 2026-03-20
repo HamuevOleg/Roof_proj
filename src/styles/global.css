@@ -4,8 +4,8 @@
 
 html, body { overflow-x: clip; }
 
-/* Gray placeholder while images load — eliminates white squares */
-img { background-color: #e5e7eb; }
+/* Gray placeholder only on content images (Astro <Image> always sets width+height, logos don't) */
+img[width][height] { background-color: #e5e7eb; }
 
 /* Hide video volume controls in all browsers */
 video::-webkit-media-controls-mute-button,

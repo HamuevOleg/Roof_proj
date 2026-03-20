@@ -53,6 +53,7 @@ const navItems = [
     {hreflangRo   && <link rel="alternate" hreflang="ro"        href={hreflangRo} />}
     {hreflangRu   && <link rel="alternate" hreflang="x-default" href={hreflangRu} />}
     <link rel="icon" type="image/png" href={`${base}images/logo/Favicon.png`} />
+    <slot name="head" />
 
     <!-- Google Analytics (loads only after cookie consent) -->
     <script is:inline>
