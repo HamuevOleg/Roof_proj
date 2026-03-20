@@ -43,7 +43,7 @@ const heroPosterWebP  = await getImage({ src: getImg('portfolio/p01.jpg'), forma
 <section class="relative bg-gray-900 min-h-[720px] flex items-center overflow-hidden pb-28">
     <video
         autoplay muted loop playsinline
-        preload="metadata"
+        preload="auto"
         poster={heroPosterWebP.src}
         class="hero-video absolute inset-0 w-full h-full object-cover object-center opacity-40"
     >
@@ -531,11 +531,27 @@ const heroPosterWebP  = await getImage({ src: getImg('portfolio/p01.jpg'), forma
         v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
     });
 
-    // Force-play the hero video (some PC browsers need explicit .play() even with autoplay attr)
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
+    // Hero video: force-play + show fallback image on any failure
+    const heroVideo    = document.querySelector('.hero-video');
+    const heroFallback = document.querySelector('.hero-img-fallback');
+    if (heroVideo && heroFallback) {
+        const showFallback = () => {
+            heroVideo.style.display = 'none';
+            heroFallback.classList.remove('hidden');
+            heroFallback.style.display = 'block';
+        };
         heroVideo.muted = true;
-        heroVideo.play().catch(() => {});
+        // On load error (file missing, codec unsupported, network)
+        heroVideo.addEventListener('error', showFallback);
+        heroVideo.querySelector('source')?.addEventListener('error', showFallback);
+        // Try explicit play once browser has enough data
+        heroVideo.addEventListener('canplay', () => {
+            heroVideo.play().catch(showFallback);
+        }, { once: true });
+        // Safety timeout: if still not playing after 4s, switch to fallback
+        setTimeout(() => {
+            if (heroVideo.paused && heroVideo.currentTime === 0) showFallback();
+        }, 4000);
     }
 
     // Play work videos only when visible in viewport — prevents 3 simultaneous autoplay videos
