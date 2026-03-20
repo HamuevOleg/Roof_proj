@@ -100,7 +100,7 @@ const navItems = [
 
             <!-- Logo -->
             <a href={`${base}${lang}/`} class="flex items-center gap-2 xl:gap-3 flex-shrink-0 group">
-                <img src={`${base}images/logo/LogoTranspBG.svg`} alt="ProAcoperis.md" class="h-9 xl:h-11 w-auto group-hover:scale-105 transition-transform duration-300" />
+                <img src={`${base}images/logo/LogoTranspBG.svg`} alt="ProAcoperis.md" class="h-9 xl:h-11 w-auto group-hover:scale-105 transition-transform duration-300" onerror={`this.onerror=null;this.src='${base}images/logo/LogoTranspBG.webp'`} />
                 <div>
                     <p class="text-base xl:text-2xl font-black leading-tight tracking-tight font-heading">
                         <span class="text-white">Pro</span><span class="text-orange-400">Acoperis</span><span class="text-amber-400">.md</span>
@@ -181,7 +181,7 @@ const navItems = [
             <!-- Brand -->
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <img src={`${base}images/logo/LogoTranspBG.svg`} alt="ProAcoperis.md" class="h-9 w-auto brightness-0 invert" />
+                    <img src={`${base}images/logo/LogoTranspBG.svg`} alt="ProAcoperis.md" class="h-9 w-auto brightness-0 invert" onerror={`this.onerror=null;this.src='${base}images/logo/LogoTranspBG.webp'`} />
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed mb-4">{text.footDesc}</p>
                 <p class="text-gray-600 text-xs">{text.footLegal}</p>
