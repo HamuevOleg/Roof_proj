@@ -7,6 +7,12 @@ html, body { overflow-x: clip; }
 /* Gray placeholder only on content images (Astro <Image> always sets width+height, logos don't) */
 img[width][height] { background-color: #e5e7eb; }
 
+/* Skip rendering off-screen sections until scroll reaches them */
+section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+}
+
 /* Hide video volume controls in all browsers */
 video::-webkit-media-controls-mute-button,
 video::-webkit-media-controls-volume-slider,

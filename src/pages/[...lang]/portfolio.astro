@@ -82,6 +82,8 @@ const videos    = getVideosData(lang, base);
                      data-type={item.type}
                      onclick="openLightbox(this.querySelector('img').src)">
                     <Image src={getImg(item.image)} alt={item.title} loading="lazy" decoding="async"
+                        widths={[400, 800]}
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                         <p class="text-white font-bold text-sm leading-snug">{item.title}</p>
@@ -106,6 +108,8 @@ const videos    = getVideosData(lang, base);
                 <div class="break-inside-avoid group relative overflow-hidden rounded-2xl shadow hover:shadow-xl transition-shadow cursor-zoom-in"
                      onclick="openLightbox(this.querySelector('img').src)">
                     <Image src={getImg(item.image)} alt={item.label} loading="lazy" decoding="async"
+                        widths={[400, 800]}
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         class="w-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                     <div class="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/40 transition-all duration-300">
                         <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

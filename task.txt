@@ -1,0 +1,135 @@
+Ладно, братан, я проревизировал и код (Astro + Tailwind, весь index.astro, Layout.astro, global.css, imageMap.js), и собранный сайт (ресурсы, размеры, тайминги). Вот полная картина и план действий.
+
+---
+
+## Текущая ситуация
+
+Общий вес страницы после полного скролла: **~8.6 MB** (5 MB картинки, 3.3 MB видео, 273 KB шрифты Phosphor, 202 KB CSS). Первый байт приходит за 174ms — это GitHub Pages, тут ок. DOM интерактивный за 199ms — Astro работает хорошо. Но **изображения — это боль**.
+
+---
+
+## ГЛАВНАЯ ПРОБЛЕМА: Картинки огромные, без srcset
+
+Ты используешь `<Image>` от Astro, и он конвертирует в WebP — молодец. Но он генерирует **только одно разрешение** (оригинал), и никакого `srcset`/`sizes`. Вот что я вижу:
+
+— **p01.webp** → натуральный размер 1792×2390, отображается в 395×360. Оверсайз **4.5x**. Файл 678 KB, а нужно ~50-80 KB.
+— **p02.webp** → 2400×1792, отображается 395×360. Оверсайз **6.1x**. 240 KB → нужно ~40 KB.
+— **Reliability.webp** → 2754×1536, отображается 795×443. Оверсайз **3.5x**. 161 KB, нужно ~60 KB.
+— **Roofing.webp** → 2754×1536, отображается 295×224. Оверсайз **9.3x**. 352 KB → нужно ~20 KB.
+— **PVC.webp** → 2816×1536, отображается 602×460. Оверсайз **4.7x**. 377 KB → нужно ~80 KB.
+
+Итого: ты грузишь ~5 MB картинок, а реально нужно ~800 KB-1 MB.
+
+---
+
+## ЧТО ДЕЛАТЬ (по приоритету)
+
+### 1. Добавить `widths` и `sizes` в каждый `<Image>`
+
+Сейчас у тебя просто:
+```astro
+<Image src={getImg(item.image)} alt={item.title} loading="lazy" class="..." />
+```
+
+Нужно:
+```astro
+<Image
+  src={getImg(item.image)}
+  alt={item.title}
+  loading="lazy"
+  widths={[400, 800, 1200]}
+  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 400px"
+  class="..."
+/>
+```
+
+Astro автоматически сгенерирует 3 варианта WebP + создаст `srcset`. Браузер выберет нужный размер под конкретный экран. Это **сразу сократит вес картинок в 3-5 раз**.
+
+Для каждой секции подбери свои `widths` и `sizes`:
+
+— **Portfolio cards** (3 штуки, ~400px display): `widths={[400, 800]}`, `sizes="(max-width: 768px) 100vw, 33vw"`
+— **Gallery bento** (разные размеры): большая левая `widths={[600, 1200]}`, маленькие `widths={[300, 600]}`
+— **Services cards** (4 штуки, ~350px): `widths={[360, 720]}`, `sizes="(max-width: 768px) 100vw, 25vw"`
+— **Reliability фото** (~800px): `widths={[800, 1200]}`, `sizes="(max-width: 1024px) 100vw, 66vw"`
+— **Final CTA bg** (фоновая, можно мутную): `widths={[800, 1400]}`, `quality={60}`
+
+### 2. Hero: видео 3.3 MB с `preload="auto"` — убийца
+
+У тебя hero.mp4 весит 3.3 MB и грузится с `preload="auto"` — браузер жрёт его целиком ещё до того, как юзер хоть куда-то скроллил. Плюс ты его ещё и `<link rel="preload">` делаешь для видео.
+
+Что делать:
+— Пространство видео через `ffmpeg` до 720p, CRF 28-30, max bitrate 1.5 Mbps. Цель: **~800 KB - 1 MB**.
+— Убрать `<link rel="preload" as="video">` — это вообще не нужно, видео и так autoplay.
+— Сменить `preload="auto"` на `preload="metadata"` — браузер загрузит только первые кадры, а остальное подтянет по мере проигрывания.
+— Добавить WebM версию (VP9) — она меньше MP4 на 20-30%.
+
+```astro
+<video autoplay muted loop playsinline preload="metadata" poster={heroPosterWebP.src} class="hero-video ...">
+  <source src={`${base}images/hero/hero.webm`} type="video/webm">
+  <source src={`${base}images/hero/hero.mp4`} type="video/mp4">
+</video>
+```
+
+### 3. Phosphor Icons: 273 KB шрифтов за 24 иконки
+
+Ты подключаешь **целый** Phosphor Regular (144 KB) и Phosphor Fill (129 KB) — это шрифты на 6000+ иконок. А используешь всего 24. Это **273 KB за иконки, которые весят 3 KB в SVG**.
+
+Варианты:
+— **Лучший:** Используй `@phosphor-icons/core` и инлайни SVG прямо в разметку. 24 иконки × ~500 байт = **12 KB** вместо 273 KB.
+— **Быстрый:** Или используй `astro-icon` с Phosphor — он вставит только нужные иконки как inline SVG.
+
+Убери из `global.css`:
+```css
+@import "@phosphor-icons/web/regular";
+@import "@phosphor-icons/web/fill";
+```
+
+### 4. CSS файл 202 KB — Tailwind не purge'ится?
+
+Твой собранный CSS весит 202 KB. Для Tailwind v4 с `@tailwindcss/vite` это подозрительно много — проверь, что Phosphor CSS не тянет туда лишнего. После удаления Phosphor font imports CSS должен упасть до ~30-50 KB.
+
+### 5. Google Fonts: 27 font-face определений, 5 весов Montserrat
+
+Ты грузишь Montserrat в 5 весах (400, 600, 700, 800, 900). Реально тебе нужны 3 максимум: 400 (body), 700 (bold), 800 или 900 (headings). Убери 600 и один из 800/900.
+
+Ещё лучше — загрузи font файлы локально через `@font-face` в CSS, а не через Google Fonts API. Это уберёт лишний DNS lookup + CSS fetch + позволит делать `font-display: optional` (нет FOUT вообще).
+
+### 6. `content-visibility: auto` на секциях ниже fold
+
+Это бесплатный буст. Браузер не будет рендерить секции вне viewport, пока до них не доскроллят:
+
+```css
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+```
+
+Это ускорит initial render и поможет с тем самым "крутишь быстро — а картинка уже есть".
+
+### 7. `fetchpriority` правильно расставить
+
+Сейчас у тебя hero fallback image с `fetchpriority="high"` — но он скрыт (`hidden`). Это зря. Браузер грузит его приоритетно, а он не нужен.
+
+Hero poster WebP уже прелоадится — это ок. Но уберите `fetchpriority="high"` с fallback image и поставь `loading="lazy"` на него тоже (он нужен только если видео не запустится).
+
+### 8. Work videos: нет poster'ов
+
+Два рабочих видео (work1.mp4, work2.mp4) не имеют `poster`. Когда юзер до них доскроллит, он увидит чёрный прямоугольник пока видео буферизуется. Добавь poster — первый кадр из каждого видео в WebP.
+
+---
+
+## ИТОГО: ожидаемый эффект
+
+| Что | Было | Станет |
+|---|---|---|
+| Картинки (полная страница) | ~5 MB | ~1-1.2 MB |
+| Hero видео | 3.3 MB eager | ~0.8-1 MB lazy |
+| Иконки (Phosphor) | 273 KB | ~12 KB |
+| CSS | 202 KB | ~40 KB |
+| Шрифты (Montserrat) | ~106 KB | ~60 KB (3 веса) |
+| **Итого** | **~8.6 MB** | **~2-2.5 MB** |
+
+Первый экран (above the fold) вместо ~5 MB загрузит ~300-400 KB (постер + HTML + CSS + шрифты). Это будет летать.
+
+Хочешь — могу начать делать конкретные правки в коде прямо в репе?

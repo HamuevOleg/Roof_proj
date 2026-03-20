@@ -82,6 +82,8 @@ const faq      = getFAQData(lang);
                         <Image
                             src={getImg(service.image)} alt={service.title}
                             loading="lazy" decoding="async"
+                            widths={[360, 720]}
+                            sizes="(max-width: 768px) 100vw, 25vw"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/40 lg:hidden"></div>
@@ -286,6 +288,8 @@ const faq      = getFAQData(lang);
                     <Image
                         src={getImg(item.imageKey)} alt={item.label}
                         loading="lazy" decoding="async"
+                        widths={[360, 720]}
+                        sizes="(max-width: 768px) 100vw, 25vw"
                         class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
 
