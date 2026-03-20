@@ -1,52 +1,123 @@
-Бро, проверил всё заново на чистом кэше. Прогресс **жирный** — ты уже срезал страницу с 8.6 MB до 3.7 MB, это минус 57%. Вот что поменялось и что осталось:
+Окей, я разобрал весь код — и hero секцию, и video секцию, и скрипт fallback'а. Вот что нашёл:
 
 ---
 
-## Что ты зафиксил (всё работает)
+**Проблема 1: Hero video fallback — работает, но хрупко**
 
-**srcset + sizes** на всех картинках — браузер теперь грузит правильный размер. Результаты говорят сами за себя: Reliability 161→57 KB, p02 240→62 KB, Roofing 352→35 KB, Industrial 199→22 KB, Services по ~40 KB каждая. Огонь.
+Твой текущий fallback для hero:
+```js
+const showFallback = () => {
+  heroVideo.style.display = 'none';
+  const img = document.createElement('img');
+  img.src = heroVideo.poster;  // берёт poster из video
+  img.alt = '';
+  img.className = 'absolute inset-0 w-full h-full object-cover object-center opacity-40';
+  heroVideo.parentNode.insertBefore(img, heroVideo.nextSibling);
+};
+```
 
-**Hero video** `preload="metadata"` вместо `"auto"` — видео теперь 836 KB вместо 3.3 MB, грузит только метадату и подтягивает по мере проигрывания. Preload link на видео убран — правильно.
+Логика срабатывания: `error` на video/source, `play().catch()`, и `setTimeout(4000)` если видео не стартовало.
 
-**content-visibility: auto** на всех 8 секциях — браузер не рендерит off-screen секции, initial paint ускорился.
+Это **в целом ок**, но на iOS/Android бывает race condition — `canplay` event может не прийти вообще при `preload="metadata"` если браузер экономит трафик. В итоге fallback зависит только от `setTimeout(4000)` — и 4 секунды пользователь видит просто тёмный фон без ничего (poster тоже может не отрисоваться пока видео в состоянии loading).
 
-**Hero fallback** переведён на `lazy` и убран `fetchpriority="high"` — больше не жрёт приоритетную полосу.
+**Проблема 2: Work videos (секция "Vedeți cum lucrăm") — fallback ВООБЩЕ НЕТ**
 
----
+Вот тут и зарыта основная проблема. У work-video вообще нет никакого fallback'а:
 
-## Что осталось подфиксить
+```html
+<video src={video.src} poster={video.poster} muted loop playsinline preload="none"
+       class="work-video w-full h-72 object-cover bg-gray-800"></video>
+```
 
-**1. Hero poster — 678 KB, это всё ещё монстр.**
-Ты делаешь `getImage({ src, format: 'webp', width: 1920 })`, но не ставишь `quality`. Оригинальная фотка p01.jpg — портретная 1792×2390, и Astro её ресайзит до 1920w (что даже шире оригинала, по сути upscale). Поставь `width: 1280` и `quality: 70` — получишь ~120-150 KB вместо 678. Постер под полупрозрачным видео не нуждается в идеальном качестве.
-
-**2. Hero fallback грузится зря — 678 KB.**
-Он `lazy`, но `<img>` с `loading="lazy"` всё равно загрузится как только попадёт хоть немного в viewport (а hero — это первый экран). По факту у тебя **одна и та же фотка грузится дважды** — как poster (678 KB) и как fallback (678 KB) = 1.36 MB на одну картинку. Решение: не рендери fallback `<Image>` на сервере вообще. Вместо этого в JS, если видео не стартует, создавай `<img src={posterUrl}>` динамически. Или просто используй тот же URL что и poster, а не отдельный Astro `<Image>`.
-
-**3. Phosphor Icons — 273 KB шрифтов за 24 иконки.**
-Это по-прежнему самый жирный low-hanging fruit. Два woff2 файла (144 + 129 KB) + их CSS раздувает твой бандл до 202 KB. Переход на inline SVG (`@phosphor-icons/core` или `astro-icon`) даст **~260 KB экономии** разом (шрифты + CSS).
-
-**4. Google Fonts — 5 весов Montserrat (400, 600, 700, 800, 900).**
-Реально используются 3-4. Убери 600 — на сайте font-semibold (600) визуально неотличим от 700. Это минус ~15-20 KB.
-
-**5. Work videos без poster.**
-Когда юзер доскролливает — чёрный прямоугольник, пока видео буферизуется. Сделай первый кадр в WebP и поставь `poster=`.
-
-**6. p08 (CTA background) — 176 KB.**
-Это фон с overlay `opacity-20` + два градиента поверх. Человек видит ~15% картинки. Поставь `quality={50}` — будет ~60-70 KB и визуально без разницы.
+Скрипт делает только `IntersectionObserver` → `play().catch(() => {})` — и если play() фейлится, ничего не происходит. Видео стоит с `preload="none"`, а на некоторых мобильных браузерах `preload="none"` может вообще не загружать poster, пока не начнётся воспроизведение. В итоге — серый `bg-gray-800` прямоугольник, пустой, без ничего.
 
 ---
 
-## Текущий vs потенциальный вес
+**Как починить:**
 
-| Ресурс | Сейчас | После фиксов |
-|---|---|---|
-| Hero poster | 678 KB | ~130 KB |
-| Hero fallback (дубль) | 678 KB | 0 KB |
-| Остальные картинки | ~1040 KB | ~900 KB (quality на p08) |
-| Video (hero) | 836 KB | 836 KB (ок) |
-| Phosphor fonts | 273 KB | 0 KB |
-| CSS (без Phosphor) | 202 KB | ~40 KB |
-| Google Fonts | 106 KB | ~70 KB |
-| **Итого** | **~3.7 MB** | **~1.9-2.0 MB** |
+**1. Hero — сделать `<img>` сразу в HTML (не через JS), а видео наложить поверх:**
 
-Если сделаешь эти штуки — страница будет весить вдвое меньше текущего, и в 4 раза меньше оригинала. First paint above the fold будет ~300 KB — это уже реально молниеносно.
+```html
+<!-- Hero section -->
+<section class="relative bg-gray-900 min-h-[720px] flex items-center overflow-hidden pb-28">
+  <!-- Fallback image — ВСЕГДА в DOM, видео ложится поверх -->
+  <img src={heroPosterWebP.src} alt=""
+       class="hero-fallback absolute inset-0 w-full h-full object-cover object-center opacity-40" />
+  <video autoplay muted loop playsinline preload="metadata"
+         poster={heroPosterWebP.src}
+         class="hero-video absolute inset-0 w-full h-full object-cover object-center opacity-40">
+    <source src={`${base}images/hero/hero.mp4`} type="video/mp4">
+  </video>
+  <!-- gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-900/80 to-gray-900/20"></div>
+  ...
+```
+
+Так img всегда отрисован. Когда видео грузится — оно ложится поверх. Если видео не грузится — img видно. Без JS, без timeout, без race conditions. А `<link rel="preload">` у тебя уже стоит, так что картинка и так закеширована — двойной загрузки не будет.
+
+**2. Work videos — добавить poster fallback через CSS background + HTML img внутри обёртки:**
+
+```html
+{videos.map((video) => (
+  <div class="rounded-3xl overflow-hidden shadow-lg bg-gray-900">
+    <div class="relative w-full h-72 bg-gray-800">
+      <!-- Fallback image — всегда видна -->
+      <img src={video.poster} alt={video.title}
+           class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+      <!-- Video ложится поверх когда играет -->
+      <video src={video.src} poster={video.poster}
+             muted loop playsinline preload="none"
+             class="work-video absolute inset-0 w-full h-full object-cover relative z-10">
+      </video>
+    </div>
+    <div class="p-5">
+      <span class="...">{video.type}</span>
+      <h3 class="...">{video.title}</h3>
+      <p class="...">{video.desc}</p>
+    </div>
+  </div>
+))}
+```
+
+**3. Скрипт — упростить:**
+
+```js
+// Hero: просто пытаемся играть, если не получается — скрываем видео, img и так виден
+const heroVideo = document.querySelector('.hero-video');
+if (heroVideo) {
+  heroVideo.muted = true;
+  const tryPlay = () => {
+    heroVideo.play().catch(() => {
+      heroVideo.style.display = 'none'; // img под ним и так виден
+    });
+  };
+  if (heroVideo.readyState >= 2) tryPlay();
+  else heroVideo.addEventListener('canplay', tryPlay, { once: true });
+  // Подстраховка
+  setTimeout(() => {
+    if (heroVideo.paused && heroVideo.currentTime === 0) {
+      heroVideo.style.display = 'none';
+    }
+  }, 5000);
+}
+
+// Work videos: play/pause по видимости, если не играет — видео прозрачное, img под ним виден
+const workVideos = document.querySelectorAll('.work-video');
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const vid = entry.target;
+    if (entry.isIntersecting) {
+      vid.play().catch(() => {
+        vid.style.opacity = '0'; // показываем img-fallback под ним
+      });
+    } else {
+      vid.pause();
+    }
+  });
+}, { threshold: 0.25 });
+workVideos.forEach(v => videoObserver.observe(v));
+```
+
+---
+
+**Суть решения:** не полагаться на JS для показа fallback-картинки. Картинка всегда лежит в HTML под видео. Видео ложится поверх. Если видео не играет — его прячем или делаем прозрачным, и пользователь видит картинку. Никаких пустых серых прямоугольников.
