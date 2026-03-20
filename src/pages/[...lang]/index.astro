@@ -558,12 +558,17 @@ const heroPosterWebP  = await getImage({ src: getImg('portfolio/p01.jpg'), forma
 
     // Hero video: try to play; if it fails, hide video — fallback img underneath is always visible
     const heroVideo = document.querySelector('.hero-video');
+    const heroFallback = document.querySelector('.hero-fallback');
     if (heroVideo) {
         heroVideo.muted = true;
         const tryPlay = () => {
-            heroVideo.play().catch(() => {
-                heroVideo.style.display = 'none';
-            });
+            heroVideo.play()
+                .then(() => {
+                    if (heroFallback) heroFallback.style.display = 'none';
+                })
+                .catch(() => {
+                    heroVideo.style.display = 'none';
+                });
         };
         if (heroVideo.readyState >= 2) tryPlay();
         else heroVideo.addEventListener('canplay', tryPlay, { once: true });
