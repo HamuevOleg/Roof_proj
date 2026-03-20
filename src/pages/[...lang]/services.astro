@@ -81,7 +81,7 @@ const faq      = getFAQData(lang);
                     <div class="lg:w-2/5 relative overflow-hidden h-64 lg:h-auto min-h-[260px]">
                         <Image
                             src={getImg(service.image)} alt={service.title}
-                            loading="lazy" decoding="async"
+                            loading="eager" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/40 lg:hidden"></div>
@@ -285,7 +285,7 @@ const faq      = getFAQData(lang);
                     <!-- Image — natural height = masonry effect -->
                     <Image
                         src={getImg(item.imageKey)} alt={item.label}
-                        loading="lazy" decoding="async"
+                        loading="eager" decoding="async"
                         class="w-full h-auto block transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
 

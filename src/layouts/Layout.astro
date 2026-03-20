@@ -355,14 +355,6 @@ const navItems = [
         icon.className = isHidden ? 'ph ph-list text-3xl' : 'ph ph-x text-3xl';
     });
 
-    // Lazy image fade-in: mark as loaded once fetched
-    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        if (img.complete) {
-            img.classList.add('loaded');
-        } else {
-            img.addEventListener('load', () => img.classList.add('loaded'), { once: true });
-        }
-    });
 
 
     // Cookie consent banner
