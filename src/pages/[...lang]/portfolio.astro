@@ -141,13 +141,22 @@ const videos    = getVideosData(lang, base);
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {videos.map((video) => (
                 <div class="rounded-2xl overflow-hidden shadow-md bg-gray-900">
-                    <video
-                        src={video.src}
-                        poster={video.poster}
-                        controls
-                        preload="none"
-                        class="w-full h-56 object-cover"
-                    ></video>
+                    <div class="relative group cursor-pointer portfolio-video-wrap">
+                        <video
+                            src={video.src}
+                            poster={video.poster}
+                            muted
+                            playsinline
+                            preload="none"
+                            class="portfolio-vid w-full h-56 object-cover"
+                        ></video>
+                        <!-- Play/pause overlay -->
+                        <div class="portfolio-play-btn absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-200">
+                            <div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="w-7 h-7 text-white fill-current translate-x-0.5"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"/></svg>
+                        </div>
+                        </div>
+                    </div>
                     <div class="p-4">
                         <span class="inline-block bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full mb-2">{video.type}</span>
                         <h3 class="text-white font-bold text-sm leading-snug">{video.title}</h3>
@@ -220,5 +229,22 @@ function closeLightbox() {
 
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeLightbox();
+});
+
+// Portfolio videos: click to play/pause, hide overlay when playing
+document.querySelectorAll('.portfolio-video-wrap').forEach(wrap => {
+    const vid = wrap.querySelector('.portfolio-vid');
+    const btn = wrap.querySelector('.portfolio-play-btn');
+    wrap.addEventListener('click', () => {
+        if (vid.paused) {
+            vid.play().then(() => { btn.style.opacity = '0'; btn.style.pointerEvents = 'none'; });
+        } else {
+            vid.pause();
+            btn.style.opacity = '1'; btn.style.pointerEvents = '';
+        }
+    });
+    vid.addEventListener('ended', () => {
+        btn.style.opacity = '1'; btn.style.pointerEvents = '';
+    });
 });
 </script>
