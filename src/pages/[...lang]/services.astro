@@ -6,6 +6,7 @@ import {
     ui, languages,
     getServicesData, getProcessData, getRoofSystemsData, getFAQData
 } from '../../data/i18n.js';
+import PhIcon from '../../components/PhIcon.astro';
 
 export function getStaticPaths() {
     return [
@@ -53,7 +54,7 @@ const faq      = getFAQData(lang);
     <div class="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-900/70 to-transparent"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-orange-100 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <i class="ph-fill ph-wrench text-orange-400"></i>
+            <PhIcon name="wrench" weight="fill" class="text-orange-400 w-4 h-4 inline-block" />
             {text.servPageHeroBadge}
         </div>
         <h1 class="text-5xl md:text-6xl font-extrabold font-heading text-white mb-5 leading-tight">
@@ -61,7 +62,7 @@ const faq      = getFAQData(lang);
         </h1>
         <p class="text-gray-300 text-xl max-w-xl leading-relaxed mb-8">{text.servPageHeroDesc}</p>
         <a href={`${base}${pfx}contacts`} class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-7 py-4 rounded-2xl font-bold transition-all hover:-translate-y-0.5 shadow-lg shadow-orange-500/30 btn-pulse">
-            {text.btnCall} <i class="ph ph-arrow-right"></i>
+            {text.btnCall} <PhIcon name="arrow-right" weight="regular" class="w-4 h-4 inline-block" />
         </a>
     </div>
 </section>
@@ -92,7 +93,7 @@ const faq      = getFAQData(lang);
                     <div class="lg:w-3/5 p-8 md:p-10 flex flex-col justify-center">
                         <div class="flex items-center gap-3 mb-5">
                             <div class="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center text-white shadow-md flex-shrink-0">
-                                <i class={`${service.icon} text-2xl`}></i>
+                                <PhIcon name={service.icon} weight="regular" class="w-6 h-6" />
                             </div>
                             <div>
                                 <h3 class="text-2xl font-extrabold text-gray-900">{service.title}</h3>
@@ -103,13 +104,13 @@ const faq      = getFAQData(lang);
                         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-7">
                             {service.benefits.map((b) => (
                                 <li class="flex items-center gap-2 text-sm text-gray-700 font-medium">
-                                    <i class="ph-fill ph-check-circle text-orange-500 text-lg flex-shrink-0"></i>
+                                    <PhIcon name="check-circle" weight="fill" class="text-orange-500 w-5 h-5 flex-shrink-0 inline-block" />
                                     {b}
                                 </li>
                             ))}
                         </ul>
                         <a href={`${base}${pfx}contacts`} class="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-xl font-bold transition-all self-start text-sm shadow-md shadow-orange-500/25">
-                            {text.btnCall} <i class="ph ph-arrow-right"></i>
+                            {text.btnCall} <PhIcon name="arrow-right" weight="regular" class="w-4 h-4 inline-block" />
                         </a>
                     </div>
                 </div>
@@ -138,7 +139,7 @@ const faq      = getFAQData(lang);
            class="reveal group flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-10 bg-[#22252A] border border-orange-500/30 hover:border-orange-500/70 rounded-2xl px-6 py-5 transition-all duration-300 hover:-translate-y-0.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
             <!-- Icon -->
             <div class="w-12 h-12 rounded-xl bg-orange-500/15 flex items-center justify-center flex-shrink-0">
-                <i class="ph-fill ph-calculator text-orange-400 text-2xl"></i>
+                <PhIcon name="calculator" weight="fill" class="text-orange-400 w-6 h-6" />
             </div>
             <!-- Text -->
             <div class="flex-grow min-w-0">
@@ -154,7 +155,7 @@ const faq      = getFAQData(lang);
             </div>
             <!-- Arrow badge -->
             <div class="flex items-center gap-2 flex-shrink-0 bg-orange-500/10 group-hover:bg-orange-500/20 border border-orange-500/30 group-hover:border-orange-500/60 text-orange-400 font-bold text-sm px-4 py-2.5 rounded-xl transition-all duration-300 whitespace-nowrap self-start sm:self-auto">
-                <i class="ph ph-arrow-square-out text-base"></i>
+                <PhIcon name="arrow-square-out" weight="regular" class="w-4 h-4 inline-block" />
                 {lang === 'ru' ? 'Открыть' : 'Deschide'}
             </div>
         </a>
@@ -185,7 +186,7 @@ const faq      = getFAQData(lang);
                     <!-- Header -->
                     <div class="px-7 pt-6 pb-5 flex items-center gap-4 border-b border-[#33373E]">
                         <div class={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${sys.badge ? 'bg-orange-500/15' : 'bg-white/5'}`}>
-                            <i class={`${sys.icon} text-xl ${sys.badge ? 'text-orange-400' : 'text-gray-400'}`}></i>
+                            <PhIcon name={sys.icon} weight="regular" class={`w-5 h-5 ${sys.badge ? 'text-orange-400' : 'text-gray-400'}`} />
                         </div>
                         <div>
                             <span class="text-gray-600 text-xs font-medium block mb-0.5 tracking-wide">{sys.tag}</span>
@@ -229,7 +230,7 @@ const faq      = getFAQData(lang);
                             <ul class="space-y-2.5">
                                 {sys.results.map((r) => (
                                     <li class="flex items-start gap-2.5">
-                                        <i class="ph-fill ph-check-circle text-orange-500 text-base flex-shrink-0 mt-0.5"></i>
+                                        <PhIcon name="check-circle" weight="fill" class="text-orange-500 w-4 h-4 flex-shrink-0 mt-0.5 inline-block" />
                                         <span class="text-gray-200 text-sm leading-snug">{r}</span>
                                     </li>
                                 ))}
@@ -240,12 +241,12 @@ const faq      = getFAQData(lang);
                         {sys.badge
                             ? <a href={`${base}${pfx}contacts`}
                                  class="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm rounded-xl px-5 py-3.5 transition-colors shadow-lg shadow-orange-500/20">
-                                <i class="ph-fill ph-ruler text-base"></i>
+                                <PhIcon name="ruler" weight="fill" class="w-4 h-4 inline-block" />
                                 {lang === 'ru' ? 'Узнать цену для моего объекта' : 'Aflați prețul pentru obiectul meu'}
                               </a>
                             : <a href={`${base}${pfx}contacts`}
                                  class="flex items-center justify-center gap-2 border border-orange-500/50 text-orange-400 hover:bg-orange-500 hover:border-orange-500 hover:text-white font-bold text-sm rounded-xl px-5 py-3.5 transition-all duration-200">
-                                <i class="ph-fill ph-ruler text-base"></i>
+                                <PhIcon name="ruler" weight="fill" class="w-4 h-4 inline-block" />
                                 {lang === 'ru' ? 'Узнать цену для моего объекта' : 'Aflați prețul pentru obiectul meu'}
                               </a>
                         }
@@ -274,7 +275,7 @@ const faq      = getFAQData(lang);
             <a href={`${base}${pfx}portfolio`}
                class="group inline-flex items-center gap-2 text-gray-400 hover:text-white border border-[#33373E] hover:border-white/30 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0">
                 {lang === 'ru' ? 'Все работы' : 'Toate lucrările'}
-                <i class="ph ph-arrow-right group-hover:translate-x-0.5 transition-transform"></i>
+                <PhIcon name="arrow-right" weight="regular" class="w-4 h-4 inline-block group-hover:translate-x-0.5 transition-transform" />
             </a>
         </div>
 
@@ -301,7 +302,7 @@ const faq      = getFAQData(lang);
                     <!-- Zoom icon — appears on hover -->
                     <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                         <div class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center">
-                            <i class="ph ph-magnifying-glass-plus text-white text-lg"></i>
+                            <PhIcon name="magnifying-glass-plus" weight="regular" class="text-white w-5 h-5" />
                         </div>
                     </div>
 
@@ -324,7 +325,7 @@ const faq      = getFAQData(lang);
 <div id="works-lightbox" class="fixed inset-0 bg-black/92 z-[200] hidden items-center justify-center p-4 flex-col gap-4"
      onclick="closeWorksLightbox()">
     <button class="absolute top-5 right-5 text-white/60 hover:text-white w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 transition-colors">
-        <i class="ph ph-x text-2xl"></i>
+        <PhIcon name="x" weight="regular" class="w-6 h-6" />
     </button>
     <img id="works-lb-img" src="" alt="" class="max-w-full max-h-[80vh] rounded-xl object-contain shadow-2xl"/>
     <div class="text-center">
@@ -355,7 +356,7 @@ const faq      = getFAQData(lang);
                 <div class={`reveal reveal-delay-${Math.min(idx + 1, 4)} group bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex gap-5 items-start`}>
                     <div class="flex-shrink-0 w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-extrabold text-lg shadow-md shadow-orange-500/30">{item.step}</div>
                     <div>
-                        <div class="text-orange-500 mb-2"><i class={`${item.icon} text-2xl`}></i></div>
+                        <div class="text-orange-500 mb-2"><PhIcon name={item.icon} weight="regular" class="w-6 h-6 inline-block" /></div>
                         <h3 class="text-base font-bold text-gray-900 mb-1.5">{item.title}</h3>
                         <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                     </div>
@@ -381,7 +382,7 @@ const faq      = getFAQData(lang);
                         onclick="toggleFaq(this)"
                     >
                         <span class="font-semibold text-gray-900 text-base">{item.q}</span>
-                        <i class="ph ph-caret-down text-orange-500 text-xl flex-shrink-0 transition-transform duration-300"></i>
+                        <PhIcon name="caret-down" weight="regular" class="text-orange-500 w-5 h-5 flex-shrink-0 transition-transform duration-300 faq-caret" />
                     </button>
                     <div class="faq-body hidden px-7 pb-6">
                         <p class="text-gray-600 leading-relaxed">{item.a}</p>
@@ -427,13 +428,13 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeWorksLi
 
 function toggleFaq(btn) {
     const body  = btn.nextElementSibling;
-    const icon  = btn.querySelector('i');
+    const icon  = btn.querySelector('.faq-caret');
     const open  = !body.classList.contains('hidden');
     document.querySelectorAll('.faq-body').forEach(b => b.classList.add('hidden'));
-    document.querySelectorAll('.faq-btn i').forEach(i => i.style.transform = '');
+    document.querySelectorAll('.faq-btn .faq-caret').forEach(i => i.style.transform = '');
     if (!open) {
         body.classList.remove('hidden');
-        icon.style.transform = 'rotate(180deg)';
+        if (icon) icon.style.transform = 'rotate(180deg)';
     }
 }
 </script>

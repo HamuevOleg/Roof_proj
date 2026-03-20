@@ -1,0 +1,24 @@
+---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+
+interface Props {
+  name: string;
+  weight?: 'regular' | 'fill' | 'bold' | 'light' | 'thin' | 'duotone';
+  class?: string;
+}
+
+const { name, weight = 'regular', class: className = '' } = Astro.props;
+
+// Fill weight SVG files use "{name}-fill.svg" naming convention
+const fileName = weight === 'regular' ? `${name}.svg` : `${name}-${weight}.svg`;
+const svgPath = resolve(`node_modules/@phosphor-icons/core/assets/${weight}/${fileName}`);
+let svgContent = readFileSync(svgPath, 'utf-8');
+
+// Inject class and aria-hidden into the SVG's opening tag
+svgContent = svgContent.replace(
+  /^<svg([^>]*)>/,
+  (_, attrs) => `<svg${attrs} class="${className}" aria-hidden="true">`
+);
+---
+<Fragment set:html={svgContent} />

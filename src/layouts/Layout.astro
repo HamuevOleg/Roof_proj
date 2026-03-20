@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ui, getServicesData } from '../data/i18n.js';
+import PhIcon from '../components/PhIcon.astro';
 
 const { lang, title, description = '' } = Astro.props;
 const text = ui[lang];
@@ -125,7 +126,7 @@ const navItems = [
                     <a href={getLangLink('ro')} class={`w-10 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white/20 text-orange-400' : 'text-gray-400 hover:text-white'}`}>RO</a>
                 </div>
                 <a href="tel:+37360680819" class="flex items-center gap-2 bg-white/8 hover:bg-white/15 border border-white/15 text-white px-4 py-2 rounded-full font-medium transition-colors text-sm">
-                    <i class="ph-fill ph-phone text-orange-400 text-base"></i>
+                    <PhIcon name="phone" weight="fill" class="text-orange-400 w-[1em] h-[1em] text-base inline-block" />
                     +373 60 680 819
                 </a>
                 <a href={`${base}${lang}/contacts`} class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-5 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap shadow-md shadow-orange-600/40 hover:shadow-orange-600/60 text-sm">
@@ -140,7 +141,8 @@ const navItems = [
                     <a href={getLangLink('ro')} class={`w-9 text-center py-1 rounded-full text-xs font-bold transition-colors ${lang === 'ro' ? 'bg-white/20 text-orange-400' : 'text-gray-400'}`}>RO</a>
                 </div>
                 <button id="mobile-menu-toggle" class="text-gray-400 hover:text-white focus:outline-none flex items-center justify-center w-10 h-10 rounded-xl hover:bg-white/10 transition-colors">
-                    <i class="ph ph-list text-3xl" id="menu-icon"></i>
+                    <PhIcon name="list" weight="regular" class="w-7 h-7" id="menu-icon-list" />
+                    <PhIcon name="x" weight="regular" class="w-7 h-7 hidden" id="menu-icon-x" />
                 </button>
             </div>
         </div>
@@ -156,7 +158,7 @@ const navItems = [
             ))}
             <div class="pt-3 border-t border-white/10 space-y-2.5 mt-2">
                 <a href="tel:+37360680819" class="flex items-center justify-center gap-2 w-full bg-white/10 border border-white/20 text-white px-4 py-3 rounded-xl font-medium">
-                    <i class="ph-fill ph-phone text-orange-400 text-xl"></i>
+                    <PhIcon name="phone" weight="fill" class="text-orange-400 w-5 h-5 inline-block" />
                     +373 60 680 819
                 </a>
                 <a href={`${base}${lang}/contacts`} class="flex items-center justify-center w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3.5 rounded-xl font-semibold shadow-md shadow-orange-600/30 transition-all">
@@ -210,29 +212,29 @@ const navItems = [
                 <h3 class="text-base font-semibold mb-4 pb-2 border-b border-gray-700">{text.footCont}</h3>
                 <div class="space-y-3">
                     <a href="tel:+37360680819" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
-                        <i class="ph-fill ph-phone text-orange-400 text-xl flex-shrink-0"></i>
+                        <PhIcon name="phone" weight="fill" class="text-orange-400 w-5 h-5 flex-shrink-0 inline-block" />
                         <span class="text-lg font-bold">+373 60 680 819</span>
                     </a>
                     <a href="mailto:proacoperis54@gmail.com" class="flex items-center gap-3 text-gray-400 hover:text-white transition-colors group">
-                        <i class="ph ph-envelope text-orange-400 text-xl flex-shrink-0"></i>
+                        <PhIcon name="envelope" weight="regular" class="text-orange-400 w-5 h-5 flex-shrink-0 inline-block" />
                         <span class="text-sm">proacoperis54@gmail.com</span>
                     </a>
                     <div class="flex flex-wrap gap-2 pt-1">
                         <a href="https://wa.me/37360680819" target="_blank" rel="noopener noreferrer"
                            class="flex items-center gap-1.5 bg-green-600/20 hover:bg-green-600/30 text-green-400 border border-green-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
-                            <i class="ph ph-whatsapp-logo text-base"></i> WhatsApp
+                            <PhIcon name="whatsapp-logo" weight="regular" class="w-4 h-4 inline-block" /> WhatsApp
                         </a>
                         <a href="viber://chat?number=%2B37360680819"
                            class="flex items-center gap-1.5 bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 border border-purple-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
-                            <i class="ph ph-chat-circle text-base"></i> Viber
+                            <PhIcon name="chat-circle" weight="regular" class="w-4 h-4 inline-block" /> Viber
                         </a>
                         <a href="https://t.me/+37360680819" target="_blank" rel="noopener noreferrer"
                            class="flex items-center gap-1.5 bg-sky-600/20 hover:bg-sky-600/30 text-sky-400 border border-sky-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
-                            <i class="ph ph-telegram-logo text-base"></i> Telegram
+                            <PhIcon name="telegram-logo" weight="regular" class="w-4 h-4 inline-block" /> Telegram
                         </a>
                         <a href="https://www.facebook.com/profile.php?id=61581585747077" target="_blank" rel="noopener noreferrer"
                            class="flex items-center gap-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
-                            <i class="ph ph-facebook-logo text-base"></i> Facebook
+                            <PhIcon name="facebook-logo" weight="regular" class="w-4 h-4 inline-block" /> Facebook
                         </a>
                     </div>
                 </div>
@@ -242,7 +244,7 @@ const navItems = [
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-3 text-gray-500 text-sm">
             <p>&copy; {currentYear} ProAcoperis.md. {text.footRights}</p>
             <p class="flex items-center gap-2">
-                <i class="ph-fill ph-certificate text-orange-400"></i>
+                <PhIcon name="certificate" weight="fill" class="text-orange-400 w-4 h-4 inline-block" />
                 {text.footMade}
             </p>
         </div>
@@ -255,27 +257,27 @@ const navItems = [
     <a href="tel:+37360680819"
        class="group w-10 h-10 sm:w-11 sm:h-11 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/50 hover:shadow-orange-500/70 transition-all duration-200 hover:scale-110"
        aria-label="Позвонить / Sunați">
-        <i class="ph-fill ph-phone text-white text-lg sm:text-xl"></i>
+        <PhIcon name="phone" weight="fill" class="text-white w-5 h-5 sm:w-6 sm:h-6" />
     </a>
     <a href="https://wa.me/37360680819" target="_blank" rel="noopener noreferrer"
        class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#25D366] hover:bg-[#1ebe5d] rounded-full flex items-center justify-center shadow-lg shadow-green-500/40 hover:shadow-green-500/60 transition-all duration-200 hover:scale-110"
        aria-label="WhatsApp">
-        <i class="ph ph-whatsapp-logo text-white text-lg sm:text-xl"></i>
+        <PhIcon name="whatsapp-logo" weight="regular" class="text-white w-5 h-5 sm:w-6 sm:h-6" />
     </a>
     <a href="viber://chat?number=%2B37360680819"
        class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#7360F2] hover:bg-[#6250e0] rounded-full flex items-center justify-center shadow-lg shadow-purple-500/40 hover:shadow-purple-500/60 transition-all duration-200 hover:scale-110"
        aria-label="Viber">
-        <i class="ph ph-chat-circle-dots text-white text-lg sm:text-xl"></i>
+        <PhIcon name="chat-circle-dots" weight="regular" class="text-white w-5 h-5 sm:w-6 sm:h-6" />
     </a>
     <a href="https://t.me/+37360680819" target="_blank" rel="noopener noreferrer"
        class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#29A8EB] hover:bg-[#1a96d8] rounded-full flex items-center justify-center shadow-lg shadow-sky-500/40 hover:shadow-sky-500/60 transition-all duration-200 hover:scale-110"
        aria-label="Telegram">
-        <i class="ph ph-telegram-logo text-white text-lg sm:text-xl"></i>
+        <PhIcon name="telegram-logo" weight="regular" class="text-white w-5 h-5 sm:w-6 sm:h-6" />
     </a>
     <a href="https://www.facebook.com/profile.php?id=61581585747077" target="_blank" rel="noopener noreferrer"
        class="group w-10 h-10 sm:w-11 sm:h-11 bg-[#1877F2] hover:bg-[#0d6ce0] rounded-full flex items-center justify-center shadow-lg shadow-blue-500/40 hover:shadow-blue-500/60 transition-all duration-200 hover:scale-110"
        aria-label="Facebook">
-        <i class="ph ph-facebook-logo text-white text-lg sm:text-xl"></i>
+        <PhIcon name="facebook-logo" weight="regular" class="text-white w-5 h-5 sm:w-6 sm:h-6" />
     </a>
 </div>
 
@@ -299,13 +301,15 @@ const navItems = [
 
 
 <script is:inline>
-    const btn  = document.getElementById('mobile-menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    const icon = document.getElementById('menu-icon');
+    const btn     = document.getElementById('mobile-menu-toggle');
+    const menu    = document.getElementById('mobile-menu');
+    const iconList = document.getElementById('menu-icon-list');
+    const iconX    = document.getElementById('menu-icon-x');
 
     btn.addEventListener('click', () => {
         const isHidden = menu.classList.toggle('hidden');
-        icon.className = isHidden ? 'ph ph-list text-3xl' : 'ph ph-x text-3xl';
+        iconList.classList.toggle('hidden', !isHidden);
+        iconX.classList.toggle('hidden', isHidden);
     });
 
 

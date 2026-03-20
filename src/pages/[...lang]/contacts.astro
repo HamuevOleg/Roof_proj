@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { getImg } from '../../data/imageMap.js';
 import { ui, languages } from '../../data/i18n.js';
+import PhIcon from '../../components/PhIcon.astro';
 
 export function getStaticPaths() {
     return [
@@ -38,7 +39,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
     <div class="absolute inset-0 bg-gradient-to-b from-gray-950/80 to-gray-900/90"></div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10 text-center">
         <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-orange-200 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <i class="ph-fill ph-phone text-orange-400"></i>
+            <PhIcon name="phone" weight="fill" class="text-orange-400 w-4 h-4 inline-block" />
             {text.contPageHeroBadge}
         </div>
         <h1 class="text-5xl md:text-6xl font-extrabold font-heading text-white mb-5 leading-tight">
@@ -70,7 +71,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
            class="group inline-flex flex-col items-center justify-center bg-gray-900 hover:bg-gray-800 text-white rounded-3xl px-6 sm:px-12 py-6 sm:py-8 transition-all hover:-translate-y-1 shadow-2xl shadow-gray-900/40 mb-8 w-full sm:w-auto">
             <div class="flex items-center gap-3 sm:gap-4 mb-1 min-w-0">
                 <div class="w-12 h-12 sm:w-14 sm:h-14 bg-orange-500/20 rounded-full flex items-center justify-center group-hover:bg-orange-500/30 transition-colors flex-shrink-0">
-                    <i class="ph-fill ph-phone text-orange-400 text-2xl sm:text-3xl"></i>
+                    <PhIcon name="phone" weight="fill" class="text-orange-400 w-6 h-6 sm:w-8 sm:h-8 inline-block" />
                 </div>
                 <span class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight whitespace-nowrap">{phone}</span>
             </div>
@@ -93,7 +94,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- WhatsApp -->
             <a href={text.contWhatsappHref} target="_blank" rel="noopener noreferrer"
                class="group inline-flex items-center gap-4 bg-[#25D366] hover:bg-[#1ebe5d] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-green-600/30 justify-center">
-                <i class="ph ph-whatsapp-logo text-4xl flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                <PhIcon name="whatsapp-logo" weight="regular" class="w-10 h-10 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <div class="text-left">
                     <p class="font-extrabold text-xl leading-tight">{text.contWhatsapp}</p>
                     <p class="text-green-100 text-sm">{lang === 'ru' ? 'Ответим за 15 минут' : 'Răspundem în 15 min'}</p>
@@ -103,7 +104,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- Viber -->
             <a href={text.contViberHref}
                class="group inline-flex items-center gap-4 bg-[#7360F2] hover:bg-[#6552d4] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-purple-600/30 justify-center">
-                <i class="ph ph-chat-circle text-4xl flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                <PhIcon name="chat-circle" weight="regular" class="w-10 h-10 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <div class="text-left">
                     <p class="font-extrabold text-xl leading-tight">{text.contViber}</p>
                     <p class="text-purple-200 text-sm">{lang === 'ru' ? 'Фото и документы' : 'Foto și documente'}</p>
@@ -113,7 +114,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- Telegram -->
             <a href={text.contTelegramHref} target="_blank" rel="noopener noreferrer"
                class="group inline-flex items-center gap-4 bg-[#229ED9] hover:bg-[#1a8bc2] text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-sky-600/30 justify-center">
-                <i class="ph ph-telegram-logo text-4xl flex-shrink-0 group-hover:scale-110 transition-transform"></i>
+                <PhIcon name="telegram-logo" weight="regular" class="w-10 h-10 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <div class="text-left">
                     <p class="font-extrabold text-xl leading-tight">{text.contTelegram}</p>
                     <p class="text-sky-200 text-sm">{lang === 'ru' ? 'Быстрые ответы' : 'Răspunsuri rapide'}</p>
@@ -123,7 +124,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- Email -->
             <a href="mailto:proacoperis54@gmail.com"
                class="group inline-flex items-center gap-4 bg-gray-800 hover:bg-gray-700 text-white rounded-2xl px-8 py-5 transition-all hover:-translate-y-0.5 shadow-xl shadow-gray-900/30 justify-center">
-                <i class="ph ph-envelope text-4xl flex-shrink-0 group-hover:scale-110 transition-transform text-orange-400"></i>
+                <PhIcon name="envelope" weight="regular" class="text-orange-400 w-10 h-10 flex-shrink-0 group-hover:scale-110 transition-transform" />
                 <div class="text-left">
                     <p class="font-extrabold text-xl leading-tight">Email</p>
                     <p class="text-gray-400 text-sm">proacoperis54@gmail.com</p>
@@ -152,7 +153,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- Phone -->
             <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
                 <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-white mx-auto mb-4 shadow-md shadow-orange-500/30">
-                    <i class="ph ph-phone text-xl"></i>
+                    <PhIcon name="phone" weight="regular" class="w-5 h-5" />
                 </div>
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{text.contPhone}</p>
                 <a href={phoneHref} class="text-xl font-extrabold text-gray-900 hover:text-orange-500 transition-colors block">{phone}</a>
@@ -160,7 +161,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- Email -->
             <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
                 <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mx-auto mb-4">
-                    <i class="ph ph-envelope text-xl"></i>
+                    <PhIcon name="envelope" weight="regular" class="w-5 h-5" />
                 </div>
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Email</p>
                 <a href="mailto:proacoperis54@gmail.com" class="font-semibold text-gray-800 text-sm hover:text-orange-500 transition-colors break-all block">proacoperis54@gmail.com</a>
@@ -168,7 +169,7 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
             <!-- Hours -->
             <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
                 <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 mx-auto mb-4">
-                    <i class="ph ph-clock text-xl"></i>
+                    <PhIcon name="clock" weight="regular" class="w-5 h-5" />
                 </div>
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{text.contHours}</p>
                 <p class="font-semibold text-gray-800 text-sm">{text.contHoursVal}</p>
@@ -186,15 +187,15 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
         </h2>
         <div class="flex flex-col sm:flex-row gap-4">
             {[
-                { step: '1', icon: 'ph ph-phone-call',  ru: 'Перезвоним в течение 30 минут', ro: 'Sunăm înapoi în 30 min' },
-                { step: '2', icon: 'ph ph-map-pin',     ru: 'Бесплатный выезд инженера',     ro: 'Deplasare gratuită' },
-                { step: '3', icon: 'ph ph-file-text',   ru: 'Смета без скрытых платежей',    ro: 'Deviz fără costuri ascunse' },
+                { step: '1', icon: 'phone-call',  ru: 'Перезвоним в течение 30 минут', ro: 'Sunăm înapoi în 30 min' },
+                { step: '2', icon: 'map-pin',     ru: 'Бесплатный выезд инженера',     ro: 'Deplasare gratuită' },
+                { step: '3', icon: 'file-text',   ru: 'Смета без скрытых платежей',    ro: 'Deviz fără costuri ascunse' },
             ].map((item) => (
                 <div class="flex-1 flex flex-col items-center text-center bg-gray-50 rounded-2xl p-6 border border-gray-100">
                     <div class="w-11 h-11 bg-orange-500 rounded-full flex items-center justify-center text-white font-extrabold text-lg mb-3 shadow-md shadow-orange-500/30">
                         {item.step}
                     </div>
-                    <i class={`${item.icon} text-orange-400 text-2xl mb-2`}></i>
+                    <PhIcon name={item.icon} weight="regular" class="text-orange-400 w-6 h-6 mb-2 inline-block" />
                     <p class="text-gray-700 font-semibold text-sm">{lang === 'ru' ? item.ru : item.ro}</p>
                 </div>
             ))}
@@ -214,17 +215,17 @@ const fbHref    = 'https://www.facebook.com/profile.php?id=61581585747077';
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href={phoneHref}
                class="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white px-5 sm:px-8 py-4 rounded-2xl font-extrabold text-base sm:text-xl transition-all hover:scale-105 shadow-xl shadow-orange-600/30 whitespace-nowrap">
-                <i class="ph-fill ph-phone text-xl sm:text-2xl"></i>
+                <PhIcon name="phone" weight="fill" class="w-5 h-5 sm:w-6 sm:h-6 inline-block" />
                 {phone}
             </a>
             <a href={text.contWhatsappHref} target="_blank" rel="noopener"
                class="flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white border-0 px-6 py-4 rounded-2xl font-bold text-base transition-all shadow-lg">
-                <i class="ph ph-whatsapp-logo text-xl"></i>
+                <PhIcon name="whatsapp-logo" weight="regular" class="w-5 h-5 inline-block" />
                 WhatsApp
             </a>
             <a href={text.contTelegramHref} target="_blank" rel="noopener"
                class="flex items-center gap-2 bg-[#229ED9] hover:bg-[#1a8bc2] text-white border-0 px-6 py-4 rounded-2xl font-bold text-base transition-all shadow-lg">
-                <i class="ph ph-telegram-logo text-xl"></i>
+                <PhIcon name="telegram-logo" weight="regular" class="w-5 h-5 inline-block" />
                 Telegram
             </a>
         </div>

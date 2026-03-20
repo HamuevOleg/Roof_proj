@@ -299,7 +299,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Membranele polimerice sunt standardul de aur al hidroizolării acoperișurilor plate. Materialul se sudează cu aer cald, formând un înveliș monolitic fără îmbinări. Durată de viață 30–50 ani. Ideal pentru clădiri comerciale și industriale.",
         price: lang === 'ru' ? "от 180 лей/м²" : "de la 180 lei/m²",
         priceNum: "180", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
-        icon: "ph ph-buildings",
+        icon: "buildings",
         image: 'services/Services01.jpg',
         benefits: lang === 'ru'
             ? ["Гарантия до 15 лет", "Срок службы 30–50 лет", "Монолитное покрытие без швов", "Устойчива к УФ и перепадам температур"]
@@ -316,7 +316,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Materialele bitum-polimerice se aplică cu arzătorul strat cu strat, creând o protecție multistrat. Opțiune excelentă la buget limitat. Se aplică pe clădiri rezidențiale, industriale și administrative.",
         price: lang === 'ru' ? "от 120 лей/м²" : "de la 120 lei/m²",
         priceNum: "120", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
-        icon: "ph ph-drop",
+        icon: "drop",
         image: 'services/Services02.jpg',
         benefits: lang === 'ru'
             ? ["Проверено десятилетиями", "Доступная стоимость", "Быстрый монтаж", "Хорошая гибкость при низких температурах"]
@@ -333,7 +333,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Diagnosticarea scurgerilor cu termovizor și inspecție vizuală, reparație locală sau capitală. Lucrăm cu orice tip de acoperire existentă: ruberoid, membrană, mastic. Rezultat — acoperiș complet etanș.",
         price: lang === 'ru' ? "от 80 лей/м²" : "de la 80 lei/m²",
         priceNum: "80", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
-        icon: "ph ph-wrench",
+        icon: "wrench",
         image: 'services/Services03.jpg',
         benefits: lang === 'ru'
             ? ["Диагностика тепловизором", "Работа без демонтажа", "Гарантия на ремонт", "Выезд в день обращения"]
@@ -350,7 +350,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Aplicăm trei tipuri de izolație: XPS (polistiren extrudat), vată minerală și plăci PIR. Selectăm materialul în funcție de construcția acoperișului, cerințele proiectului și buget. Reduce pierderile de căldură cu 20–30%.",
         price: lang === 'ru' ? "от 150 лей/м²" : "de la 150 lei/m²",
         priceNum: "150", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
-        icon: "ph ph-sun",
+        icon: "sun",
         image: 'services/Services04.jpg',
         benefits: lang === 'ru'
             ? ["XPS / минвата / PIR-плиты", "Снижение теплопотерь 20–30%", "Соответствие СНиП", "Подбор под любой бюджет"]
@@ -367,7 +367,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Complex complet de lucrări conform sistemului Technonicol Shinglas: construcția sistemului de căpriori, montaj izolație, protecție vânt, OSB și șindrilă flexibilă. Instalăm sisteme de scurgere, aeratoare și, dacă este necesar, panouri solare.",
         price: lang === 'ru' ? "от 400 лей/м²" : "de la 400 lei/m²",
         priceNum: "400", priceUnit: lang === 'ru' ? "лей/м²" : "lei/m²",
-        icon: "ph ph-house-line",
+        icon: "house-line",
         image: 'services/Services05.jpg',
         benefits: lang === 'ru'
             ? ["Система Технониколь Шинглас", "Гарантия 15 лет", "Полный цикл под ключ", "3D проект до начала работ"]
@@ -384,7 +384,7 @@ export const getServicesData = (lang, base = '/') => [
             : "Înainte de orice lucrare facem deplasarea la obiect, măsurători, elaborăm o schiță 3D a sistemului de acoperiș cu vizualizarea tuturor nodurilor și întocmim un deviz local detaliat. Clientul vede costul final înainte de semnarea contractului.",
         price: lang === 'ru' ? "Бесплатно" : "Gratuit",
         priceNum: null, priceUnit: null,
-        icon: "ph ph-cube",
+        icon: "cube",
         image: 'services/Service06.jpg',
         benefits: lang === 'ru'
             ? ["Бесплатный выезд инженера", "Детальный 3D эскиз", "Прозрачная смета", "Без скрытых платежей"]
@@ -396,17 +396,17 @@ export const getFeaturesData = (lang) => [
     {
         title: lang === 'ru' ? "Гарантия 15 лет. Потечёт — ремонт за наш счёт" : "Garanție 15 ani. Curge — reparație pe cheltuiala noastră",
         desc: lang === 'ru' ? "Официальное обязательство по договору. Гарантийный ремонт выполняется за наш счёт — без споров и дополнительных платежей." : "Obligație oficială prin contract. Reparațiile în garanție se efectuează pe cheltuiala noastră — fără dispute și plăți suplimentare.",
-        icon: "ph ph-shield-check"
+        icon: "shield-check"
     },
     {
         title: lang === 'ru' ? "50+ кровельщиков в штате. Без субподрядчиков" : "50+ învelitori/acoperitori. Fără intermediere.",
         desc: lang === 'ru' ? "Все работы выполняют только наши штатные специалисты. Никаких посредников — только ответственность перед вами." : "Toate lucrările sunt executate doar de specialiștii noștri angajați. Nicio subcontractare — doar responsabilitate față de dvs.",
-        icon: "ph ph-hammer"
+        icon: "hammer"
     },
     {
         title: lang === 'ru' ? "Средний срок — 7 дней. Штраф за просрочку в договоре" : "Termen mediu — 7 zile. Penalitate pentru depășire în contract",
         desc: lang === 'ru' ? "Сроки прописаны в договоре. Задержка по нашей вине — неустойка из нашего бюджета. Клиент защищён юридически." : "Termenele sunt scrise în contract. Întârziere din vina noastră — penalitate din bugetul nostru. Clientul este protejat juridic.",
-        icon: "ph ph-clock"
+        icon: "clock"
     }
 ];
 
@@ -422,25 +422,25 @@ export const getPortfolioData = (lang, base = '/') => [
 ];
 
 export const getStatsData = (lang) => [
-    { number: "12+", label: lang === 'ru' ? "Лет опыта" : "Ani experiență",    icon: "ph ph-medal" },
-    { number: "500+", label: lang === 'ru' ? "Сданных объектов" : "Obiecte predate", icon: "ph ph-buildings" },
-    { number: "15",  label: lang === 'ru' ? "Лет гарантии" : "Ani garanție",   icon: "ph ph-shield-check" },
-    { number: "50+", label: lang === 'ru' ? "Специалистов" : "Specialiști",    icon: "ph ph-users" },
+    { number: "12+", label: lang === 'ru' ? "Лет опыта" : "Ani experiență",    icon: "medal" },
+    { number: "500+", label: lang === 'ru' ? "Сданных объектов" : "Obiecte predate", icon: "buildings" },
+    { number: "15",  label: lang === 'ru' ? "Лет гарантии" : "Ani garanție",   icon: "shield-check" },
+    { number: "50+", label: lang === 'ru' ? "Специалистов" : "Specialiști",    icon: "users" },
 ];
 
 export const getProcessData = (lang) => [
-    { step: 1, title: lang === 'ru' ? "Выезд и замеры" : "Deplasare și măsurători",                    desc: lang === 'ru' ? "Инженер приезжает на объект, осматривает крышу и делает точные замеры." : "Inginerul vine la obiect, inspectează acoperișul și efectuează măsurători exacte.", icon: "ph ph-map-pin" },
-    { step: 2, title: lang === 'ru' ? "3D-эскиз — бесплатно" : "Schiță 3D — gratuit",               desc: lang === 'ru' ? "Разрабатываем 3D-модель вашей будущей крыши с визуализацией всех узлов и слоёв." : "Elaborăm modelul 3D al viitorului dvs. acoperiș cu vizualizarea tuturor nodurilor și straturilor.", icon: "ph ph-cube" },
-    { step: 3, title: lang === 'ru' ? "Точная смета" : "Deviz exact",                                desc: lang === 'ru' ? "Составляем детальную локальную смету. Никаких скрытых платежей — цена фиксируется в договоре." : "Întocmim un deviz local detaliat. Nicio plată ascunsă — prețul este fixat în contract.", icon: "ph ph-file-text" },
-    { step: 4, title: lang === 'ru' ? "Договор" : "Contract",                                        desc: lang === 'ru' ? "Отправляем все документы для ознакомления и согласовываем все детали." : "Trimitem toate documentele spre examinare și convenim toate detaliile.", icon: "ph ph-handshake" },
-    { step: 5, title: lang === 'ru' ? "Старт работ" : "Începerea lucrărilor",                        desc: lang === 'ru' ? "Получаем аванс, завозим материалы и начинаем монтаж строго по графику." : "Primim avansul, aducem materialele și începem montajul strict conform graficului.", icon: "ph ph-hammer" },
-    { step: 6, title: lang === 'ru' ? "Сдача объекта" : "Predarea obiectului",                       desc: lang === 'ru' ? "Заканчиваем работы, убираем мусор, проверяем качество и производим финальный расчёт." : "Finalizăm lucrările, curățăm șantierul, verificăm calitatea și efectuăm decontarea finală.", icon: "ph ph-seal-check" },
+    { step: 1, title: lang === 'ru' ? "Выезд и замеры" : "Deplasare și măsurători",                    desc: lang === 'ru' ? "Инженер приезжает на объект, осматривает крышу и делает точные замеры." : "Inginerul vine la obiect, inspectează acoperișul și efectuează măsurători exacte.", icon: "map-pin" },
+    { step: 2, title: lang === 'ru' ? "3D-эскиз — бесплатно" : "Schiță 3D — gratuit",               desc: lang === 'ru' ? "Разрабатываем 3D-модель вашей будущей крыши с визуализацией всех узлов и слоёв." : "Elaborăm modelul 3D al viitorului dvs. acoperiș cu vizualizarea tuturor nodurilor și straturilor.", icon: "cube" },
+    { step: 3, title: lang === 'ru' ? "Точная смета" : "Deviz exact",                                desc: lang === 'ru' ? "Составляем детальную локальную смету. Никаких скрытых платежей — цена фиксируется в договоре." : "Întocmim un deviz local detaliat. Nicio plată ascunsă — prețul este fixat în contract.", icon: "file-text" },
+    { step: 4, title: lang === 'ru' ? "Договор" : "Contract",                                        desc: lang === 'ru' ? "Отправляем все документы для ознакомления и согласовываем все детали." : "Trimitem toate documentele spre examinare și convenim toate detaliile.", icon: "handshake" },
+    { step: 5, title: lang === 'ru' ? "Старт работ" : "Începerea lucrărilor",                        desc: lang === 'ru' ? "Получаем аванс, завозим материалы и начинаем монтаж строго по графику." : "Primim avansul, aducem materialele și începem montajul strict conform graficului.", icon: "hammer" },
+    { step: 6, title: lang === 'ru' ? "Сдача объекта" : "Predarea obiectului",                       desc: lang === 'ru' ? "Заканчиваем работы, убираем мусор, проверяем качество и производим финальный расчёт." : "Finalizăm lucrările, curățăm șantierul, verificăm calitatea și efectuăm decontarea finală.", icon: "seal-check" },
 ];
 
 export const getRoofSystemsData = (lang) => [
     {
         id: 'flat-insulated', tag: lang === 'ru' ? 'Плоская · Новая · С утеплением' : 'Plat · Nou · Cu izolație',
-        icon: "ph ph-stack",
+        icon: "stack",
         badge: lang === 'ru' ? "🔥 Хит продаж" : "🔥 Best seller",
         title:   lang === 'ru' ? "Плоская крыша под ключ" : "Acoperiș plat la cheie",
         tagline: lang === 'ru' ? "Капитальный монтаж с утеплением и разуклонкой — тепло, сухо, навечно." : "Montaj capital cu izolație și pantă — cald, uscat, pentru totdeauna.",
@@ -454,7 +454,7 @@ export const getRoofSystemsData = (lang) => [
     },
     {
         id: 'flat-membrane', tag: lang === 'ru' ? 'Плоская · Ремонт · Мембрана ПВХ' : 'Plat · Reparație · Membrană PVC',
-        icon: "ph ph-waves",
+        icon: "waves",
         badge: null,
         title:   lang === 'ru' ? "Ремонт кровли — мембрана" : "Reparație acoperiș — membrană",
         tagline: lang === 'ru' ? "Надёжная гидроизоляция поверх старой крыши — без грязи и демонтажа." : "Hidroizolare fiabilă peste acoperișul vechi — fără murdărie și demontare.",
@@ -468,7 +468,7 @@ export const getRoofSystemsData = (lang) => [
     },
     {
         id: 'flat-bitumen', tag: lang === 'ru' ? 'Плоская · Ремонт · Еврорубероид' : 'Plat · Reparație · Euroruberoid',
-        icon: "ph ph-fire",
+        icon: "fire",
         badge: null,
         title:   lang === 'ru' ? "Ремонт кровли — еврорубероид" : "Reparație acoperiș — euroruberoid",
         tagline: lang === 'ru' ? "Классический бюджетный ремонт — быстро, надёжно, без сюрпризов." : "Reparație clasică economică — rapid, fiabil, fără surprize.",
@@ -482,7 +482,7 @@ export const getRoofSystemsData = (lang) => [
     },
     {
         id: 'pitched', tag: lang === 'ru' ? 'Скатная · Новая · Под ключ' : 'Pantă · Nou · La cheie',
-        icon: "ph ph-house-line",
+        icon: "house-line",
         badge: null,
         title:   lang === 'ru' ? "Скатная крыша под ключ" : "Acoperiș în pantă la cheie",
         tagline: lang === 'ru' ? "От стропил до финишного покрытия — полный цикл под ключ." : "De la căpriori la acoperirea finală — ciclu complet la cheie.",
@@ -536,28 +536,28 @@ export const getFAQData = (lang) => [
 
 export const getAboutValuesData = (lang) => [
     {
-        icon: "ph ph-certificate",
+        icon: "certificate",
         title: lang === 'ru' ? "Используем только лучшие материалы" : "Folosim doar cele mai bune materiale",
         desc: lang === 'ru' ? "Работаем только с проверенными производителями и используем сертифицированные материалы с официальной гарантией. Качество — без компромиссов." : "Lucrăm doar cu producători verificați și folosim materiale certificate cu garanție oficială. Calitate fără compromisuri."
     },
     {
-        icon: "ph ph-users-three",
+        icon: "users-three",
         title: lang === 'ru' ? "Собственные бригады, без субподряда" : "Echipe proprii, fără subcontractare",
         desc: lang === 'ru' ? "Все работы выполняют только наши штатные специалисты. Никакого субподряда — только ответственность перед клиентом." : "Toate lucrările sunt executate doar de specialiștii noștri angajați. Nicio subcontractare — doar responsabilitate față de client."
     },
     {
-        icon: "ph ph-camera",
+        icon: "camera",
         title: lang === 'ru' ? "Фотоотчёт каждого этапа" : "Raport foto al fiecărei etape",
         desc: lang === 'ru' ? "Мы фотографируем каждый технологический слой кровли. Клиент видит, что происходит под финишным покрытием, и уверен в качестве." : "Fotografiem fiecare strat tehnologic al acoperișului. Clientul vede ce se întâmplă sub acoperirea finală și este sigur de calitate."
     },
     {
-        icon: "ph ph-file-doc",
+        icon: "file-doc",
         title: lang === 'ru' ? "Полный пакет документов" : "Pachet complet de documente",
         desc: lang === 'ru' ? "Договор, смета, акты выполненных работ, гарантийный талон — всё официально оформляется и передаётся клиенту." : "Contract, deviz, acte de lucrări executate, bon de garanție — totul se întocmește oficial și se transmite clientului."
     },
 ];
 
 export const getVideosData = (lang, base = '/') => [
-    { src: `${base}images/videos/work1.mp4`, poster: 'portfolio/p01.jpg', title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
-    { src: `${base}images/videos/work2.mp4`, poster: 'portfolio/p03.jpg', title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
+    { src: `${base}images/videos/work1.mp4`, poster: `${base}images/videos/work1-poster.webp`, title: lang === 'ru' ? "Монтаж кровельной мембраны" : "Montaj membrană de acoperiș", desc: lang === 'ru' ? "Процесс укладки и сварки полимерной мембраны" : "Procesul de montare și sudare a membranei", type: lang === 'ru' ? "Монтаж" : "Montaj" },
+    { src: `${base}images/videos/work2.mp4`, poster: `${base}images/videos/work2-poster.webp`, title: lang === 'ru' ? "Кровельные работы на объекте" : "Lucrări de acoperiș la obiect", desc: lang === 'ru' ? "Полный цикл кровельных работ от начала до сдачи" : "Ciclul complet de lucrări de la început până la predare", type: lang === 'ru' ? "Объект" : "Obiect" },
 ];
